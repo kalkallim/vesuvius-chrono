@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancient Chronology Timeline v1.0</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1a1e;
+    color: #e8e4d8;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    padding: 24px 12px;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    font-size: clamp(18px, 2.5vw, 28px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c8b98a;
+    margin-bottom: 8px;
+    font-weight: 400;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: clamp(12px, 1.8vw, 16px);
+    color: #888;
+    margin-bottom: 8px;
+    font-style: italic;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .attribution {
+    text-align: center;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 18px;
+    letter-spacing: 0.06em;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .chart-wrapper { width: 100%; max-width: 1600px; margin: 0 auto; }
+  svg { display: block; width: 100%; height: auto; min-width: 320px; }
+  #tooltip {
+    position: fixed;
+    background: rgba(8,8,12,0.97);
+    border: 1px solid #c8b98a;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    pointer-events: none;
+    z-index: 9999;
+    max-width: 320px;
+    display: none;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+    line-height: 1.7;
+  }
+  .tt-name  { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing:.08em; margin-bottom:3px; }
+  .tt-top   { color: #7DC4A0; font-weight: bold; font-size: 13px; }
+  .tt-bot   { color: #7aafd4; font-weight: bold; font-size: 13px; }
+  .tt-am    { color: #c8b98a; font-weight: bold; font-size: 14px; margin-top:5px; border-top:1px solid #2a2a2a; padding-top:5px; }
+  .tt-segs  { margin-top:6px; border-top:1px solid #2a2a2a; padding-top:5px; }
+  .tt-seg   { font-size: 12px; margin-bottom:2px; }
+  .tt-segam { font-size: 11px; color: #c8b98a; margin-bottom:4px; }
+</style>
+</head>
+<body>
+<h1>Ancient Chronology Comparative Timeline</h1>
+<p class="subtitle">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi year, and position within each tradition</p>
+<p class="attribution">Data visualization by Lleland Liam Maxwell, built with Claude (Anthropic) &mdash; &copy; 2026</p>
+
+<div class="chart-wrapper">
+<svg id="chart" viewBox="0 0 1600 760" role="img">
+
+<!-- LEGEND row 1 -->
+<rect x="184" y="6"  width="22" height="22" rx="3" fill="#C0392B" stroke="#000" stroke-width="1"/>
+<text x="214" y="23" font-size="17" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif">Creation → Flood</text>
+<rect x="478" y="9"  width="32" height="14" rx="6" fill="#111"/>
+<text x="494" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="Georgia,serif">&#9658;</text>
+<rect x="648" y="6"  width="22" height="22" rx="3" fill="#E67E22" stroke="#000" stroke-width="1"/>
+<text x="678" y="23" font-size="17" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif">Flood → Abraham</text>
+<rect x="948" y="9" width="32" height="14" rx="6" fill="#111"/>
+<text x="964" y="19" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="Georgia,serif">&#9658;</text>
+<rect x="1112" y="6" width="22" height="22" rx="3" fill="#D4C800" stroke="#000" stroke-width="1"/>
+<text x="1142" y="23" font-size="17" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif">Abraham → Exodus</text>
+
+<!-- LEGEND row 2 -->
+<rect x="184" y="34" width="22" height="22" rx="3" fill="#27AE60" stroke="#000" stroke-width="1"/>
+<text x="214" y="51" font-size="17" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif">Exodus → Temple</text>
+<rect x="478" y="37" width="32" height="14" rx="6" fill="#111"/>
+<text x="494" y="47" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="Georgia,serif">&#9658;</text>
+<rect x="648" y="34" width="22" height="22" rx="3" fill="#2471A3" stroke="#000" stroke-width="1"/>
+<text x="678" y="51" font-size="17" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif">Temple → Desolation</text>
+<rect x="948" y="37" width="32" height="14" rx="6" fill="#111"/>
+<text x="964" y="47" text-anchor="middle" font-size="13" font-weight="900" fill="#fff" font-family="Georgia,serif">&#9658;</text>
+<rect x="1112" y="34" width="22" height="22" rx="3" fill="#7D3C98" stroke="#000" stroke-width="1"/>
+<text x="1142" y="51" font-size="17" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif">Captivity (70 Years)</text>
+
+<!-- TOP AXIS y=100 -->
+<line x1="184" y1="100" x2="1576" y2="100" stroke="#888" stroke-width="1.2"/>
+<line x1="184"  y1="93" x2="184"  y2="107" stroke="#aaa" stroke-width="1.2"/>
+<line x1="461"  y1="94" x2="461"  y2="106" stroke="#888" stroke-width="0.8"/>
+<line x1="682"  y1="94" x2="682"  y2="106" stroke="#888" stroke-width="0.8"/>
+<line x1="904"  y1="94" x2="904"  y2="106" stroke="#888" stroke-width="0.8"/>
+<!-- 500 BC tick at x=1015 replacing 1 AD -->
+<line x1="1015" y1="94" x2="1015" y2="106" stroke="#888" stroke-width="0.8"/>
+<line x1="1576" y1="93" x2="1576" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<!-- special ticks -->
+<line x1="292"  y1="93" x2="292"  y2="107" stroke="#ffffff" stroke-width="2.5"/>
+<line x1="1232" y1="93" x2="1232" y2="107" stroke="#27AE60" stroke-width="2.5"/>
+<line x1="1377" y1="93" x2="1377" y2="107" stroke="#4A7276" stroke-width="2.5"/>
+<!-- 1241 AD tick now goes ABOVE axis -->
+<line x1="1401" y1="93" x2="1401" y2="107" stroke="#8B3A3A" stroke-width="2.5"/>
+<line x1="1298" y1="93" x2="1298" y2="107" stroke="#E67E22" stroke-width="2.5"/>
+<line x1="1488" y1="94" x2="1488" y2="106" stroke="#888" stroke-width="0.8"/>
+
+<!-- minor ticks top -->
+<line x1="239"  y1="96" x2="239"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="350"  y1="96" x2="350"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="405"  y1="96" x2="405"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="516"  y1="96" x2="516"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="571"  y1="96" x2="571"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="626"  y1="96" x2="626"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="738"  y1="96" x2="738"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="793"  y1="96" x2="793"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="849"  y1="96" x2="849"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="960"  y1="96" x2="960"  y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1070" y1="96" x2="1070" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1182" y1="96" x2="1182" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1238" y1="96" x2="1238" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1293" y1="96" x2="1293" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1349" y1="96" x2="1349" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1415" y1="96" x2="1415" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1470" y1="96" x2="1470" y2="104" stroke="#444" stroke-width="0.5"/>
+<line x1="1514" y1="96" x2="1514" y2="104" stroke="#444" stroke-width="0.5"/>
+
+<!-- Top labels -->
+<text x="184"  y="88" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">4250 BC</text>
+<text x="292"  y="88" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700" font-family="Georgia,serif">3760 BC</text>
+<text x="461"  y="88" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">3000 BC</text>
+<text x="682"  y="88" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">2000 BC</text>
+<text x="904"  y="88" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">1000 BC</text>
+<!-- 500 BC label, replacing 1 AD -->
+<text x="1015" y="88" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">500 BC</text>
+<text x="1232" y="88" text-anchor="middle" font-size="12" fill="#27AE60" font-weight="700" font-family="Georgia,serif">476 AD</text>
+<text x="1298" y="88" text-anchor="middle" font-size="12" fill="#E67E22" font-weight="700" font-family="Georgia,serif">777 AD</text>
+<!-- 1130 AD: right-aligned ending left of tick -->
+<text x="1377" y="88" text-anchor="end" font-size="12" fill="#4A7276" font-weight="700" font-family="Georgia,serif">1130 AD</text>
+<!-- 1241 AD: left-aligned starting right of tick, normal y=88 -->
+<text x="1401" y="88" text-anchor="start" font-size="12" font-weight="900" fill="#8B3A3A" font-family="Georgia,serif">1241 AD</text>
+<text x="1576" y="88" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">2028 AD</text>
+
+<!-- BOTTOM AXIS y=600 -->
+<line x1="184" y1="650" x2="1576" y2="650" stroke="#888" stroke-width="1.2"/>
+<line x1="184"  y1="643" x2="184"  y2="657" stroke="#aaa" stroke-width="1.2"/>
+<line x1="362"  y1="644" x2="362"  y2="656" stroke="#888" stroke-width="0.8"/>
+<line x1="583"  y1="644" x2="583"  y2="656" stroke="#888" stroke-width="0.8"/>
+<line x1="805"  y1="644" x2="805"  y2="656" stroke="#888" stroke-width="0.8"/>
+<line x1="1026" y1="644" x2="1026" y2="656" stroke="#888" stroke-width="0.8"/>
+<line x1="1576" y1="643" x2="1576" y2="657" stroke="#aaa" stroke-width="1.2"/>
+<!-- special bottom ticks -->
+<line x1="292"  y1="643" x2="292"  y2="657" stroke="#ffffff" stroke-width="2.5"/>
+<line x1="1232" y1="643" x2="1232" y2="657" stroke="#27AE60" stroke-width="2.5"/>
+<line x1="1377" y1="643" x2="1377" y2="657" stroke="#4A7276" stroke-width="2.5"/>
+<line x1="1401" y1="643" x2="1401" y2="657" stroke="#8B3A3A" stroke-width="2.5"/>
+<line x1="1298" y1="643" x2="1298" y2="657" stroke="#E67E22" stroke-width="2.5"/>
+<line x1="1488" y1="644" x2="1488" y2="656" stroke="#888" stroke-width="0.8"/>
+
+<!-- minor ticks bottom -->
+<line x1="239"  y1="647" x2="239"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="294"  y1="647" x2="294"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="417"  y1="647" x2="417"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="473"  y1="647" x2="473"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="528"  y1="647" x2="528"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="638"  y1="647" x2="638"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="694"  y1="647" x2="694"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="750"  y1="647" x2="750"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="860"  y1="647" x2="860"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="916"  y1="647" x2="916"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="971"  y1="647" x2="971"  y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1082" y1="647" x2="1082" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1138" y1="647" x2="1138" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1193" y1="647" x2="1193" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1304" y1="647" x2="1304" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1359" y1="647" x2="1359" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1415" y1="647" x2="1415" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1470" y1="647" x2="1470" y2="653" stroke="#444" stroke-width="0.5"/>
+<line x1="1526" y1="647" x2="1526" y2="653" stroke="#444" stroke-width="0.5"/>
+
+<!-- Bottom labels -->
+<text x="184"  y="668" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">5802 BC</text>
+<text x="292"  y="668" text-anchor="middle" font-size="12" fill="#ffffff" font-weight="700" font-family="Georgia,serif">5312 BC</text>
+<text x="362"  y="668" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">5000 BC</text>
+<text x="583"  y="668" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">4000 BC</text>
+<text x="805"  y="668" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">3000 BC</text>
+<text x="1026" y="668" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">2000 BC</text>
+<text x="1232" y="668" text-anchor="middle" font-size="12" fill="#27AE60" font-weight="700" font-family="Georgia,serif">1076 BC</text>
+<text x="1298" y="668" text-anchor="middle" font-size="12" fill="#E67E22" font-weight="700" font-family="Georgia,serif">776 BC</text>
+<text x="1377" y="668" text-anchor="end" font-size="12" fill="#4A7276" font-weight="700" font-family="Georgia,serif">423 BC</text>
+<text x="1401" y="668" text-anchor="start" font-size="12" font-weight="900" fill="#8B3A3A" font-family="Georgia,serif">312 BC</text>
+<text x="1488" y="668" text-anchor="middle" font-size="12" fill="#7D3C98" font-weight="700" font-family="Georgia,serif">79 AD</text>
+<text x="1576" y="668" text-anchor="middle" font-size="12" fill="#888" font-family="Georgia,serif">476 AD</text>
+
+<!-- ROW LABELS -->
+<text x="180" y="146" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Official History</text>
+<text x="180" y="200" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Hebrew Masoretic</text>
+<text x="180" y="254" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Codex Vaticanus</text>
+<text x="180" y="308" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Codex Alexandrinus</text>
+<text x="180" y="362" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Josephus</text>
+<text x="180" y="416" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Theophilus of Antioch</text>
+<text x="180" y="470" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Julius Africanus</text>
+<text x="180" y="524" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Eusebius</text>
+<text x="180" y="578" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Manetho</text>
+<text x="180" y="626" text-anchor="end" font-size="13" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Tertullian</text>
+
+<!-- BAR BACKGROUNDS -->
+<rect x="184" y="122" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="176" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="230" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="284" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="338" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="392" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="446" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="500" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="554" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="608" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+
+<!-- R0: OFFICIAL HISTORY — white outline on dark block -->
+<rect x="1143" y="122" width="344" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="1483" y="140" text-anchor="end" dominant-baseline="central" fill="#aaa" font-size="12" font-weight="600" font-family="Georgia,serif">Vesuvius Offset 1,552</text>
+
+<!-- R1: HEBREW -->
+<rect x="292"  y="176" width="367" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="659"  y="176" width="65"  height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="724"  y="176" width="112" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="836"  y="176" width="106" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="942"  y="176" width="91"  height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1034" y="176" width="344" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="656"  y="194" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">1,656</text>
+<text x="721"  y="194" text-anchor="end" dominant-baseline="central" fill="#fff"    font-size="12" font-weight="600" font-family="Georgia,serif">292</text>
+<text x="833"  y="194" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">505</text>
+<text x="940"  y="194" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">480</text>
+<text x="1031" y="194" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">410</text>
+<text x="1205" y="186" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="12" font-weight="600" font-family="Georgia,serif">Vesuvius Offset</text>
+<text x="1205" y="202" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="12" font-weight="600" font-family="Georgia,serif">1,552</text>
+
+<!-- R2: VATICANUS -->
+<rect x="292"  y="230" width="497" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="789"  y="230" width="260" height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="1049" y="230" width="112" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="1161" y="230" width="120" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="1281" y="230" width="96"  height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1377" y="230" width="15"  height="36" fill="#7D3C98" stroke="#000" stroke-width="0.75"/>
+<text x="786"  y="248" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">2,242</text>
+<text x="1046" y="248" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="13" font-weight="600" font-family="Georgia,serif">1,172</text>
+<text x="1158" y="248" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">505</text>
+<text x="1278" y="248" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">540</text>
+<text x="1374" y="248" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">430.5</text>
+
+<!-- R3: ALEXANDRINUS -->
+<rect x="292"  y="284" width="502" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="794"  y="284" width="237" height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="1031" y="284" width="112" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="1143" y="284" width="124" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="1267" y="284" width="95"  height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1362" y="284" width="15"  height="36" fill="#7D3C98" stroke="#000" stroke-width="0.75"/>
+<text x="791"  y="302" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">2,262</text>
+<text x="1028" y="302" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="13" font-weight="600" font-family="Georgia,serif">1,072</text>
+<text x="1140" y="302" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">505</text>
+<text x="1264" y="302" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">560</text>
+<text x="1359" y="302" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">430.5</text>
+
+<!-- R4: JOSEPHUS -->
+<rect x="269"  y="338" width="501" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="770"  y="338" width="220" height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="990"  y="338" width="112" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="1102" y="338" width="131" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="1233" y="338" width="104" height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1337" y="338" width="16"  height="36" fill="#7D3C98" stroke="#000" stroke-width="0.75"/>
+<rect x="1353" y="338" width="136" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="767"  y="356" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">2,256</text>
+<text x="987"  y="356" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="13" font-weight="600" font-family="Georgia,serif">993</text>
+<text x="1099" y="356" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">505</text>
+<text x="1230" y="356" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">592</text>
+<text x="1334" y="356" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">470.5</text>
+<text x="1421" y="348" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">Until Caligula's Death</text>
+<text x="1421" y="364" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">614</text>
+
+<!-- R5: THEOPHILUS -->
+<rect x="248"  y="392" width="497" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="745"  y="392" width="208" height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="953"  y="392" width="160" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="1113" y="392" width="120" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="1233" y="392" width="98"  height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1331" y="392" width="15"  height="36" fill="#7D3C98" stroke="#000" stroke-width="0.75"/>
+<rect x="1346" y="392" width="131" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="742"  y="410" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">2,242</text>
+<text x="950"  y="410" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="13" font-weight="600" font-family="Georgia,serif">936</text>
+<text x="1110" y="410" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">720</text>
+<text x="1230" y="410" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">540</text>
+<text x="1237" y="410" text-anchor="start" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">445.5</text>
+<text x="1411" y="402" text-anchor="middle" dominant-baseline="central" fill="#ccc" font-size="11" font-weight="600" font-family="Georgia,serif">Until Caligula's Death</text>
+<text x="1411" y="418" text-anchor="middle" dominant-baseline="central" fill="#ccc" font-size="11" font-weight="600" font-family="Georgia,serif">589</text>
+
+<!-- R6: AFRICANUS -->
+<rect x="248"  y="446" width="502" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="750"  y="446" width="208" height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="958"  y="446" width="112" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="1070" y="446" width="162" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="1232" y="446" width="98"  height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1330" y="446" width="16"  height="36" fill="#7D3C98" stroke="#000" stroke-width="0.75"/>
+<rect x="1346" y="446" width="128" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="1410" y="456" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">Until Passion</text>
+<text x="1410" y="472" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">577</text>
+<text x="747"  y="464" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">2,262</text>
+<text x="955"  y="464" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="13" font-weight="600" font-family="Georgia,serif">940</text>
+<text x="1067" y="464" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">505</text>
+<text x="1229" y="464" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">731</text>
+<text x="1236" y="464" text-anchor="start" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">445.5</text>
+
+<!-- R7: EUSEBIUS -->
+<rect x="314"  y="500" width="497" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
+<rect x="811"  y="500" width="209" height="36" fill="#E67E22" stroke="#000" stroke-width="0.75"/>
+<rect x="1020" y="500" width="112" height="36" fill="#D4C800" stroke="#000" stroke-width="0.75"/>
+<rect x="1132" y="500" width="106" height="36" fill="#27AE60" stroke="#000" stroke-width="0.75"/>
+<rect x="1238" y="500" width="96"  height="36" fill="#2471A3" stroke="#000" stroke-width="0.75"/>
+<rect x="1334" y="500" width="16"  height="36" fill="#7D3C98" stroke="#000" stroke-width="0.75"/>
+<rect x="1350" y="500" width="124" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="1412" y="510" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">Until Passion</text>
+<text x="1412" y="526" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">560</text>
+<text x="808"  y="518" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="13" font-weight="600" font-family="Georgia,serif">2,242</text>
+<text x="1017" y="518" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="13" font-weight="600" font-family="Georgia,serif">942</text>
+<text x="1129" y="518" text-anchor="end" dominant-baseline="central" fill="#7D6608" font-size="13" font-weight="600" font-family="Georgia,serif">505</text>
+<text x="1235" y="518" text-anchor="end" dominant-baseline="central" fill="#1D6A39" font-size="13" font-weight="600" font-family="Georgia,serif">480</text>
+<text x="1331" y="518" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="13" font-weight="600" font-family="Georgia,serif">432</text>
+
+<!-- R8: MANETHO — white outline on gray blocks -->
+<rect x="184"  y="554" width="109" height="36" fill="#aaa"  stroke="#fff" stroke-width="0.75"/>
+<rect x="293"  y="554" width="1105" height="36" fill="#555" stroke="#fff" stroke-width="0.75"/>
+<text x="238"  y="564" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="11" font-weight="600" font-family="Georgia,serif">Temple</text>
+<text x="238"  y="580" text-anchor="middle" dominant-baseline="central" fill="#222" font-size="11" font-weight="600" font-family="Georgia,serif">Offset 490</text>
+<text x="845"  y="572" text-anchor="middle" dominant-baseline="central" fill="#eee" font-size="13" font-weight="600" font-family="Georgia,serif">Egyptian Dynasties (4,982)</text>
+<!-- Exodus label inside Manetho gray bar at x=1143 (79AD / 1474BC line) -->
+<text x="1148" y="572" text-anchor="start" dominant-baseline="central" fill="#D4C800" font-size="11" font-weight="700" font-family="Georgia,serif">Exodus</text>
+
+<!-- R9: TERTULLIAN — black block, 424 BC to 41 AD on bottom axis, 464 years -->
+<rect x="1376" y="608" width="103" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
+<text x="1428" y="618" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">Until Passion</text>
+<text x="1428" y="634" text-anchor="middle" dominant-baseline="central" fill="#aaa" font-size="11" font-weight="600" font-family="Georgia,serif">464</text>
+
+<!-- CONNECTING LINES — color matches the ending (left) block -->
+<!-- Hebrew (y=212) -> Vaticanus (y=230) -->
+<line x1="292"  y1="212" x2="292"  y2="230" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="659"  y1="212" x2="789"  y2="230" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="724"  y1="212" x2="1049" y2="230" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
+<line x1="836"  y1="212" x2="1161" y2="230" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
+<line x1="942"  y1="212" x2="1281" y2="230" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
+<line x1="1033" y1="212" x2="1281" y2="230" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
+<line x1="1034" y1="212" x2="1377" y2="230" stroke="#666"    stroke-width="2.5" opacity="0.8"/>
+<!-- Vaticanus (y=266) -> Alexandrinus (y=284) -->
+<line x1="292"  y1="266" x2="292"  y2="284" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="789"  y1="266" x2="794"  y2="284" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="1049" y1="266" x2="1031" y2="284" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
+<line x1="1161" y1="266" x2="1143" y2="284" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
+<line x1="1281" y1="266" x2="1267" y2="284" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
+<line x1="1377" y1="266" x2="1362" y2="284" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
+<line x1="1392" y1="266" x2="1377" y2="284" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
+<!-- Alexandrinus (y=320) -> Josephus (y=338) -->
+<line x1="292"  y1="320" x2="269"  y2="338" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="794"  y1="320" x2="770"  y2="338" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="1031" y1="320" x2="990"  y2="338" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
+<line x1="1143" y1="320" x2="1102" y2="338" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
+<line x1="1267" y1="320" x2="1233" y2="338" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
+<line x1="1362" y1="320" x2="1337" y2="338" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
+<line x1="1377" y1="320" x2="1353" y2="338" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
+<!-- Josephus (y=374) -> Theophilus (y=392) -->
+<line x1="269"  y1="374" x2="248"  y2="392" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="770"  y1="374" x2="745"  y2="392" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="990"  y1="374" x2="953"  y2="392" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
+<line x1="1102" y1="374" x2="1113" y2="392" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
+<line x1="1233" y1="374" x2="1233" y2="392" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
+<line x1="1337" y1="374" x2="1331" y2="392" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
+<line x1="1353" y1="374" x2="1346" y2="392" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
+<!-- Theophilus (y=428) -> Africanus (y=446) -->
+<line x1="248"  y1="428" x2="248"  y2="446" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="745"  y1="428" x2="750"  y2="446" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="953"  y1="428" x2="958"  y2="446" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
+<line x1="1113" y1="428" x2="1070" y2="446" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
+<line x1="1233" y1="428" x2="1232" y2="446" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
+<line x1="1331" y1="428" x2="1330" y2="446" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
+<line x1="1346" y1="428" x2="1346" y2="446" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
+<!-- Africanus (y=482) -> Eusebius (y=500) -->
+<line x1="248"  y1="482" x2="314"  y2="500" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="750"  y1="482" x2="811"  y2="500" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
+<line x1="958"  y1="482" x2="1020" y2="500" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
+<line x1="1070" y1="482" x2="1132" y2="500" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
+<line x1="1232" y1="482" x2="1238" y2="500" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
+<line x1="1330" y1="482" x2="1334" y2="500" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
+<line x1="1346" y1="482" x2="1350" y2="500" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
+
+<!-- =====================================================
+     VERTICAL DOTTED LINES — rendered on top of most bars.
+     Split segments pass BEHIND specified rows.
+     ===================================================== -->
+
+<!-- 1: 3760 BC / 5312 BC — teal green — full span -->
+<line x1="292" y1="100" x2="292" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" pointer-events="none"/>
+
+<!-- 2: 476 AD / 1076 BC — green — behind Official (122-158), Hebrew (176-212), Eusebius (500-536) -->
+<line x1="1232" y1="100" x2="1232" y2="122" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" pointer-events="none"/>
+<line x1="1232" y1="158" x2="1232" y2="176" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" pointer-events="none"/>
+<line x1="1232" y1="212" x2="1232" y2="500" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" pointer-events="none"/>
+<line x1="1232" y1="536" x2="1232" y2="650" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" pointer-events="none"/>
+
+<!-- 3: 79 AD / 1474 BC — gold — behind Official black (122-158) and Hebrew black (176-212) -->
+<line x1="1143" y1="100" x2="1143" y2="122" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
+<line x1="1143" y1="158" x2="1143" y2="176" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
+<line x1="1143" y1="212" x2="1143" y2="650" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
+<text x="1143" y="88"  text-anchor="middle" font-size="10" fill="#D4C800" font-weight="700" font-family="Georgia,serif">79 AD</text>
+<text x="1143" y="668" text-anchor="middle" font-size="10" fill="#D4C800" font-weight="700" font-family="Georgia,serif">1474 BC</text>
+
+<!-- 4: 1130 AD / 423 BC — steel blue — behind all black blocks and Manetho -->
+<!-- Skipping: Official black (122-158), Hebrew Vesuvius (176-212), Josephus black (338-374),
+     Theophilus dark (392-428), Africanus black (446-482), Eusebius black (500-536), Manetho (554-590) -->
+<line x1="1377" y1="100" x2="1377" y2="122" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="158" x2="1377" y2="176" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="212" x2="1377" y2="338" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="374" x2="1377" y2="392" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="428" x2="1377" y2="446" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="482" x2="1377" y2="500" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="536" x2="1377" y2="608" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+<line x1="1377" y1="644" x2="1377" y2="650" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" pointer-events="none"/>
+
+<!-- 5: 1241 AD / 312 BC — red — behind black blocks only, visible through colored rows -->
+<!-- Skip: Official black (122-158), Josephus black (338-374), Theophilus dark (392-428),
+     Africanus black (446-482), Eusebius black (500-536), Tertullian (608-644) -->
+<line x1="1401" y1="100" x2="1401" y2="122" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+<line x1="1401" y1="158" x2="1401" y2="338" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+<line x1="1401" y1="374" x2="1401" y2="392" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+<line x1="1401" y1="428" x2="1401" y2="446" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+<line x1="1401" y1="482" x2="1401" y2="500" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+<line x1="1401" y1="536" x2="1401" y2="608" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+<line x1="1401" y1="644" x2="1401" y2="650" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" pointer-events="none"/>
+
+<!-- 6: 1631 AD / 79 AD — purple — full span, on top of everything -->
+<line x1="1488" y1="100" x2="1488" y2="644" stroke="#7D3C98" stroke-width="2" stroke-dasharray="6 3" pointer-events="none"/>
+<text x="1488" y="88" text-anchor="middle" font-size="12" fill="#7D3C98" font-weight="700" font-family="Georgia,serif">1631 AD</text>
+
+
+<!-- 7: 777 AD / 776 BC — Olympic anchor — soft violet — behind Official black, Hebrew black, Manetho -->
+<line x1="1298" y1="100" x2="1298" y2="122" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" pointer-events="none"/>
+<line x1="1298" y1="158" x2="1298" y2="176" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" pointer-events="none"/>
+<line x1="1298" y1="212" x2="1298" y2="650" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" pointer-events="none"/>
+
+<!-- HOVER OVERLAY and crosshair rendered after dotted lines but before script -->
+<rect id="hover-overlay" x="184" y="100" width="1392" height="544" fill="transparent" style="cursor:crosshair;"/>
+<line id="crosshair" x1="0" y1="100" x2="0" y2="644" stroke="#c8b98a" stroke-width="1" stroke-dasharray="3 3" opacity="0" pointer-events="none"/>
+
+
+<!-- DOTTED LINE LEGEND -->
+<line x1="184" y1="704" x2="1576" y2="704" stroke="#333" stroke-width="0.8"/>
+<text x="880" y="716" text-anchor="middle" font-size="13" fill="#888" font-family="Georgia,serif" font-style="italic">Reference Alignments</text>
+
+<!-- Row 1: Yellow, Green, Orange -->
+<!-- Yellow: Original Exodus -->
+<line x1="184" y1="732" x2="224" y2="732" stroke="#D4C800" stroke-width="2.5" stroke-dasharray="5 3"/>
+<text x="230" y="737" font-size="14" font-weight="700" fill="#D4C800" font-family="Georgia,serif">Original Exodus (3840 AM)</text>
+
+<!-- Green: First Year of Solomon -->
+<line x1="648" y1="732" x2="688" y2="732" stroke="#27AE60" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="694" y="737" font-size="14" font-weight="700" fill="#27AE60" font-family="Georgia,serif">First Year of Solomon (4236 AM)</text>
+
+<!-- Orange: First Olympiad -->
+<line x1="1112" y1="732" x2="1152" y2="732" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="6 3"/>
+<text x="1158" y="737" font-size="14" font-weight="700" fill="#E67E22" font-family="Georgia,serif">First Olympiad (4537 AM)</text>
+
+<!-- Row 2: Blue, Red, Purple -->
+<!-- Blue: Temple Destruction -->
+<line x1="184" y1="752" x2="224" y2="752" stroke="#5B9EC9" stroke-width="2.5" stroke-dasharray="5 4"/>
+<text x="230" y="757" font-size="14" font-weight="700" fill="#5B9EC9" font-family="Georgia,serif">Temple Destruction (4890 AM)</text>
+
+<!-- Red: Seleucid Era -->
+<line x1="648" y1="752" x2="688" y2="752" stroke="#C0392B" stroke-width="2.5" stroke-dasharray="4 4"/>
+<text x="694" y="757" font-size="14" font-weight="700" fill="#C0392B" font-family="Georgia,serif">Seleucid Era / 5001 AM</text>
+
+<!-- Purple: Vesuvius -->
+<line x1="1112" y1="752" x2="1152" y2="752" stroke="#7D3C98" stroke-width="2.5" stroke-dasharray="6 3"/>
+<text x="1158" y="757" font-size="14" font-weight="700" fill="#7D3C98" font-family="Georgia,serif">Vesuvius Buries Pompeii (5392 AM)</text>
+
+</svg>
+</div>
+<div id="tooltip"></div>
+
+<script>
+const PLOT_X0   = 184;
+const PLOT_W    = 1392;
+const SPAN_YRS  = 6276;
+const PX_PER_YR = PLOT_W / SPAN_YRS;
+const AM1_PX    = 292;
+
+function pxToAM(px)      { return (px - AM1_PX) / PX_PER_YR + 1; }
+function pxToTopYear(px) { return (px - PLOT_X0) / PX_PER_YR - 4248; }
+function pxToBotYear(px) { return 5800 - (px - PLOT_X0) / PX_PER_YR; }
+
+function fmtTop(yr) { return yr <= 0 ? Math.round(-yr) + ' BC' : Math.round(yr) + ' AD'; }
+function fmtBot(yr) { return yr > 0  ? Math.round(yr)  + ' BC' : Math.round(-yr) + ' AD'; }
+function fmtAM(am)  {
+  const r = Math.round(am);
+  return r < 1 ? 'Before AM 1 (' + Math.abs(r-1) + ' yrs prior)' : r + ' AM';
+}
+
+const ROWS = [
+  { name:'Official History', shortName:'Official', amLabel:'AM', y:122, segments:[
+    {x:1143,w:344,color:'#1a1a1a',label:'Vesuvius Offset',years:1552,amStart:3838}
+  ]},
+  { name:'Hebrew Masoretic', shortName:'Masoretic', amLabel:'AM (Masoretic)', y:176, segments:[
+    {x:292,  w:367,color:'#C0392B',label:'Creation → Flood',   years:1656,amStart:1},
+    {x:659,  w:65, color:'#E67E22',label:'Flood → Abraham',    years:292, amStart:1656},
+    {x:724,  w:112,color:'#D4C800',label:'Abraham → Exodus',   years:505, amStart:1949},
+    {x:836,  w:106,color:'#27AE60',label:'Exodus → Temple',    years:480, amStart:2454},
+    {x:942,  w:91, color:'#2471A3',label:'Temple → Desolation',years:410, amStart:2932},
+    {x:1034, w:344,color:'#1a1a1a',label:'Vesuvius Offset',         years:1552,amStart:3346}
+  ]},
+  { name:'Codex Vaticanus', shortName:'Vaticanus', amLabel:'AM (Vaticanus)', y:230, segments:[
+    {x:292,  w:497,color:'#C0392B',label:'Creation → Flood',   years:2242,  amStart:1},
+    {x:789,  w:260,color:'#E67E22',label:'Flood → Abraham',    years:1172,  amStart:2242},
+    {x:1049, w:112,color:'#D4C800',label:'Abraham → Exodus',   years:505,   amStart:3414},
+    {x:1161, w:120,color:'#27AE60',label:'Exodus → Temple',    years:540,   amStart:3919},
+    {x:1281, w:96, color:'#2471A3',label:'Temple → Desolation',years:430.5, amStart:4460},
+    {x:1377, w:15, color:'#7D3C98',label:'Captivity',               years:70,    amStart:4893}
+  ]},
+  { name:'Codex Alexandrinus', shortName:'Alexandrinus', amLabel:'AM (Alexandrinus)', y:284, segments:[
+    {x:292,  w:502,color:'#C0392B',label:'Creation → Flood',   years:2262,  amStart:1},
+    {x:794,  w:237,color:'#E67E22',label:'Flood → Abraham',    years:1072,  amStart:2264},
+    {x:1031, w:112,color:'#D4C800',label:'Abraham → Exodus',   years:505,   amStart:3333},
+    {x:1143, w:124,color:'#27AE60',label:'Exodus → Temple',    years:560,   amStart:3838},
+    {x:1267, w:95, color:'#2471A3',label:'Temple → Desolation',years:430.5, amStart:4397},
+    {x:1362, w:15, color:'#7D3C98',label:'Captivity',               years:70,    amStart:4825}
+  ]},
+  { name:'Josephus', shortName:'Josephus', amLabel:'AM (Josephus)', y:338, segments:[
+    {x:269,  w:501,color:'#C0392B',label:'Creation → Flood',   years:2256,  amStart:1},
+    {x:770,  w:220,color:'#E67E22',label:'Flood → Abraham',    years:993,   amStart:2260},
+    {x:990,  w:112,color:'#D4C800',label:'Abraham → Exodus',   years:505,   amStart:3252},
+    {x:1102, w:131,color:'#27AE60',label:'Exodus → Temple',    years:592,   amStart:3757},
+    {x:1233, w:104,color:'#2471A3',label:'Temple → Desolation',years:470.5, amStart:4347},
+    {x:1337, w:16, color:'#7D3C98',label:'Captivity',               years:70,    amStart:4816},
+    {x:1353, w:136,color:'#1a1a1a',label:'Until Caligula\'s Death',years:614,   amStart:4888}
+  ]},
+  { name:'Theophilus of Antioch', shortName:'Theophilus', amLabel:'AM (Theophilus)', y:392, segments:[
+    {x:248,  w:497,color:'#C0392B',label:'Creation → Flood',        years:2242,  amStart:1},
+    {x:745,  w:208,color:'#E67E22',label:'Flood → Abraham',          years:936,   amStart:2242},
+    {x:953,  w:160,color:'#D4C800',label:'Abraham → Exodus',         years:720,   amStart:3180},
+    {x:1113, w:120,color:'#27AE60',label:'Exodus → Temple',          years:540,   amStart:3901},
+    {x:1233, w:98, color:'#2471A3',label:'Temple → Desolation',      years:445.5, amStart:4442},
+    {x:1331, w:15, color:'#7D3C98',label:'Captivity',                     years:70,    amStart:4884},
+    {x:1346, w:131,color:'#1a1a1a',label:'Until Caligula\'s Death',      years:589,   amStart:4951}
+  ]},
+  { name:'Julius Africanus', shortName:'Africanus', amLabel:'AM (Africanus)', y:446, segments:[
+    {x:248,  w:502,color:'#C0392B',label:'Creation → Flood',   years:2262,  amStart:1},
+    {x:750,  w:208,color:'#E67E22',label:'Flood → Abraham',    years:940,   amStart:2264},
+    {x:958,  w:112,color:'#D4C800',label:'Abraham → Exodus',   years:505,   amStart:3202},
+    {x:1070, w:162,color:'#27AE60',label:'Exodus → Temple',    years:731,   amStart:3707},
+    {x:1232, w:98, color:'#2471A3',label:'Temple → Desolation',years:445.5, amStart:4438},
+    {x:1330, w:16, color:'#7D3C98',label:'Captivity',               years:70,    amStart:4879},
+    {x:1346, w:128,color:'#1a1a1a',label:'Until Passion',           years:577,   amStart:4951}
+  ]},
+  { name:'Eusebius', shortName:'Eusebius', amLabel:'AM (Eusebius)', y:500, segments:[
+    {x:314,  w:497,color:'#C0392B',label:'Creation → Flood',   years:2242,  amStart:1},
+    {x:811,  w:209,color:'#E67E22',label:'Flood → Abraham',    years:942,   amStart:2242},
+    {x:1020, w:112,color:'#D4C800',label:'Abraham → Exodus',   years:505,   amStart:3184},
+    {x:1132, w:106,color:'#27AE60',label:'Exodus → Temple',    years:480,   amStart:3689},
+    {x:1238, w:96, color:'#2471A3',label:'Temple → Desolation',years:432,   amStart:4167},
+    {x:1334, w:16, color:'#7D3C98',label:'Captivity',               years:70,    amStart:4600},
+    {x:1350, w:124,color:'#1a1a1a',label:'Until Passion',           years:560,   amStart:4672}
+  ]},
+  { name:'Manetho', shortName:'Manetho', amLabel:'AM (Manetho)', y:554, segments:[
+    {x:184,  w:109,color:'#aaa',  label:'Temple Offset',      years:490,  amStart:1},
+    {x:293,  w:1105,color:'#555', label:'Egyptian Dynasties', years:4982, amStart:492}
+  ]},
+  { name:'Tertullian', shortName:'Tertullian', amLabel:'AM (Tertullian)', y:608, manethoAnchor:184, segments:[
+    {x:1376, w:103, color:'#1a1a1a', label:'Until Passion', years:464, amStart:4888}
+  ]}
+];
+
+const svg       = document.getElementById('chart');
+const overlay   = document.getElementById('hover-overlay');
+const crosshair = document.getElementById('crosshair');
+const tooltip   = document.getElementById('tooltip');
+
+function getSVGX(evt) {
+  const rect = svg.getBoundingClientRect();
+  return (evt.clientX - rect.left) * (1600 / rect.width);
+}
+
+// Given svgX, find the AM cursor for a row — continues extrapolating beyond last segment
+function getRowAM(row, svgX) {
+  // Find the segment the cursor is in, or the last segment if past the end
+  let bestSeg = null;
+  for (const seg of row.segments) {
+    if (svgX >= seg.x) bestSeg = seg;
+    else if (bestSeg === null) bestSeg = seg; // before first segment
+  }
+  if (!bestSeg) return null;
+  const yrsInto = (svgX - bestSeg.x) / PX_PER_YR;
+  return Math.round(bestSeg.amStart + yrsInto);
+}
+
+// Find what segment the cursor is actively inside (null if outside all)
+function getActiveSeg(row, svgX) {
+  for (const seg of row.segments) {
+    if (svgX >= seg.x && svgX <= seg.x + seg.w) return seg;
+  }
+  return null;
+}
+
+overlay.addEventListener('mousemove', (evt) => {
+  const svgX = getSVGX(evt);
+  if (svgX < PLOT_X0 || svgX > PLOT_X0 + PLOT_W) return;
+
+  crosshair.setAttribute('x1', svgX);
+  crosshair.setAttribute('x2', svgX);
+  crosshair.setAttribute('opacity', '0.7');
+
+  const topYr = pxToTopYear(svgX);
+  const botYr = pxToBotYear(svgX);
+  const amVal = pxToAM(svgX);
+
+  let segHTML = '';
+  for (const row of ROWS) {
+    const amCursor = getRowAM(row, svgX);
+    if (amCursor === null) continue;
+    const activeSeg = getActiveSeg(row, svgX);
+    // Color: use active segment color if inside one, else last segment before cursor
+    let tc = '#888';
+    let labelText = '—';
+    if (activeSeg) {
+      const darkBlock  = ['#1a1a1a','#555'].includes(activeSeg.color);
+      const lightBlock = activeSeg.color === '#e8e4d8' || activeSeg.color === '#aaa';
+      tc = darkBlock ? '#bbb' : lightBlock ? '#666' : activeSeg.color;
+      labelText = activeSeg.label;
+    } else {
+      // Find the last segment whose x is <= svgX (extrapolating past end)
+      let lastSeg = null;
+      for (const seg of row.segments) { if (seg.x <= svgX) lastSeg = seg; }
+      if (lastSeg) {
+        const darkBlock  = ['#1a1a1a','#555'].includes(lastSeg.color);
+        const lightBlock = lastSeg.color === '#e8e4d8' || lastSeg.color === '#aaa';
+        tc = darkBlock ? '#bbb' : lightBlock ? '#666' : lastSeg.color;
+        labelText = lastSeg.label;
+      }
+    }
+    let extraAM = '';
+    if (row.manethoAnchor !== undefined) {
+      const manethoAM = Math.round((svgX - row.manethoAnchor) / PX_PER_YR + 1);
+      extraAM = `<div style="font-size:11px;color:#9B7EC8">Manetho ${manethoAM} AM</div>`;
+    }
+    segHTML += `<div style="margin-bottom:4px;padding-bottom:3px;border-bottom:1px solid #1e1e1e">` +
+      `<div style="font-size:12px;font-weight:600;color:${tc}">${row.shortName} ${amCursor} AM</div>` +
+      `<div style="font-size:11px;color:#666">${labelText}</div>` +
+      extraAM +
+      `</div>`;
+  }
+
+  tooltip.innerHTML =
+    `<div class="tt-name">Cursor position</div>` +
+    `<div class="tt-top">Top axis: ${fmtTop(topYr)}</div>` +
+    `<div class="tt-bot">Bottom axis: ${fmtBot(botYr)}</div>` +
+    `<div class="tt-am">Standard AM: ${fmtAM(amVal)}</div>` +
+    (segHTML ? `<div class="tt-segs">${segHTML}</div>` : '');
+
+  const ttW = 320;
+  const ttH = tooltip.scrollHeight || 200;
+  const margin = 14;
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+
+  let left = evt.clientX + margin;
+  if (left + ttW > vw - 4) left = evt.clientX - ttW - margin;
+  if (left < 4) left = 4;
+
+  let top = evt.clientY - 12;
+  if (top + ttH > vh - 4) top = vh - ttH - 4;
+  if (top < 4) top = 4;
+
+  tooltip.style.left    = left + 'px';
+  tooltip.style.top     = top + 'px';
+  tooltip.style.display = 'block';
+});
+
+overlay.addEventListener('mouseleave', () => {
+  crosshair.setAttribute('opacity', '0');
+  tooltip.style.display = 'none';
+});
+
+overlay.addEventListener('touchmove', (evt) => {
+  evt.preventDefault();
+  const t = evt.touches[0];
+  overlay.dispatchEvent(new MouseEvent('mousemove', {clientX:t.clientX, clientY:t.clientY}));
+}, {passive:false});
+</script>
+</body>
+</html>
