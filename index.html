@@ -6,10 +6,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ancient Chronology Timeline v5.5</title>
+<title>Ancient Chronology Timeline v6.0</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  h1, .subtitle, .attribution { display: none; }
   body {
     background: #1a1a1e;
     color: #e8e4d8;
@@ -17,40 +16,7 @@
     padding: 24px 12px;
     min-height: 100vh;
   }
-  h1 {
-    text-align: center;
-    font-size: clamp(18px, 2.5vw, 28px);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #c8b98a;
-    margin-bottom: 8px;
-    font-weight: 700;
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif;
-  }
-  .subtitle {
-    text-align: center;
-    font-size: clamp(12px, 1.8vw, 16px);
-    color: #888;
-    margin-bottom: 8px;
-    font-style: italic;
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .attribution {
-    text-align: center;
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 18px;
-    letter-spacing: 0.06em;
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .chart-wrapper { width: 100%; max-width: min(1600px, calc(90vh * 1600 / 902)); margin: 0 auto; }
+  .chart-wrapper { width: 100%; max-width: min(1600px, calc(90vh * 1600 / 946)); margin: 0 auto; }
   svg { display: block; width: 100%; height: auto; min-width: 320px; }
   #tooltip {
     position: fixed;
@@ -171,18 +137,19 @@
     background: rgba(8,8,12,0.97);
     border: 1px solid #c8b98a;
     border-radius: 6px;
-    padding: 10px 14px;
-    max-width: 1080px;
+    padding: 8px 10px;
+    width: fit-content;
+    max-width: min(1600px, calc(90vh * 1600 / 946));
     line-height: 1.7;
     box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+    margin: 6px auto 6px;
   }
   .yr-double {
     display: flex;
     gap: 16px;
   }
   .yr-double > div {
-    flex: 1;
-    min-width: 0;
+    flex: 0 0 auto;
   }
   .yr-double .yr-divider {
     width: 1px;
@@ -209,62 +176,59 @@
 </style>
 </head>
 <body>
-<h1>Ancient Chronology Comparative Timeline</h1>
-<p class="subtitle">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi years, and position within each tradition</p>
-<p class="attribution">&copy; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank" style="color:#888;text-decoration:underline;">kalkallim.substack.com</a>. Built with Claude AI (Anthropic).</p>
 
 <div class="year-finder">
   <label>Find a year:</label>
-  <input type="number" id="yearInput" placeholder="e.g. 423" min="1" max="6000">
+  <input type="number" id="yearInput" placeholder="e.g. 423" min="1" max="6000" onfocus="this.value='';">
   <div class="era-toggle">
     <button id="btnBC" class="active" onclick="setEra('BC')">BC</button>
     <button id="btnAD" onclick="setEra('AD')">AD</button>
   </div>
   <button id="findBtn" onclick="findYear()">Find</button>
-  <div id="yearResult"></div>
 </div>
+<div id="yearResult"></div>
 
 <div class="chart-wrapper">
-<svg id="chart" viewBox="0 -130 1600 902" role="img">
+<svg id="chart" viewBox="0 -170 1600 946" role="img">
 
 <!-- TITLE (scales with SVG) -->
-<text x="880" y="-100" text-anchor="middle" dominant-baseline="central" font-size="52" font-weight="700" fill="#c8b98a" font-family="Cinzel, Trajan Pro, Georgia, serif" textLength="1380" lengthAdjust="spacingAndGlyphs">ANCIENT CHRONOLOGY COMPARATIVE TIMELINE</text>
-<text x="880" y="-55" text-anchor="middle" font-size="17" fill="#888" font-family="Georgia,serif" font-style="italic">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi years, and position within each tradition</text>
-<text x="880" y="-35" text-anchor="middle" font-size="12" fill="#555" font-family="Georgia,serif">&#169; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank"><tspan fill="#888" text-decoration="underline">kalkallim.substack.com</tspan></a>. Built with Claude AI (Anthropic).</text>
+<text x="800" y="-115" text-anchor="middle" dominant-baseline="central" font-size="52" font-weight="700" fill="#c8b98a" font-family="Cinzel, Trajan Pro, Georgia, serif" textLength="1380" lengthAdjust="spacingAndGlyphs">ANCIENT CHRONOLOGY COMPARATIVE TIMELINE</text>
+<text x="800" y="-68" text-anchor="middle" font-size="22" fill="#888" font-family="Georgia,serif" font-style="italic">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi years, and position within each tradition</text>
+<text x="800" y="-43" text-anchor="middle" font-size="20" fill="#888" font-family="Georgia,serif">&#169; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank"><tspan fill="#888" text-decoration="underline">kalkallim.substack.com</tspan></a>. Built with Claude AI (Anthropic).</text>
 
 <!-- LEGEND row 1 -->
 <rect x="184" y="-26" width="40" height="40" rx="4" fill="#C0392B" stroke="#000" stroke-width="1"/>
-<text x="228" y="-6" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Creation → Flood</text>
-<rect x="547" y="-16" width="32" height="20" rx="6" fill="#111"/>
-<text x="563" y="-6" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
+<text x="235" y="-6" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Creation → Flood</text>
+<rect x="532" y="-16" width="32" height="20" rx="6" fill="#111"/>
+<text x="548" y="-6" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
 <rect x="648" y="-26" width="40" height="40" rx="4" fill="#E67E22" stroke="#000" stroke-width="1"/>
-<text x="692" y="-6" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Flood → Abraham</text>
-<rect x="1025" y="-16" width="32" height="20" rx="6" fill="#111"/>
-<text x="1041" y="-6" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
+<text x="699" y="-6" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Flood → Abraham</text>
+<rect x="1012" y="-16" width="32" height="20" rx="6" fill="#111"/>
+<text x="1028" y="-6" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
 <rect x="1112" y="-26" width="40" height="40" rx="4" fill="#D4C800" stroke="#000" stroke-width="1"/>
-<text x="1156" y="-6" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Abraham → Exodus</text>
+<text x="1163" y="-6" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Abraham → Exodus</text>
 
 <!-- LEGEND row 2 -->
 <rect x="184" y="22" width="40" height="40" rx="4" fill="#27AE60" stroke="#000" stroke-width="1"/>
-<text x="228" y="42" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Exodus → Temple</text>
-<rect x="539" y="32" width="32" height="20" rx="6" fill="#111"/>
-<text x="555" y="42" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
+<text x="235" y="42" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Exodus → Temple</text>
+<rect x="532" y="32" width="32" height="20" rx="6" fill="#111"/>
+<text x="548" y="42" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
 <rect x="648" y="22" width="40" height="40" rx="4" fill="#2471A3" stroke="#000" stroke-width="1"/>
-<text x="692" y="42" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Temple → Desolation</text>
-<rect x="1056" y="32" width="32" height="20" rx="6" fill="#111"/>
-<text x="1072" y="42" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
+<text x="699" y="42" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Temple → Desolation</text>
+<rect x="1012" y="32" width="32" height="20" rx="6" fill="#111"/>
+<text x="1028" y="42" text-anchor="middle" font-size="18" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
 <rect x="1112" y="22" width="40" height="40" rx="4" fill="#9E56BC" stroke="#000" stroke-width="1"/>
-<text x="1156" y="42" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Captivity (70 Years)</text>
+<text x="1163" y="42" font-size="26" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Captivity (70 Years)</text>
 
 <!-- TOP AXIS y=100 -->
 <line x1="184" y1="100" x2="1576" y2="100" stroke="#888" stroke-width="1.2"/>
 <line x1="184"  y1="93" x2="184"  y2="107" stroke="#aaa" stroke-width="1.2"/>
+<line x1="1576" y1="93" x2="1576" y2="107" stroke="#aaa" stroke-width="1.2"/>
 <line x1="461"  y1="94" x2="461"  y2="106" stroke="#888" stroke-width="0.8"/>
 <line x1="682"  y1="94" x2="682"  y2="106" stroke="#888" stroke-width="0.8"/>
 <line x1="904"  y1="94" x2="904"  y2="106" stroke="#888" stroke-width="0.8"/>
 <!-- 500 BC tick at x=1015 replacing 1 AD -->
 <line x1="1015" y1="94" x2="1015" y2="106" stroke="#888" stroke-width="0.8"/>
-<line x1="1576" y1="93" x2="1576" y2="107" stroke="#aaa" stroke-width="1.2"/>
 <!-- special ticks -->
 <line x1="292"  y1="93" x2="292"  y2="107" stroke="#ffffff" stroke-width="2.5"/>
 <line x1="1232" y1="93" x2="1232" y2="107" stroke="#27AE60" stroke-width="2.5"/>
@@ -295,7 +259,7 @@
 <line x1="1514" y1="96" x2="1514" y2="104" stroke="#444" stroke-width="0.5"/>
 
 <!-- Top labels -->
-<text x="184"  y="88" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">4250 BC</text>
+<text x="182"  y="88" text-anchor="start" font-size="16" fill="#888" font-family="Georgia,serif">4250 BC</text>
 <text x="292"  y="88" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="700" font-family="Georgia,serif">3760 BC</text>
 <text x="461"  y="88" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">3000 BC</text>
 <text x="682"  y="88" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">2000 BC</text>
@@ -308,16 +272,16 @@
 <text x="1381" y="88" text-anchor="end" font-size="14" fill="#4A7276" font-weight="700" font-family="Georgia,serif">1130 AD</text>
 <!-- 1241 AD: left-aligned starting right of tick, normal y=88 -->
 <text x="1397" y="88" text-anchor="start" font-size="14" font-weight="900" fill="#8B3A3A" font-family="Georgia,serif">1241 AD</text>
-<text x="1576" y="88" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">2028 AD</text>
+<text x="1578" y="88" text-anchor="end" font-size="16" font-weight="700" fill="#ffffff" font-family="Georgia,serif">2028 AD</text>
 
 <!-- BOTTOM AXIS y=600 -->
 <line x1="184" y1="650" x2="1576" y2="650" stroke="#888" stroke-width="1.2"/>
 <line x1="184"  y1="643" x2="184"  y2="657" stroke="#aaa" stroke-width="1.2"/>
+<line x1="1576" y1="643" x2="1576" y2="657" stroke="#aaa" stroke-width="1.2"/>
 <line x1="362"  y1="644" x2="362"  y2="656" stroke="#888" stroke-width="0.8"/>
 <line x1="583"  y1="644" x2="583"  y2="656" stroke="#888" stroke-width="0.8"/>
 <line x1="805"  y1="644" x2="805"  y2="656" stroke="#888" stroke-width="0.8"/>
 <line x1="1026" y1="644" x2="1026" y2="656" stroke="#888" stroke-width="0.8"/>
-<line x1="1576" y1="643" x2="1576" y2="657" stroke="#aaa" stroke-width="1.2"/>
 <!-- special bottom ticks -->
 <line x1="292"  y1="643" x2="292"  y2="657" stroke="#ffffff" stroke-width="2.5"/>
 <line x1="1232" y1="643" x2="1232" y2="657" stroke="#27AE60" stroke-width="2.5"/>
@@ -348,18 +312,18 @@
 <line x1="1526" y1="647" x2="1526" y2="653" stroke="#444" stroke-width="0.5"/>
 
 <!-- Bottom labels -->
-<text x="184"  y="668" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">5802 BC</text>
-<text x="292"  y="668" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="700" font-family="Georgia,serif">5312 BC</text>
-<text x="362"  y="668" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">5000 BC</text>
-<text x="583"  y="668" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">4000 BC</text>
-<text x="805"  y="668" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">3000 BC</text>
-<text x="1026" y="668" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">2000 BC</text>
-<text x="1232" y="668" text-anchor="middle" font-size="14" fill="#27AE60" font-weight="700" font-family="Georgia,serif">1076 BC</text>
-<text x="1298" y="668" text-anchor="middle" font-size="14" fill="#E67E22" font-weight="700" font-family="Georgia,serif">776 BC</text>
-<text x="1381" y="668" text-anchor="end" font-size="14" fill="#4A7276" font-weight="700" font-family="Georgia,serif">423 BC</text>
-<text x="1397" y="668" text-anchor="start" font-size="14" font-weight="900" fill="#8B3A3A" font-family="Georgia,serif">312 BC</text>
-<text x="1488" y="668" text-anchor="middle" font-size="14" fill="#9E56BC" font-weight="700" font-family="Georgia,serif">79 AD</text>
-<text x="1576" y="668" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">476 AD</text>
+<text x="182"  y="675" text-anchor="start" font-size="16" fill="#888" font-family="Georgia,serif">5802 BC</text>
+<text x="292"  y="675" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="700" font-family="Georgia,serif">5312 BC</text>
+<text x="362"  y="675" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">5000 BC</text>
+<text x="583"  y="675" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">4000 BC</text>
+<text x="805"  y="675" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">3000 BC</text>
+<text x="1026" y="675" text-anchor="middle" font-size="16" fill="#888" font-family="Georgia,serif">2000 BC</text>
+<text x="1232" y="675" text-anchor="middle" font-size="14" fill="#27AE60" font-weight="700" font-family="Georgia,serif">1076 BC</text>
+<text x="1298" y="675" text-anchor="middle" font-size="14" fill="#E67E22" font-weight="700" font-family="Georgia,serif">776 BC</text>
+<text x="1381" y="675" text-anchor="end" font-size="14" fill="#4A7276" font-weight="700" font-family="Georgia,serif">423 BC</text>
+<text x="1397" y="675" text-anchor="start" font-size="14" font-weight="900" fill="#8B3A3A" font-family="Georgia,serif">312 BC</text>
+<text x="1488" y="675" text-anchor="middle" font-size="14" fill="#9E56BC" font-weight="700" font-family="Georgia,serif">79 AD</text>
+<text x="1576" y="675" text-anchor="end" font-size="16" font-weight="700" fill="#ffffff" font-family="Georgia,serif">476 AD</text>
 
 <!-- ROW LABELS -->
 <text x="180" y="146" text-anchor="end" font-size="16" font-weight="600" fill="#e8e4d8" font-family="Georgia,serif">Official History</text>
@@ -596,12 +560,13 @@
 <line x1="1232" y1="482" x2="1232" y2="500" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" pointer-events="none"/>
 <line x1="1232" y1="536" x2="1232" y2="650" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" pointer-events="none"/>
 
-<!-- 3: 79 AD / 1474 BC — gold — behind Official black (122-158) and Hebrew black (176-212) -->
+<!-- 3: 79 AD / 1474 BC — gold — behind Official black (122-158), Hebrew black (176-212), Vaticanus (230-266) -->
 <line x1="1143" y1="100" x2="1143" y2="122" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
 <line x1="1143" y1="158" x2="1143" y2="176" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
-<line x1="1143" y1="212" x2="1143" y2="650" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
+<line x1="1143" y1="212" x2="1143" y2="230" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
+<line x1="1143" y1="266" x2="1143" y2="650" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" pointer-events="none"/>
 <text x="1143" y="88"  text-anchor="middle" font-size="14" fill="#D4C800" font-weight="700" font-family="Georgia,serif">79 AD</text>
-<text x="1143" y="668" text-anchor="middle" font-size="14" fill="#D4C800" font-weight="700" font-family="Georgia,serif">1474 BC</text>
+<text x="1143" y="675" text-anchor="middle" font-size="14" fill="#D4C800" font-weight="700" font-family="Georgia,serif">1474 BC</text>
 
 <!-- 4: 1130 AD / 423 BC — steel blue — behind all black blocks and Manetho -->
 <!-- Skipping: Official black (122-158), Hebrew Vesuvius (176-212), Josephus black (338-374),
@@ -628,7 +593,7 @@
 
 <!-- 6: 1631 AD / 79 AD — purple — full span, on top of everything -->
 <line x1="1488" y1="100" x2="1488" y2="644" stroke="#7D3C98" stroke-width="2" stroke-dasharray="6 3" pointer-events="none"/>
-<text x="1488" y="88" text-anchor="middle" font-size="14" fill="#9E56BC" font-weight="700" font-family="Georgia,serif">1631 AD</text>
+<text x="1484" y="88" text-anchor="middle" font-size="14" fill="#9E56BC" font-weight="700" font-family="Georgia,serif">1631 AD</text>
 
 
 <!-- 7: 777 AD / 776 BC — Olympic anchor — soft violet — behind Official black, Hebrew black, Manetho -->
@@ -642,6 +607,7 @@
 <line id="prev-line-2" x1="0" y1="100" x2="0" y2="650" stroke="#666" stroke-width="2" stroke-dasharray="7 4" opacity="0" pointer-events="none"/>
 <line id="finder-line-1" x1="0" y1="100" x2="0" y2="650" stroke="#c8b98a" stroke-width="1.5" stroke-dasharray="6 3" opacity="0" pointer-events="none"/>
 <line id="finder-line-2" x1="0" y1="100" x2="0" y2="650" stroke="#c8b98a" stroke-width="1.5" stroke-dasharray="6 3" opacity="0" pointer-events="none"/>
+<line x1="1576" y1="100" x2="1576" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" pointer-events="none"/>
 <!-- Year finder bar annotations -->
 <rect id="ann1-off-rect" x="0" y="125" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
 <rect id="ann1-ter-rect" x="0" y="611" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
@@ -661,33 +627,32 @@
 
 
 <!-- DOTTED LINE LEGEND -->
-<line x1="184" y1="704" x2="1576" y2="704" stroke="#333" stroke-width="0.8"/>
 
 <!-- Row 1: Yellow, Green, Orange -->
 <!-- Yellow: Original Exodus -->
-<line x1="184" y1="732" x2="224" y2="732" stroke="#D4C800" stroke-width="2.5" stroke-dasharray="5 3"/>
-<text x="230" y="737" font-size="27" font-weight="700" fill="#D4C800" font-family="Georgia,serif" class="legend-label">Original Exodus (3840 AM)</text>
+<line x1="184" y1="705" x2="224" y2="705" stroke="#D4C800" stroke-width="2.5" stroke-dasharray="5 3"/>
+<text x="230" y="710" font-size="27" font-weight="700" fill="#D4C800" font-family="Georgia,serif" class="legend-label">Original Exodus (3840 AM)</text>
 
 <!-- Green: First Year of Solomon -->
-<line x1="648" y1="732" x2="688" y2="732" stroke="#27AE60" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="694" y="737" font-size="27" font-weight="700" fill="#27AE60" font-family="Georgia,serif" class="legend-label">Solomon Reigns (4236 AM)</text>
+<line x1="648" y1="705" x2="688" y2="705" stroke="#27AE60" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="694" y="710" font-size="27" font-weight="700" fill="#27AE60" font-family="Georgia,serif" class="legend-label">Solomon Reigns (4236 AM)</text>
 
 <!-- Orange: First Olympiad -->
-<line x1="1112" y1="732" x2="1152" y2="732" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="6 3"/>
-<text x="1158" y="737" font-size="27" font-weight="700" fill="#E67E22" font-family="Georgia,serif" class="legend-label">First Olympiad (4537 AM)</text>
+<line x1="1112" y1="705" x2="1152" y2="705" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="6 3"/>
+<text x="1158" y="710" font-size="27" font-weight="700" fill="#E67E22" font-family="Georgia,serif" class="legend-label">First Olympiad (4537 AM)</text>
 
 <!-- Row 2: Blue, Red, Purple -->
 <!-- Blue: Temple Destruction -->
-<line x1="184" y1="763" x2="224" y2="763" stroke="#5B9EC9" stroke-width="2.5" stroke-dasharray="5 4"/>
-<text x="230" y="768" font-size="27" font-weight="700" fill="#5B9EC9" font-family="Georgia,serif" class="legend-label">Temple Destroyed (4890 AM)</text>
+<line x1="184" y1="736" x2="224" y2="736" stroke="#5B9EC9" stroke-width="2.5" stroke-dasharray="5 4"/>
+<text x="230" y="741" font-size="27" font-weight="700" fill="#5B9EC9" font-family="Georgia,serif" class="legend-label">Temple Destroyed (4890 AM)</text>
 
 <!-- Red: Seleucid Era -->
-<line x1="648" y1="763" x2="688" y2="763" stroke="#C0392B" stroke-width="2.5" stroke-dasharray="4 4"/>
-<text x="694" y="768" font-size="27" font-weight="700" fill="#C0392B" font-family="Georgia,serif" class="legend-label">Seleucid Era (5001 AM)</text>
+<line x1="648" y1="736" x2="688" y2="736" stroke="#C0392B" stroke-width="2.5" stroke-dasharray="4 4"/>
+<text x="694" y="741" font-size="27" font-weight="700" fill="#C0392B" font-family="Georgia,serif" class="legend-label">Seleucid Era (5001 AM)</text>
 
 <!-- Purple: Vesuvius -->
-<line x1="1112" y1="763" x2="1152" y2="763" stroke="#7D3C98" stroke-width="2.5" stroke-dasharray="6 3"/>
-<text x="1158" y="768" font-size="27" font-weight="700" fill="#9E56BC" font-family="Georgia,serif" class="legend-label">Vesuvius Erupts (5392 AM)</text>
+<line x1="1112" y1="736" x2="1152" y2="736" stroke="#7D3C98" stroke-width="2.5" stroke-dasharray="6 3"/>
+<text x="1158" y="741" font-size="27" font-weight="700" fill="#9E56BC" font-family="Georgia,serif" class="legend-label">Vesuvius Erupts (5392 AM)</text>
 
 </svg>
 </div>
@@ -701,8 +666,6 @@ const PX_PER_YR = PLOT_W / SPAN_YRS;
 const AM1_PX    = 292;
 
 function pxToAM(px)      { return (px - AM1_PX) / PX_PER_YR + 1; }
-function pxToTopYear(px) { return (px - PLOT_X0) / PX_PER_YR - 4248; }
-function pxToBotYear(px) { return 5800 - (px - PLOT_X0) / PX_PER_YR; }
 
 function fmtTop(yr) { return yr <= 0 ? Math.round(-yr) + ' BC' : Math.round(yr) + ' AD'; }
 function fmtBot(yr) { return yr > 0  ? Math.round(yr)  + ' BC' : Math.round(-yr) + ' AD'; }
@@ -824,7 +787,7 @@ overlay.addEventListener('mousemove', (evt) => {
   crosshair.setAttribute('opacity', '0.7');
 
   const amVal   = vatAM(svgX);
-  const topYr   = amVal - 3761;   // AM-derived: positive=AD, negative=BC
+  const topYr   = amVal > 3760 ? amVal - 3760 : amVal - 3761;  // no year zero
   const botYr   = 5313 - amVal;   // AM-derived: positive=BC, negative=AD
 
   let segHTML = '';
@@ -893,6 +856,11 @@ overlay.addEventListener('touchmove', (evt) => {
   overlay.dispatchEvent(new MouseEvent('mousemove', {clientX:t.clientX, clientY:t.clientY}));
 }, {passive:false});
 
+overlay.addEventListener('touchend', () => {
+  crosshair.setAttribute('opacity', '0');
+  tooltip.style.display = 'none';
+});
+
 // ── YEAR FINDER ──────────────────────────────────────────────────────────────
 let currentEra = 'BC';
 let lastX1 = null, lastX2 = null;
@@ -908,14 +876,30 @@ document.getElementById('yearInput').addEventListener('keydown', function(e) {
   if (e.key === 'Enter') findYear();
 });
 
-function buildOccurrence(svgX, axisLabel) {
-  const amAtX = vatAM(svgX);
-  const topYr = amAtX - 3761;
-  const botYr = 5313 - amAtX;
+// Complementary axis date helpers (correct year-zero gap handling)
+function compBot(T) {
+  // T: top-axis year (positive=AD, negative=BC)
+  // Returns complementary bottom year (positive=BC, negative=AD)
+  if (T > 1552) return 1552 - T;
+  if (T > 0)    return 1553 - T;
+  return -T + 1552;
+}
+function compTop(B) {
+  // B: bottom-axis year (positive=BC, negative=AD)
+  // Returns complementary top year (positive=AD, negative=BC)
+  if (B > 1552) return 1552 - B;
+  if (B >= 0)   return 1553 - B;
+  return 1552 - B;
+}
 
+function buildOccurrence(svgX, axisLabel, hideTop, compYear) {
+  // compYear: pre-computed complementary axis year to display
   let html = `<div class="yr-axis-label">${axisLabel}</div>`;
-  html += `<div><span class="yr-top-date">Top Axis: ${fmtTop(topYr)}</span> &nbsp; `;
-  html += `<span class="yr-bot-date">Bottom Axis: ${fmtBot(botYr)}</span></div>`;
+  if (hideTop) {
+    html += `<div><span class="yr-bot-date">Bottom Axis: ${fmtBot(compYear)}</span></div>`;
+  } else {
+    html += `<div><span class="yr-top-date">Top Axis: ${fmtTop(compYear)}</span></div>`;
+  }
   html += `<div class="yr-rows">`;
   for (const row of ROWS) {
     const am = getRowAM(row, svgX);
@@ -985,7 +969,6 @@ function findYear() {
   if (isNaN(val) || val < 1) { return; }
 
   const isBC = currentEra === 'BC';
-  // Top axis: positive=AD, negative=BC. pxToTopYear(x) = (x-184)/PX_PER_YR - 4248
   // Invert: x = (year + 4248)*PX_PER_YR + 184
   const yr_top = isBC ? -val : val;
   const yr_bot = isBC ? val : -val;   // bot axis: positive=BC, negative=AD
@@ -1035,7 +1018,7 @@ function findYear() {
     line1.setAttribute('opacity', '0.85');
     lastX1 = Math.round(x_top);
     setBarAnn('ann1', x_top, fmtTop(yr_top));
-    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — Top Axis`);
+    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — Top Axis`, true, compBot(yr_top));
   }
 
   if (is_double) {
@@ -1044,14 +1027,14 @@ function findYear() {
     line2.setAttribute('opacity', '0.85');
     lastX2 = Math.round(x_bot);
     setBarAnn('ann2', x_bot, fmtBot(yr_bot));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis (+1,552 Yrs)`);
+    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis`, false, compTop(yr_bot));
   } else if (in_bot && !in_top) {
     line1.setAttribute('x1', Math.round(x_bot));
     line1.setAttribute('x2', Math.round(x_bot));
     line1.setAttribute('opacity', '0.85');
     lastX1 = Math.round(x_bot);
     setBarAnn('ann1', x_bot, fmtBot(yr_bot));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis`);
+    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis`, false, compTop(yr_bot));
   }
 
   let html = '';
