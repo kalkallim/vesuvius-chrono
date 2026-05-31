@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ancient Chronology Timeline v5.0</title>
+<title>Ancient Chronology Timeline v5.5</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   h1, .subtitle, .attribution { display: none; }
@@ -50,7 +50,7 @@
     margin-left: auto;
     margin-right: auto;
   }
-  .chart-wrapper { width: 100%; max-width: 1600px; margin: 0 auto; }
+  .chart-wrapper { width: 100%; max-width: min(1600px, calc(90vh * 1600 / 902)); margin: 0 auto; }
   svg { display: block; width: 100%; height: auto; min-width: 320px; }
   #tooltip {
     position: fixed;
@@ -228,9 +228,9 @@
 <svg id="chart" viewBox="0 -130 1600 902" role="img">
 
 <!-- TITLE (scales with SVG) -->
-<text x="880" y="-96" text-anchor="middle" font-size="56" font-weight="700" fill="#c8b98a" font-family="Cinzel, Trajan Pro, Georgia, serif" textLength="1360" lengthAdjust="spacingAndGlyphs">ANCIENT CHRONOLOGY COMPARATIVE TIMELINE</text>
-<text x="800" y="-74" text-anchor="middle" font-size="17" fill="#888" font-family="Georgia,serif" font-style="italic">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi years, and position within each tradition</text>
-<text x="800" y="-54" text-anchor="middle" font-size="14" fill="#555" font-family="Georgia,serif">&#169; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank"><tspan fill="#888" text-decoration="underline">kalkallim.substack.com</tspan></a>. Built with Claude AI (Anthropic).</text>
+<text x="880" y="-100" text-anchor="middle" dominant-baseline="central" font-size="52" font-weight="700" fill="#c8b98a" font-family="Cinzel, Trajan Pro, Georgia, serif" textLength="1380" lengthAdjust="spacingAndGlyphs">ANCIENT CHRONOLOGY COMPARATIVE TIMELINE</text>
+<text x="880" y="-55" text-anchor="middle" font-size="17" fill="#888" font-family="Georgia,serif" font-style="italic">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi years, and position within each tradition</text>
+<text x="880" y="-35" text-anchor="middle" font-size="12" fill="#555" font-family="Georgia,serif">&#169; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank"><tspan fill="#888" text-decoration="underline">kalkallim.substack.com</tspan></a>. Built with Claude AI (Anthropic).</text>
 
 <!-- LEGEND row 1 -->
 <rect x="184" y="-26" width="40" height="40" rx="4" fill="#C0392B" stroke="#000" stroke-width="1"/>
@@ -859,8 +859,8 @@ overlay.addEventListener('mousemove', (evt) => {
 
   tooltip.innerHTML =
     `<div class="tt-name">Cursor position</div>` +
-    `<div class="tt-top">Top axis: ${fmtTop(topYr)}</div>` +
-    `<div class="tt-bot">Bottom axis: ${fmtBot(botYr)}</div>` +
+    `<div class="tt-top">Top Axis: ${fmtTop(topYr)}</div>` +
+    `<div class="tt-bot">Bottom Axis: ${fmtBot(botYr)}</div>` +
     (segHTML ? `<div class="tt-segs">${segHTML}</div>` : '');
 
   const ttW = 320;
@@ -901,11 +901,7 @@ function setEra(era) {
   currentEra = era;
   document.getElementById('btnBC').classList.toggle('active', era === 'BC');
   document.getElementById('btnAD').classList.toggle('active', era === 'AD');
-  // Re-run if a year is already committed
-  if (document.getElementById('yearResult').style.display === 'block' ||
-      document.getElementById('yearOverlay').classList.contains('active')) {
-    autoFind();
-  }
+  autoFind();
 }
 
 document.getElementById('yearInput').addEventListener('keydown', function(e) {
@@ -918,18 +914,13 @@ function buildOccurrence(svgX, axisLabel) {
   const botYr = 5313 - amAtX;
 
   let html = `<div class="yr-axis-label">${axisLabel}</div>`;
-  html += `<div><span class="yr-top-date">Top: ${fmtTop(topYr)}</span> &nbsp; `;
-  html += `<span class="yr-bot-date">Bottom: ${fmtBot(botYr)}</span></div>`;
+  html += `<div><span class="yr-top-date">Top Axis: ${fmtTop(topYr)}</span> &nbsp; `;
+  html += `<span class="yr-bot-date">Bottom Axis: ${fmtBot(botYr)}</span></div>`;
   html += `<div class="yr-rows">`;
-
   for (const row of ROWS) {
     const am = getRowAM(row, svgX);
     if (am === null) continue;
-    const activeSeg = getActiveSeg(row, svgX);
-    let lastSeg = null;
-    for (const seg of row.segments) { if (seg.x <= svgX) lastSeg = seg; }
-    const segLabel = activeSeg ? activeSeg.label : (lastSeg ? lastSeg.label : '—');
-    html += `<div class="yr-row">${row.shortName}: <span>${am} AM</span> <span style="color:#555">${segLabel}</span></div>`;
+    html += `<div class="yr-row">${row.shortName}: <span>${am} AM</span></div>`;
   }
   html += `</div>`;
   return html;
@@ -960,10 +951,9 @@ function setBarAnn(prefix, svgX, label) {
   const x = Math.round(svgX);
   const pad = 5;
   const approxW = label.length * 15.6;
-  const flipped = x + approxW + 8 + pad > 1576;
-  const textX = flipped ? x - pad - 2 : x + pad + 2;
-  const anchor = flipped ? 'end' : 'start';
-  const rectX  = flipped ? x - approxW - pad * 2 - 2 : x + pad;
+  const textX = x - pad - 2;
+  const anchor = 'end';
+  const rectX  = x - approxW - pad * 2 - 2;
 
   [lOff, lTer].forEach(l => {
     l.setAttribute('x1', x); l.setAttribute('x2', x);
@@ -1044,8 +1034,8 @@ function findYear() {
     line1.setAttribute('x2', Math.round(x_top));
     line1.setAttribute('opacity', '0.85');
     lastX1 = Math.round(x_top);
-    setBarAnn('ann1', x_top, fmtTop(pxToTopYear(x_top)));
-    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — top axis`);
+    setBarAnn('ann1', x_top, fmtTop(yr_top));
+    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — Top Axis`);
   }
 
   if (is_double) {
@@ -1053,15 +1043,15 @@ function findYear() {
     line2.setAttribute('x2', Math.round(x_bot));
     line2.setAttribute('opacity', '0.85');
     lastX2 = Math.round(x_bot);
-    setBarAnn('ann2', x_bot, fmtBot(pxToBotYear(x_bot)));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — bottom axis (+1,552 yrs)`);
+    setBarAnn('ann2', x_bot, fmtBot(yr_bot));
+    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis (+1,552 Yrs)`);
   } else if (in_bot && !in_top) {
     line1.setAttribute('x1', Math.round(x_bot));
     line1.setAttribute('x2', Math.round(x_bot));
     line1.setAttribute('opacity', '0.85');
     lastX1 = Math.round(x_bot);
-    setBarAnn('ann1', x_bot, fmtBot(pxToBotYear(x_bot)));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — bottom axis`);
+    setBarAnn('ann1', x_bot, fmtBot(yr_bot));
+    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis`);
   }
 
   let html = '';
@@ -1086,7 +1076,7 @@ function findYear() {
 </script>
 
 <div id="yearOverlay">
-  <button id="overlayBack" onclick="closeOverlay()">&#8592; Back</button>
+  <button id="overlayBack" onclick="closeOverlay()">&#8592; Back to See Year</button>
   <div id="overlayContent"></div>
 </div>
 </body>
