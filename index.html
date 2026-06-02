@@ -215,11 +215,14 @@
     line-height: 1.4;
   }
   #overlayContent .yr-axis-label { font-size: 14px; }
+  #overlayContent .yr-main-date { font-size: 20px; }
+  #overlayContent .yr-axis-tag   { font-size: 14px; }
+  #overlayContent .yr-comp-date  { font-size: 14px; }
   #overlayContent .yr-row { font-size: 11px; margin-bottom: 1px; }
   #overlayContent .yr-rows { margin-top: 4px; padding-top: 4px; }
   #overlayContent .yr-top-date, #overlayContent .yr-bot-date { font-size: 13px; }
   #yearResult {
-    font-size: clamp(12px, 1.1vw, 15px);
+    font-size: clamp(13px, 1.3vw, 17px);
     color: #e8e4d8;
     font-family: Georgia, serif;
     display: none;
@@ -228,7 +231,7 @@
     border-radius: 6px;
     padding: 10px 14px;
     width: max-content;
-    max-width: min(1600px, calc(90vh * 1600 / 946));
+    max-width: max-content;
     line-height: 1.7;
     box-shadow: 0 4px 24px rgba(0,0,0,0.7);
     margin: 6px auto 6px;
@@ -246,6 +249,9 @@
     margin: 0;
     flex: none;
   }
+  .yr-main-date  { color: #c8b98a; font-weight: bold; font-size: clamp(17px,1.6vw,21px); }
+  .yr-axis-tag   { color: #e8e4d8; font-size: clamp(13px,1.2vw,16px); font-weight: normal; margin-left: 4px; }
+  .yr-comp-date  { color: #e8e4d8; font-size: clamp(13px,1.2vw,16px); margin-bottom:3px; }
   .yr-axis-label { color: #c8b98a; font-weight: bold; font-size: 13px; margin-bottom: 3px; }
   .yr-top-date   { color: #7DC4A0; font-weight: bold; }
   .yr-bot-date   { color: #7aafd4; font-weight: bold; }
@@ -400,7 +406,7 @@
 <text x="583"  y="675" text-anchor="middle" font-size="15" fill="#888" font-family="Georgia,serif">4000 BC</text>
 <text x="805"  y="675" text-anchor="middle" font-size="15" fill="#888" font-family="Georgia,serif">3000 BC</text>
 <text x="1026" y="675" text-anchor="middle" font-size="15" fill="#888" font-family="Georgia,serif">2000 BC</text>
-<text x="1232" y="675" text-anchor="middle" font-size="15" fill="#27AE60" font-weight="700" font-family="Georgia,serif">1076 BC</text>
+<text x="1232" y="675" text-anchor="middle" font-size="15" fill="#27AE60" font-weight="700" font-family="Georgia,serif">1077 BC</text>
 <text x="1298" y="675" text-anchor="middle" font-size="15" fill="#E67E22" font-weight="700" font-family="Georgia,serif">776 BC</text>
 <text x="1383" y="675" text-anchor="end" font-size="15" fill="#4A7276" font-weight="700" font-family="Georgia,serif">423 BC</text>
 <text x="1397" y="675" text-anchor="start" font-size="15" font-weight="900" fill="#8B3A3A" font-family="Georgia,serif">312 BC</text>
@@ -491,7 +497,7 @@
 <text x="1236" y="356" text-anchor="start" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600" font-family="Georgia,serif">470.5</text>
 <text x="1357" y="356" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600" font-family="Georgia,serif">573</text>
 <text x="1479" y="347" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Caligula’s</text>
-<text x="1479" y="365" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Death ▶</text>
+<text x="1479" y="365" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Death</text>
 
 <!-- R5: THEOPHILUS -->
 <rect x="248"  y="392" width="497" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
@@ -509,7 +515,7 @@
 <text x="1237" y="410" text-anchor="start" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600" font-family="Georgia,serif">445.5</text>
 <text x="1351" y="410" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600" font-family="Georgia,serif">589</text>
 <text x="1477" y="401" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Caligula’s</text>
-<text x="1477" y="419" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Death ▶</text>
+<text x="1477" y="419" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Death</text>
 
 <!-- R6: AFRICANUS -->
 <rect x="250"  y="446" width="502" height="36" fill="#C0392B" stroke="#000" stroke-width="0.75"/>
@@ -520,7 +526,7 @@
 <rect x="1332" y="446" width="16"   height="36" fill="#9E56BC" stroke="#000" stroke-width="0.75"/>
 <rect x="1348" y="446" width="128" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
 <text x="1353" y="464" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600" font-family="Georgia,serif">577</text>
-<text x="1476" y="464" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Passion ▶</text>
+<text x="1476" y="464" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Passion</text>
 <text x="749"  y="464" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600" font-family="Georgia,serif">2,262</text>
 <text x="957"  y="464" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600" font-family="Georgia,serif">940</text>
 <text x="1069" y="464" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600" font-family="Georgia,serif">505</text>
@@ -537,7 +543,7 @@
 <text x="1345.84" y="524" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="30" font-weight="700" font-family="Georgia,serif">*</text>
 <rect x="1354.84" y="500" width="122" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
 <text x="1359.84" y="518" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600" font-family="Georgia,serif">551</text>
-<text x="1476.84" y="518" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Passion ▶</text>
+<text x="1476.84" y="518" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Passion</text>
 <text x="810.84" y="518" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600" font-family="Georgia,serif">2,242</text>
 <text x="1019.84" y="518" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600" font-family="Georgia,serif">942</text>
 <text x="1131.84" y="518" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600" font-family="Georgia,serif">505</text>
@@ -555,7 +561,7 @@
 <!-- R9: TERTULLIAN — black block, 424 BC to 41 AD on bottom axis, 464 years -->
 <rect x="1376" y="608" width="103" height="36" fill="#1a1a1a" stroke="#fff" stroke-width="0.75"/>
 <text x="1381" y="626" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600" font-family="Georgia,serif">464</text>
-<text x="1479" y="626" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Both ▶</text>
+<text x="1479" y="626" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600" font-family="Georgia,serif">Both</text>
 
 <!-- White alignment line at x=1474: Africanus/Eusebius Until Passion convergence -->
 
@@ -673,10 +679,8 @@
 
 <!-- HOVER OVERLAY and crosshair rendered after dotted lines but before script -->
 <!-- Year finder marker lines (current = gold, previous = gray) -->
-<line id="prev-line-1" x1="0" y1="100" x2="0" y2="650" stroke="#666" stroke-width="2" stroke-dasharray="7 4" opacity="0" pointer-events="none"/>
-<line id="prev-line-2" x1="0" y1="100" x2="0" y2="650" stroke="#666" stroke-width="2" stroke-dasharray="7 4" opacity="0" pointer-events="none"/>
-<line id="finder-line-1" x1="0" y1="100" x2="0" y2="650" stroke="#c8b98a" stroke-width="1.5" stroke-dasharray="6 3" opacity="0" pointer-events="none"/>
-<line id="finder-line-2" x1="0" y1="100" x2="0" y2="650" stroke="#c8b98a" stroke-width="1.5" stroke-dasharray="6 3" opacity="0" pointer-events="none"/>
+<line id="finder-line-1" x1="0" y1="100" x2="0" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" opacity="0" pointer-events="none"/>
+<line id="finder-line-2" x1="0" y1="100" x2="0" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" opacity="0" pointer-events="none"/>
 <line x1="1576" y1="100" x2="1576" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" pointer-events="none"/>
 <!-- Year finder bar annotations -->
 <rect id="ann1-off-rect" x="0" y="125" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
@@ -982,12 +986,14 @@ function compTop(B) {
 }
 
 function buildOccurrence(svgX, axisLabel, hideTop, compYear) {
-  // compYear: pre-computed complementary axis year to display
-  let html = `<div class="yr-axis-label">${axisLabel}</div>`;
+  const dashIdx = axisLabel.indexOf(' — ');
+  const mainDate = dashIdx > 0 ? axisLabel.slice(0, dashIdx) : axisLabel;
+  const axisName = dashIdx > 0 ? axisLabel.slice(dashIdx + 3) : '';
+  let html = `<div style="margin-bottom:3px"><span class="yr-main-date">${mainDate}</span><span class="yr-axis-tag">${axisName}</span></div>`;
   if (hideTop) {
-    html += `<div><span class="yr-bot-date">Bottom Axis: ${fmtBot(compYear)}</span></div>`;
+    html += `<div style="margin-bottom:3px"><span class="yr-main-date">${fmtBot(compYear)}</span><span class="yr-axis-tag"> Bottom Axis</span></div>`;
   } else {
-    html += `<div><span class="yr-top-date">Top Axis: ${fmtTop(compYear)}</span></div>`;
+    html += `<div style="margin-bottom:3px"><span class="yr-main-date">${fmtTop(compYear)}</span><span class="yr-axis-tag"> Top Axis</span></div>`;
   }
   html += `<div class="yr-rows">`;
   for (const row of ROWS) {
@@ -1012,37 +1018,34 @@ function autoFind() {
   if (val && parseInt(val) >= 1) findYear();
 }
 
-function setBarAnn(prefix, svgX, label) {
-  const lOff  = document.getElementById(prefix + '-off-line');
-  const tOff  = document.getElementById(prefix + '-off-text');
-  const lTer  = document.getElementById(prefix + '-ter-line');
-  const tTer  = document.getElementById(prefix + '-ter-text');
-  const rOff  = document.getElementById(prefix + '-off-rect');
-  const rTer  = document.getElementById(prefix + '-ter-rect');
+function setBarAnn(prefix, svgX, _label) {
+  const _amVal = vatAM(svgX);
+  const _topYr = _amVal >= 3760.5 ? _amVal - 3760 : _amVal - 3761;
+  const _botYr = _amVal > 5312.5  ? 5312 - _amVal  : 5313 - _amVal;
+  const topLbl = fmtTop(_topYr);   // Official History (near top axis)
+  const botLbl = fmtBot(_botYr);   // Tertullian (near bottom axis)
+  const lOff = document.getElementById(prefix + '-off-line');
+  const tOff = document.getElementById(prefix + '-off-text');
+  const lTer = document.getElementById(prefix + '-ter-line');
+  const tTer = document.getElementById(prefix + '-ter-text');
+  const rOff = document.getElementById(prefix + '-off-rect');
+  const rTer = document.getElementById(prefix + '-ter-rect');
   const x = Math.round(svgX);
-  const pad = 5;
-  const approxW = label.length * 15.6;
-  const textX = x - pad - 2;
-  const anchor = 'end';
-  const rectX  = x - approxW - pad * 2 - 2;
+  const pad = 5, textX = x - pad - 2;
 
-  [lOff, lTer].forEach(l => {
-    l.setAttribute('x1', x); l.setAttribute('x2', x);
-    l.setAttribute('opacity', '0.9');
-  });
-  [tOff, tTer].forEach(t => {
-    t.setAttribute('x', textX);
-    t.setAttribute('text-anchor', anchor);
-    t.textContent = label;
-    t.setAttribute('opacity', '1');
-  });
-  [rOff, rTer].forEach((r, i) => {
-    r.setAttribute('x', rectX);
-    r.setAttribute('y', i === 0 ? '125' : '611');
-    r.setAttribute('width', approxW + pad * 2);
-    r.setAttribute('height', '28');
-    r.setAttribute('opacity', '1');
-  });
+  [lOff, lTer].forEach(l => { l.setAttribute('x1',x); l.setAttribute('x2',x); l.setAttribute('opacity','0.9'); });
+
+  tOff.setAttribute('x', textX); tOff.setAttribute('text-anchor','end');
+  tOff.textContent = topLbl; tOff.setAttribute('opacity','1');
+
+  tTer.setAttribute('x', textX); tTer.setAttribute('text-anchor','end');
+  tTer.textContent = botLbl; tTer.setAttribute('opacity','1');
+
+  const wOff = topLbl.length * 15.6, wTer = botLbl.length * 15.6;
+  rOff.setAttribute('x', x - wOff - pad*2 - 2); rOff.setAttribute('y','125');
+  rOff.setAttribute('width', wOff + pad*2); rOff.setAttribute('height','28'); rOff.setAttribute('opacity','1');
+  rTer.setAttribute('x', x - wTer - pad*2 - 2); rTer.setAttribute('y','611');
+  rTer.setAttribute('width', wTer + pad*2); rTer.setAttribute('height','28'); rTer.setAttribute('opacity','1');
 }
 
 function clearBarAnn(prefix) {
@@ -1119,18 +1122,7 @@ function findYear() {
 
   const line1 = document.getElementById('finder-line-1');
   const line2 = document.getElementById('finder-line-2');
-  const prev1 = document.getElementById('prev-line-1');
-  const prev2 = document.getElementById('prev-line-2');
 
-  // Save current gold positions as gray previous lines
-  if (lastX1 !== null) {
-    prev1.setAttribute('x1', lastX1); prev1.setAttribute('x2', lastX1);
-    prev1.setAttribute('opacity', '0.85');
-  }
-  if (lastX2 !== null) {
-    prev2.setAttribute('x1', lastX2); prev2.setAttribute('x2', lastX2);
-    prev2.setAttribute('opacity', '0.85');
-  }
   lastX1 = null; lastX2 = null;
 
   line1.setAttribute('opacity', '0');
@@ -1188,8 +1180,6 @@ function findYear() {
     result.style.display = 'none';
   } else {
     result.innerHTML = html;
-    const finderEl = document.querySelector('.year-finder');
-    if (finderEl) result.style.minWidth = finderEl.offsetWidth + 'px';
     result.style.display = 'block';
     result.style.width = is_double ? 'max-content' : '';
   }
