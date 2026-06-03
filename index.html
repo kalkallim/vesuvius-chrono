@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ancient Chronology Timeline v7.1</title>
+<title>Ancient Chronology Timeline v7.7</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -218,6 +218,7 @@
   #overlayContent .yr-main-date { font-size: 20px; }
   #overlayContent .yr-axis-tag   { font-size: 14px; }
   #overlayContent .yr-comp-date  { font-size: 14px; }
+  #overlayContent .yr-comp-num   { font-size: 14px; }
   #overlayContent .yr-row { font-size: 11px; margin-bottom: 1px; }
   #overlayContent .yr-rows { margin-top: 4px; padding-top: 4px; }
   #overlayContent .yr-top-date, #overlayContent .yr-bot-date { font-size: 13px; }
@@ -252,6 +253,7 @@
   .yr-main-date  { color: #c8b98a; font-weight: bold; font-size: clamp(17px,1.6vw,21px); }
   .yr-axis-tag   { color: #e8e4d8; font-size: clamp(13px,1.2vw,16px); font-weight: normal; margin-left: 4px; }
   .yr-comp-date  { color: #e8e4d8; font-size: clamp(13px,1.2vw,16px); margin-bottom:3px; }
+  .yr-comp-num   { color: #c8b98a; font-size: clamp(13px,1.2vw,16px); font-weight: bold; }
   .yr-axis-label { color: #c8b98a; font-weight: bold; font-size: 13px; margin-bottom: 3px; }
   .yr-top-date   { color: #7DC4A0; font-weight: bold; }
   .yr-bot-date   { color: #7aafd4; font-weight: bold; }
@@ -287,26 +289,26 @@
 <!-- LEGEND row 1 -->
 <rect x="184" y="-26" width="40" height="40" rx="4" fill="#C0392B" stroke="#000" stroke-width="1"/>
 <text x="235" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Creation → Flood</text>
-<rect x="532" y="-16" width="32" height="20" rx="6" fill="#111"/>
-<text x="548" y="-6" text-anchor="middle" font-size="30" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
-<rect x="648" y="-26" width="40" height="40" rx="4" fill="#E67E22" stroke="#000" stroke-width="1"/>
-<text x="699" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Flood → Abraham</text>
-<rect x="1012" y="-16" width="32" height="20" rx="6" fill="#111"/>
-<text x="1028" y="-6" text-anchor="middle" font-size="30" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
-<rect x="1112" y="-26" width="40" height="40" rx="4" fill="#D4C800" stroke="#000" stroke-width="1"/>
-<text x="1163" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Abraham → Exodus</text>
+
+
+<rect x="682" y="-26" width="40" height="40" rx="4" fill="#E67E22" stroke="#000" stroke-width="1"/>
+<text x="733" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Flood → Abraham</text>
+
+
+<rect x="1140" y="-26" width="40" height="40" rx="4" fill="#D4C800" stroke="#000" stroke-width="1"/>
+<text x="1191" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Abraham → Exodus</text>
 
 <!-- LEGEND row 2 -->
 <rect x="184" y="22" width="40" height="40" rx="4" fill="#27AE60" stroke="#000" stroke-width="1"/>
 <text x="235" y="42" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Exodus → Temple</text>
-<rect x="532" y="32" width="32" height="20" rx="6" fill="#111"/>
-<text x="548" y="42" text-anchor="middle" font-size="30" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
-<rect x="648" y="22" width="40" height="40" rx="4" fill="#2471A3" stroke="#000" stroke-width="1"/>
-<text x="699" y="42" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Temple → Desolation</text>
-<rect x="1012" y="32" width="32" height="20" rx="6" fill="#111"/>
-<text x="1028" y="42" text-anchor="middle" font-size="30" font-weight="900" fill="#fff" font-family="Georgia,serif" dominant-baseline="central">&#9658;</text>
-<rect x="1112" y="22" width="40" height="40" rx="4" fill="#9E56BC" stroke="#000" stroke-width="1"/>
-<text x="1163" y="42" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Captivity (70 Years)</text>
+
+
+<rect x="682" y="22" width="40" height="40" rx="4" fill="#2471A3" stroke="#000" stroke-width="1"/>
+<text x="733" y="42" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Temple → Desolation</text>
+
+
+<rect x="1140" y="22" width="40" height="40" rx="4" fill="#9E56BC" stroke="#000" stroke-width="1"/>
+<text x="1191" y="42" font-size="30" font-weight="700" fill="#e8e4d8" font-family="Georgia,serif" dominant-baseline="central">Captivity (70 Years)</text>
 
 <!-- TOP AXIS y=100 -->
 <line x1="184" y1="100" x2="1576" y2="100" stroke="#888" stroke-width="1.2"/>
@@ -707,12 +709,12 @@
 <text x="230" y="710" font-size="30" font-weight="700" fill="#D4C800" font-family="Georgia,serif">Original Exodus (3840 AM)</text>
 
 <!-- Green: First Year of Solomon -->
-<line x1="648" y1="705" x2="688" y2="705" stroke="#27AE60" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="694" y="710" font-size="30" font-weight="700" fill="#27AE60" font-family="Georgia,serif">Solomon Reigns (4236 AM)</text>
+<line x1="682" y1="705" x2="722" y2="705" stroke="#27AE60" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="728" y="710" font-size="30" font-weight="700" fill="#27AE60" font-family="Georgia,serif">Solomon Reigns (4236 AM)</text>
 
 <!-- Orange: First Olympiad -->
-<line x1="1112" y1="705" x2="1152" y2="705" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="6 3"/>
-<text x="1158" y="710" font-size="30" font-weight="700" fill="#E67E22" font-family="Georgia,serif">First Olympiad (4537 AM)</text>
+<line x1="1140" y1="705" x2="1180" y2="705" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="6 3"/>
+<text x="1186" y="710" font-size="30" font-weight="700" fill="#E67E22" font-family="Georgia,serif">First Olympiad (4537 AM)</text>
 
 <!-- Row 2: Blue, Red, Purple -->
 <!-- Blue: Temple Destruction -->
@@ -720,12 +722,12 @@
 <text x="230" y="741" font-size="30" font-weight="700" fill="#5B9EC9" font-family="Georgia,serif">Temple Destroyed (4890 AM)</text>
 
 <!-- Red: Seleucid Era -->
-<line x1="648" y1="736" x2="688" y2="736" stroke="#C0392B" stroke-width="2.5" stroke-dasharray="4 4"/>
-<text x="694" y="741" font-size="30" font-weight="700" fill="#C0392B" font-family="Georgia,serif">Seleucid Era (5001 AM)</text>
+<line x1="682" y1="736" x2="722" y2="736" stroke="#C0392B" stroke-width="2.5" stroke-dasharray="4 4"/>
+<text x="728" y="741" font-size="30" font-weight="700" fill="#C0392B" font-family="Georgia,serif">Seleucid Era (5001 AM)</text>
 
 <!-- Purple: Vesuvius -->
-<line x1="1112" y1="736" x2="1152" y2="736" stroke="#7D3C98" stroke-width="2.5" stroke-dasharray="6 3"/>
-<text x="1158" y="741" font-size="30" font-weight="700" fill="#9E56BC" font-family="Georgia,serif">Vesuvius Erupts (5392 AM)</text>
+<line x1="1140" y1="736" x2="1180" y2="736" stroke="#7D3C98" stroke-width="2.5" stroke-dasharray="6 3"/>
+<text x="1186" y="741" font-size="30" font-weight="700" fill="#9E56BC" font-family="Georgia,serif">Vesuvius Erupts (5392 AM)</text>
 
 </svg>
 </div>
@@ -893,8 +895,8 @@ overlay.addEventListener('mousemove', (evt) => {
 
   tooltip.innerHTML =
     `<div class="tt-name">Cursor position</div>` +
-    `<div class="tt-top">Top Axis: ${fmtTop(topYr)}</div>` +
-    `<div class="tt-bot">Bottom Axis: ${fmtBot(botYr)}</div>` +
+    `<div class="tt-top">Upper Axis: ${fmtTop(topYr)}</div>` +
+    `<div class="tt-bot">Lower Axis: ${fmtBot(botYr)}</div>` +
     (segHTML ? `<div class="tt-segs">${segHTML}</div>` : '');
 
   const ttW = 320;
@@ -991,9 +993,9 @@ function buildOccurrence(svgX, axisLabel, hideTop, compYear) {
   const axisName = dashIdx > 0 ? axisLabel.slice(dashIdx + 3) : '';
   let html = `<div style="margin-bottom:3px"><span class="yr-main-date">${mainDate}</span><span class="yr-axis-tag">${axisName}</span></div>`;
   if (hideTop) {
-    html += `<div style="margin-bottom:3px"><span class="yr-main-date">${fmtBot(compYear)}</span><span class="yr-axis-tag"> Bottom Axis</span></div>`;
+    html += `<div style="margin-bottom:3px"><span class="yr-comp-num">${fmtBot(compYear)}</span><span class="yr-axis-tag">Lower Axis</span></div>`;
   } else {
-    html += `<div style="margin-bottom:3px"><span class="yr-main-date">${fmtTop(compYear)}</span><span class="yr-axis-tag"> Top Axis</span></div>`;
+    html += `<div style="margin-bottom:3px"><span class="yr-comp-num">${fmtTop(compYear)}</span><span class="yr-axis-tag">Upper Axis</span></div>`;
   }
   html += `<div class="yr-rows">`;
   for (const row of ROWS) {
@@ -1146,7 +1148,7 @@ function findYear() {
     line1.setAttribute('opacity', '0.85');
     lastX1 = Math.round(x_top);
     setBarAnn('ann1', x_top, fmtTop(yr_top));
-    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — Top Axis`, true, compBot(yr_top));
+    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — Upper Axis`, true, compBot(yr_top));
   }
 
   if (is_double) {
@@ -1155,14 +1157,14 @@ function findYear() {
     line2.setAttribute('opacity', '0.85');
     lastX2 = Math.round(x_bot);
     setBarAnn('ann2', x_bot, fmtBot(yr_bot));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis`, false, compTop(yr_bot));
+    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Lower Axis`, false, compTop(yr_bot));
   } else if (in_bot && !in_top) {
     line1.setAttribute('x1', Math.round(x_bot));
     line1.setAttribute('x2', Math.round(x_bot));
     line1.setAttribute('opacity', '0.85');
     lastX1 = Math.round(x_bot);
     setBarAnn('ann1', x_bot, fmtBot(yr_bot));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Bottom Axis`, false, compTop(yr_bot));
+    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Lower Axis`, false, compTop(yr_bot));
   }
 
   let html = '';
@@ -1191,7 +1193,7 @@ function findYear() {
   <div class="overlay-controls">
   <div class="overlay-header"><button id="overlayBack" onclick="closeOverlay()"><span class="back-arrow">&#9664;</span> Back to See Year</button><div class="overlay-nav"><button onclick="navYear(-1)" title="Previous Year">&#9664;</button><button onclick="navYear(1)" title="Next Year">&#9654;</button></div></div>
   <div id="overlayFinder">
-    <input type="number" id="overlayInput" placeholder="e.g. 423" min="1" max="6000" onfocus="this.value='';">
+    <input type="number" id="overlayInput" placeholder="e.g. 423" min="1" max="6000" onfocus="this.value='';" onkeydown="if(event.key==='Enter')overlayFindBtn();">
     <div class="overlay-era"><button id="overlayBC" class="active" onclick="setOverlayEra('BC')">BC</button><button id="overlayAD" onclick="setOverlayEra('AD')">AD</button></div>
     <button id="overlayFindBtn" onclick="overlayFindBtn()">Find</button>
   </div>
