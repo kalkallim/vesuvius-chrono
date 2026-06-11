@@ -840,7 +840,8 @@ function vatAM(svgX) {
 // Convert a raw AM float to display integer, skipping 0
 function amDisplay(raw) {
   const r = Math.round(raw);
-  if (r === 0) return raw > 0 ? 1 : -1;
+  if (r === 0) return raw > 0 ? 1 : -1;  // slot at 0 stays -1 AM
+  if (r < 0)  return r - 1;              // -1→-2 AM, -2→-3 AM, etc.
   return r;
 }
 
@@ -921,15 +922,38 @@ overlay.addEventListener('mouseleave', () => {
   tooltip.style.display = 'none';
 });
 
+overlay.addEventListener('click', (evt) => {
+  const svgX = getSVGX(evt);
+  if (svgX < PLOT_X0 || svgX > PLOT_X0 + PLOT_W) return;
+  const amVal  = vatAM(svgX);
+  const topYr  = amVal >= 3760.5 ? amVal - 3760 : amVal - 3761;
+  const isBC   = topYr <= 0;
+  const val    = Math.max(1, Math.round(isBC ? -topYr : topYr));
+  const era    = isBC ? 'BC' : 'AD';
+  document.getElementById('yearInput').value = val;
+  currentEra = era;
+  document.getElementById('btnBC').classList.toggle('active', isBC);
+  document.getElementById('btnAD').classList.toggle('active', !isBC);
+  syncOverlayInput(val, era);
+  findYear();
+  const res = document.getElementById('yearResult');
+  if (res) res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
 overlay.addEventListener('touchmove', (evt) => {
   evt.preventDefault();
   const t = evt.touches[0];
   overlay.dispatchEvent(new MouseEvent('mousemove', {clientX:t.clientX, clientY:t.clientY}));
 }, {passive:false});
 
-overlay.addEventListener('touchend', () => {
+overlay.addEventListener('touchend', (evt) => {
   crosshair.setAttribute('opacity', '0');
   tooltip.style.display = 'none';
+  // Treat tap as click-to-find on mobile
+  if (evt.changedTouches.length === 1) {
+    const t = evt.changedTouches[0];
+    overlay.dispatchEvent(new MouseEvent('click', {clientX:t.clientX, clientY:t.clientY}));
+  }
 });
 
 // ── YEAR FINDER ──────────────────────────────────────────────────────────────
@@ -986,9 +1010,22 @@ function compTop(B) {
 }
 
 function segColor(row, x) {
-  const s = getActiveSeg(row, x) || (() => { let l=null; for(const sg of row.segments){if(sg.x<=x)l=sg;} return l; })();
-  if (!s) return '#888';
-  return ['#1a1a1a','#555'].includes(s.color) ? '#bbb' : (s.color==='#e8e4d8'||s.color==='#aaa') ? '#666' : s.color;
+  // Color is determined by which named period the AM value falls in,
+  // using cumulative year-counts from each row's segments — not SVG pixel position.
+  // This ensures tooltip colors match the labeled bar periods exactly for all traditions.
+  const am = Math.round(vatAM(x) + (row.amOffset || 0));
+  if (am < 1) return '#888';   // before this tradition's creation
+  function colorOf(seg) {
+    return ['#1a1a1a','#555'].includes(seg.color) ? '#bbb'
+         : (seg.color === '#e8e4d8' || seg.color === '#aaa') ? '#666'
+         : seg.color;
+  }
+  let cum = 0;
+  for (const seg of row.segments) {
+    cum += seg.years;
+    if (am <= cum) return colorOf(seg);
+  }
+  return colorOf(row.segments[row.segments.length - 1]);
 }
 
 function buildOccurrence(svgX, axisLabel, hideTop, compYear) {
