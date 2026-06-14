@@ -1027,7 +1027,7 @@ function segColor(row, x) {
   let cum = 0;
   for (const seg of row.segments) {
     cum += seg.years;
-    if (am <= cum) return colorOf(seg);
+    if (am <= cum + 1) return colorOf(seg);
   }
   return colorOf(row.segments[row.segments.length - 1]);
 }
