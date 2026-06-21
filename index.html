@@ -265,7 +265,7 @@
 
   #overlayContent .yr-comp-num   { font-size: 14px; }
 
-  #overlayContent .yr-row { font-size: 11px; margin-bottom: 1px; }
+  #overlayContent .yr-row { font-size: 13px; margin-bottom: 1px; white-space: nowrap; }
 
   #overlayContent .yr-rows { margin-top: 4px; padding-top: 4px; }
 
@@ -294,7 +294,8 @@
   }
 
   .yr-double > div {
-    flex: 0 0 auto;
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .yr-double .yr-divider {
@@ -320,7 +321,7 @@
 
   .yr-rows  { margin-top: 4px; border-top: 1px solid #2a2a2a; padding-top: 3px; }
 
-  .yr-row   { font-size: 15px; color: #888; margin-bottom: 1px; }
+  .yr-row   { font-size: 15px; color: #888; margin-bottom: 1px; white-space: nowrap; }
 
   .yr-row span { color: #c8b98a; }
 
@@ -598,13 +599,6 @@ text{font-family:Georgia,serif}
 <text x="1237.84" y="518" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">480</text>
 <text x="1246.84" y="518" text-anchor="start" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">432</text>
 
-<rect x="184"  y="554" width="108" height="36" fill="#aaa" class="bbox"/>
-<rect x="292"  y="554" width="1106" height="36" fill="#555" class="bbox"/>
-<text x="186" y="563" text-anchor="start" dominant-baseline="central" fill="#222" font-size="15" font-weight="600">Temple</text>
-<text x="186" y="581" text-anchor="start" dominant-baseline="central" fill="#222" font-size="15" font-weight="600">Offset</text>
-<text x="288" y="572" text-anchor="end" dominant-baseline="central" fill="#222" font-size="26" font-weight="600">490</text>
-<text x="298"  y="572" text-anchor="start" dominant-baseline="central" fill="#eee" font-size="26" font-weight="600">Egyptian Dynasties 4,982</text>
-
 <rect x="1376.38" y="608.38" width="102.25" height="35.25" fill="#1a1a1a" class="bbox"/>
 <text x="1381" y="626" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">464</text>
 <text x="1479" y="626" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Both</text>
@@ -664,8 +658,6 @@ text{font-family:Georgia,serif}
 <line x1="1332.78" y1="482" x2="1338.22" y2="500" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
 <line x1="1348.31" y1="482" x2="1355.74" y2="500" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
 
-<line x1="292" y1="100" x2="292" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" class="ref"/>
-
 <line x1="1232" y1="100" x2="1232" y2="122" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
 <line x1="1232" y1="158" x2="1232" y2="176" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
 <line x1="1232" y1="212" x2="1233.97" y2="446" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
@@ -709,6 +701,13 @@ text{font-family:Georgia,serif}
 <line x1="1298" y1="482" x2="1298" y2="500" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
 <line x1="1298" y1="536" x2="1298" y2="650" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
 
+<rect x="250.46" y="554.38" width="509.38" height="35.25" fill="#1a1a1a" class="bbox"/>
+<rect x="760.59" y="554.38" width="469.68" height="35.25" fill="#1a1a1a" class="bbox"/>
+<rect x="1231.03" y="554.38" width="232.14" height="35.25" fill="#1a1a1a" class="bbox"/>
+<text x="755" y="572" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book I, 2300</text>
+<text x="1226" y="572" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book II, 2121</text>
+<text x="1459" y="572" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book III, 1050</text>
+<line x1="292" y1="100" x2="292" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" class="ref"/>
 <line id="finder-line-1" x1="0" y1="100" x2="0" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" opacity="0" class="ref"/>
 <line id="finder-line-2" x1="0" y1="100" x2="0" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" opacity="0" class="ref"/>
 <line x1="1576" y1="100" x2="1576" y2="650" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" class="ref"/>
@@ -826,9 +825,10 @@ const ROWS = [
     {x:1338.22, w:17.52, color:'#9E56BC',label:'Captivity (79*)',          years:79},
     {x:1355.74, w:122.21,color:'#1a1a1a',label:'Passion',              years:551}
   ]},
-  { name:'Manetho', shortName:'Manetho', y:554, amOffset:490, segments:[
-    {x:184,  w:109,color:'#aaa',  label:'Temple Offset',      years:490},
-    {x:293,  w:1105,color:'#555', label:'Egyptian Dynasties', years:4982}
+  { name:'Manetho', shortName:'Manetho', y:554, amOffset:189, segments:[
+    {x:250.08, w:510.13, color:'#1a1a1a', label:'Book I',   years:2300},
+    {x:760.21, w:470.43, color:'#1a1a1a', label:'Book II',  years:2121},
+    {x:1230.65,w:232.89, color:'#1a1a1a', label:'Book III', years:1050}
   ]}
 ];
 
@@ -866,7 +866,9 @@ function getActiveSeg(row, svgX) {
   return null;
 }
 
+let _lastTouchEnd = 0;
 overlay.addEventListener('mousemove', (evt) => {
+  if (Date.now() - _lastTouchEnd < 500) return;  // suppress synthetic mouse after touch
   const svgX = getSVGX(evt);
   if (svgX < PLOT_X0 || svgX > PLOT_X0 + PLOT_W) return;
 
@@ -955,7 +957,7 @@ overlay.addEventListener('touchmove', (evt) => {
 overlay.addEventListener('touchend', (evt) => {
   crosshair.setAttribute('opacity', '0');
   tooltip.style.display = 'none';
-
+  _lastTouchEnd = Date.now();        // prevent synthetic mousemove re-showing TT
   if (evt.changedTouches.length === 1) {
     const t = evt.changedTouches[0];
     overlay.dispatchEvent(new MouseEvent('click', {clientX:t.clientX, clientY:t.clientY}));
@@ -1000,13 +1002,11 @@ document.getElementById('yearInput').addEventListener('keydown', function(e) {
 
 function compBot(T) {
 
-
   if (T > 1552) return 1552 - T;
   if (T > 0)    return 1553 - T;
   return -T + 1552;
 }
 function compTop(B) {
-
 
   if (B > 1552) return 1552 - B;
   if (B >= 0)   return 1553 - B;
@@ -1014,8 +1014,6 @@ function compTop(B) {
 }
 
 function segColor(row, x) {
-
-
 
   const am = Math.round(vatAM(x) + (row.amOffset || 0));
   if (am < 1) return '#888';
@@ -1126,7 +1124,6 @@ function finderNav(delta) {
 
 function navYear(delta) {
 
-
   let v, newEra = overlayEra;
   if (overlayEra === 'BC') {
     v = overlayVal - delta;
@@ -1159,7 +1156,6 @@ function findYear() {
 
   const yr_top = isBC ? -val : val;
   const yr_bot = isBC ? val : -val;
-
 
   const x_top = 292 + ((yr_top > 0 ? yr_top - 1 : yr_top) + 3760) * PX_PER_YR;
   const x_bot = 292 + (yr_bot < 0 ? 5311 - yr_bot : 5312 - yr_bot) * PX_PER_YR;
@@ -1214,17 +1210,15 @@ function findYear() {
   }
 
   let html = '';
-  const wide = window.innerWidth >= 700;
-  if (is_double && wide) {
+  if (is_double) {
     html = `<div class="yr-double"><div>${topHtml}</div><div class="yr-divider"></div><div>${botHtml}</div></div>`;
   } else {
     html = topHtml || botHtml;
-    if (topHtml && botHtml) html = topHtml + `<div class="yr-divider"></div>` + botHtml;
   }
 
   result.innerHTML = html;
   result.style.display = 'block';
-  result.style.width = (is_double && wide) ? 'max-content' : '100%';
+  result.style.width = is_double ? 'max-content' : '100%';
 }
 
 </script>
