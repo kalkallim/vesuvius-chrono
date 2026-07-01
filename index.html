@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ancient Chronology Timeline v8.1</title>
+<title>Anno Mundi Evolution</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -39,9 +39,7 @@
 
   .tt-name  { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing:.08em; margin-bottom:3px; }
 
-  .tt-top   { color: #ffffff; font-weight: bold; font-size: 13px; }
 
-  .tt-bot   { color: #ffffff; font-weight: bold; font-size: 13px; }
 
   .tt-segs  { margin-top:6px; border-top:1px solid #2a2a2a; padding-top:5px; }
 
@@ -90,14 +88,14 @@
     transition: all 0.15s;
   }
 
-  #btnBC.active { background: #27AE60; color: #fff; border-color: #27AE60; font-weight: 700; }
+  #btnBC.active { background: #2FA36B; color: #fff; border-color: #2FA36B; font-weight: 700; }
 
-  #btnAD.active { background: #27AE60; color: #fff; border-color: #27AE60; font-weight: 700; }
+  #btnAD.active { background: #2FA36B; color: #fff; border-color: #2FA36B; font-weight: 700; }
 
   .era-toggle button:not(.active):hover { background: #1e3a2a; }
 
   #findBtn {
-    background: #27AE60;
+    background: #2FA36B;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -114,7 +112,7 @@
   .finder-nav { display: flex; gap: 6px; }
 
   .finder-nav button {
-    background: #27AE60;
+    background: #2FA36B;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -153,7 +151,7 @@
   }
 
   #overlayBack {
-    background: #27AE60;
+    background: #2FA36B;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -176,7 +174,7 @@
   .overlay-nav { display: flex; gap: 6px; }
 
   .overlay-nav button {
-    background: #27AE60;
+    background: #2FA36B;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -217,7 +215,7 @@
   #overlayInput:focus { outline: none; border-color: #c8b98a; }
 
   #overlayFindBtn {
-    background: #27AE60;
+    background: #2FA36B;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -246,7 +244,7 @@
     border-radius: 4px;
   }
 
-  #overlayBC.active, #overlayAD.active { background: #27AE60; border-color: #27AE60; font-weight: 700; }
+  #overlayBC.active, #overlayAD.active { background: #2FA36B; border-color: #2FA36B; font-weight: 700; }
 
   #overlayContent {
     font-size: 13px;
@@ -255,7 +253,6 @@
     line-height: 1.4;
   }
 
-  #overlayContent .yr-axis-label { font-size: 14px; }
 
   #overlayContent .yr-main-date { font-size: 20px; }
 
@@ -269,7 +266,6 @@
 
   #overlayContent .yr-rows { margin-top: 4px; padding-top: 4px; }
 
-  #overlayContent .yr-top-date, #overlayContent .yr-bot-date { font-size: 13px; }
 
   #yearResult {
     font-size: clamp(15px, 1.5vw, 19px);
@@ -313,11 +309,8 @@
 
   .yr-comp-num   { color: #ffffff; font-size: clamp(16px,1.5vw,20px); font-weight: bold; }
 
-  .yr-axis-label { color: #c8b98a; font-weight: bold; font-size: 13px; margin-bottom: 3px; }
 
-  .yr-top-date   { color: #7DC4A0; font-weight: bold; }
 
-  .yr-bot-date   { color: #7aafd4; font-weight: bold; }
 
   .yr-rows  { margin-top: 4px; border-top: 1px solid #2a2a2a; padding-top: 3px; }
 
@@ -332,7 +325,7 @@
 
 <div class="year-finder">
   <label>Find Year:</label>
-  <input type="number" id="yearInput" placeholder="e.g. 423" min="1" max="6000" onfocus="this.value='';">
+  <input type="number" id="yearInput" placeholder="e.g. 1446" min="1" max="6200" onfocus="this.value='';">
   <div class="era-toggle">
     <button id="btnBC" class="active" onclick="setEra('BC')">BC</button>
     <button id="btnAD" onclick="setEra('AD')">AD</button>
@@ -350,916 +343,757 @@
 text{font-family:Georgia,serif}
 .cinzel{font-family:'Cinzel','Trajan Pro',Georgia,serif}
 </style></defs>
-<svg id="chart" viewBox="0 -170 1600 1000" role="img">
+<svg id="chart" viewBox="0 -170 1750 1170" role="img">
 
-<text class="cinzel" x="800" y="-115" text-anchor="middle" dominant-baseline="central" font-size="52" font-weight="700" fill="#c8b98a" textLength="1380" lengthAdjust="spacingAndGlyphs">ANCIENT CHRONOLOGY COMPARATIVE TIMELINE</text>
-<text x="800" y="-68" text-anchor="middle" font-size="22" fill="#888" font-style="italic">Hover anywhere on the chart — see equivalent dates on both axes, Anno Mundi years, and position within each tradition</text>
-<text x="800" y="-43" text-anchor="middle" font-size="20" fill="#888">&#169; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank"><tspan fill="#888" text-decoration="underline">kalkallim.substack.com</tspan></a>. Built with Claude AI (Anthropic).</text>
+<text class="cinzel" x="875" y="-115" text-anchor="middle" dominant-baseline="central" font-size="52" font-weight="700" fill="#c8b98a" letter-spacing="6">ANNO MUNDI EVOLUTION CHART</text>
+<text x="875" y="-68" text-anchor="middle" font-size="22" fill="#888" font-style="italic">Ten chronological traditions aligned to a shared 5600 BC creation — tracing how Anno Mundi evolved across each transmission</text>
+<text x="875" y="-43" text-anchor="middle" font-size="20" fill="#888">&#169; 2026 Lleland Liam Maxwell, <a href="https://kalkallim.substack.com" target="_blank"><tspan fill="#888" text-decoration="underline">kalkallim.substack.com</tspan></a>. Built with Claude AI (Anthropic).</text>
 
-<rect x="184" y="-26" width="40" height="40" rx="4" fill="#C0392B" stroke="#000" stroke-width="1"/>
+<rect x="184" y="-26" width="40" height="40" rx="4" fill="#D6453C" stroke="#000" stroke-width="1"/>
 <text x="235" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Creation → Flood</text>
 
-<rect x="682" y="-26" width="40" height="40" rx="4" fill="#E67E22" stroke="#000" stroke-width="1"/>
+<rect x="682" y="-26" width="40" height="40" rx="4" fill="#E8862E" stroke="#000" stroke-width="1"/>
 <text x="733" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Flood → Abraham</text>
 
-<rect x="1140" y="-26" width="40" height="40" rx="4" fill="#D4C800" stroke="#000" stroke-width="1"/>
+<rect x="1140" y="-26" width="40" height="40" rx="4" fill="#EBD11E" stroke="#000" stroke-width="1"/>
 <text x="1191" y="-6" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Abraham → Exodus</text>
 
-<rect x="184" y="22" width="40" height="40" rx="4" fill="#27AE60" stroke="#000" stroke-width="1"/>
+<rect x="184" y="22" width="40" height="40" rx="4" fill="#2FA36B" stroke="#000" stroke-width="1"/>
 <text x="235" y="42" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Exodus → Temple</text>
 
-<rect x="682" y="22" width="40" height="40" rx="4" fill="#2471A3" stroke="#000" stroke-width="1"/>
+<rect x="682" y="22" width="40" height="40" rx="4" fill="#255FA0" stroke="#000" stroke-width="1"/>
 <text x="733" y="42" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Temple → Desolation</text>
 
-<rect x="1140" y="22" width="40" height="40" rx="4" fill="#9E56BC" stroke="#000" stroke-width="1"/>
+<rect x="1140" y="22" width="40" height="40" rx="4" fill="#E090C8" stroke="#000" stroke-width="1"/>
 <text x="1191" y="42" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Captivity (70 Years)</text>
 
-<line x1="184" y1="100" x2="1576" y2="100" stroke="#888" stroke-width="1.2"/>
-<line x1="184"  y1="93" x2="184"  y2="107" stroke="#aaa" stroke-width="1.2"/>
-<line x1="1576" y1="93" x2="1576" y2="107" stroke="#aaa" stroke-width="1.2"/>
-<line x1="461"  y1="94" x2="461"  y2="106" stroke="#888" stroke-width="0.8"/>
-<line x1="682"  y1="94" x2="682"  y2="106" stroke="#888" stroke-width="0.8"/>
-<line x1="904"  y1="94" x2="904"  y2="106" stroke="#888" stroke-width="0.8"/>
+<!-- Row labels (left margin) -->
+<text x="180" y="183" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Official History</text>
+<text x="180" y="249" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Rebuilt Manetho</text>
+<text x="180" y="315" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Rebuilt Septuagint</text>
+<text x="180" y="381" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Eupolemus</text>
+<rect x="184" y="356" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<line x1="1015" y1="94" x2="1015" y2="106" stroke="#888" stroke-width="0.8"/>
-<line x1="292"  y1="93" x2="292"  y2="107" stroke="#ffffff" stroke-width="2.5"/>
-<line x1="1232" y1="93" x2="1232" y2="107" stroke="#27AE60" stroke-width="2.5"/>
-<line x1="1377" y1="93" x2="1377" y2="107" stroke="#4A7276" stroke-width="2.5"/>
+<!-- Eupolemus bars (creation 5307 BC from 5th of Demetrius Soter) -->
+<rect x="257.25" y="356" width="645.0" height="50" fill="#3a3a3a" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" class="bbox"/>
+<text x="265" y="381" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">To Exodus</text>
+<text x="894" y="381" text-anchor="end" dominant-baseline="central" fill="#fff" font-size="35" font-weight="600">2580</text>
+<rect x="902.25" y="356" width="672.25" height="50" fill="#6a6a6a" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" class="bbox"/>
+<text x="1565.5" y="381" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">2689</text>
 
-<line x1="1401" y1="93" x2="1401" y2="107" stroke="#8B3A3A" stroke-width="2.5"/>
-<line x1="1298" y1="93" x2="1298" y2="107" stroke="#E67E22" stroke-width="2.5"/>
-<line x1="1488" y1="94" x2="1488" y2="106" stroke="#888" stroke-width="0.8"/>
+<text x="180" y="447" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Josephus</text>
 
-<line x1="239"  y1="96" x2="239"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="350"  y1="96" x2="350"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="405"  y1="96" x2="405"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="516"  y1="96" x2="516"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="571"  y1="96" x2="571"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="626"  y1="96" x2="626"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="738"  y1="96" x2="738"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="793"  y1="96" x2="793"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="849"  y1="96" x2="849"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="960"  y1="96" x2="960"  y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1070" y1="96" x2="1070" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1182" y1="96" x2="1182" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1238" y1="96" x2="1238" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1293" y1="96" x2="1293" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1349" y1="96" x2="1349" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1415" y1="96" x2="1415" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1470" y1="96" x2="1470" y2="104" stroke="#444" stroke-width="0.5"/>
-<line x1="1514" y1="96" x2="1514" y2="104" stroke="#444" stroke-width="0.5"/>
+<!-- Row background bands -->
+<rect x="184" y="158" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="224" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="290" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<rect x="184" y="422" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<text x="182"  y="88" text-anchor="start" font-size="15" fill="#888">4250 BC</text>
-<text x="292"  y="88" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="700">3760 BC</text>
-<text x="461"  y="88" text-anchor="middle" font-size="15" fill="#888">3000 BC</text>
-<text x="682"  y="88" text-anchor="middle" font-size="15" fill="#888">2000 BC</text>
-<text x="904"  y="88" text-anchor="middle" font-size="15" fill="#888">1000 BC</text>
+<!-- Top axis line -->
+<line x1="184" y1="100" x2="1727" y2="100" stroke="#555" stroke-width="1.5"/>
+<text x="180" y="131" text-anchor="start" font-size="26" fill="#999">▲ Top axis: conventional dates</text>
 
-<text x="1015" y="88" text-anchor="middle" font-size="15" fill="#888">500 BC</text>
-<text x="1232" y="88" text-anchor="middle" font-size="15" fill="#27AE60" font-weight="700">476 AD</text>
-<text x="1298" y="88" text-anchor="middle" font-size="15" fill="#E67E22" font-weight="700">777 AD</text>
+<!-- Axis ticks (every 500 yrs, plus exact endpoint) -->
+<line x1="184.0" y1="93" x2="184.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="184.0" y="85" text-anchor="start" font-size="17" fill="#999">5600 BC</text>
+<line x1="334.0" y1="93" x2="334.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="334.0" y="85" text-anchor="middle" font-size="17" fill="#999">5000 BC</text>
+<line x1="459.0" y1="93" x2="459.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="459.0" y="85" text-anchor="middle" font-size="17" fill="#999">4500 BC</text>
+<line x1="584.0" y1="93" x2="584.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="584.0" y="85" text-anchor="middle" font-size="17" fill="#999">4000 BC</text>
 
-<text x="1387" y="88" text-anchor="end" font-size="15" fill="#4A7276" font-weight="700">1130 AD</text>
+<line x1="759.0" y1="93" x2="759.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="759.0" y="85" text-anchor="middle" font-size="17" fill="#999">3300 BC</text>
 
-<text x="1391" y="88" text-anchor="start" font-size="15" font-weight="900" fill="#8B3A3A">1241 AD</text>
-<text x="1582" y="88" text-anchor="end" font-size="15" font-weight="700" fill="#ffffff">2028 AD</text>
+<line x1="902.25" y1="93" x2="902.25" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="902.25" y="85" text-anchor="middle" font-size="17" fill="#999">2727 BC</text>
 
-<line x1="184" y1="704" x2="1576" y2="704" stroke="#888" stroke-width="1.2"/>
-<line x1="184"  y1="697" x2="184"  y2="711" stroke="#aaa" stroke-width="1.2"/>
-<line x1="1576" y1="697" x2="1576" y2="711" stroke="#aaa" stroke-width="1.2"/>
-<line x1="362"  y1="698" x2="362"  y2="710" stroke="#888" stroke-width="0.8"/>
-<line x1="583"  y1="698" x2="583"  y2="710" stroke="#888" stroke-width="0.8"/>
-<line x1="805"  y1="698" x2="805"  y2="710" stroke="#888" stroke-width="0.8"/>
-<line x1="1026" y1="698" x2="1026" y2="710" stroke="#888" stroke-width="0.8"/>
-<line x1="292"  y1="697" x2="292"  y2="711" stroke="#ffffff" stroke-width="2.5"/>
-<line x1="1232" y1="697" x2="1232" y2="711" stroke="#27AE60" stroke-width="2.5"/>
-<line x1="1377" y1="697" x2="1377" y2="711" stroke="#4A7276" stroke-width="2.5"/>
-<line x1="1401" y1="697" x2="1401" y2="711" stroke="#8B3A3A" stroke-width="2.5"/>
-<line x1="1298" y1="697" x2="1298" y2="711" stroke="#E67E22" stroke-width="2.5"/>
-<line x1="1488" y1="698" x2="1488" y2="710" stroke="#888" stroke-width="0.8"/>
+<line x1="990.75" y1="93" x2="990.75" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="990.75" y="85" text-anchor="middle" font-size="17" fill="#999">2373 BC</text>
+<line x1="1222.5" y1="93" x2="1222.5" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="1222.5" y="85" text-anchor="middle" font-size="17" fill="#999">1446 BC</text>
+<line x1="1289.0" y1="93" x2="1289.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="1289.0" y="85" text-anchor="middle" font-size="17" fill="#999">1179 BC</text>
+<line x1="1478.0" y1="93" x2="1478.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="1478.0" y="85" text-anchor="middle" font-size="17" fill="#999">424 BC</text>
+<line x1="1603.5" y1="93" x2="1603.5" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="1603.5" y="85" text-anchor="middle" font-size="17" fill="#999">79 AD</text>
+<line x1="1701.75" y1="93" x2="1701.75" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="1727"    y="85" text-anchor="end" font-size="17" fill="#999">472 AD</text>
 
-<line x1="239"  y1="701" x2="239"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="294"  y1="701" x2="294"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="417"  y1="701" x2="417"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="473"  y1="701" x2="473"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="528"  y1="701" x2="528"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="638"  y1="701" x2="638"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="694"  y1="701" x2="694"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="750"  y1="701" x2="750"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="860"  y1="701" x2="860"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="916"  y1="701" x2="916"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="971"  y1="701" x2="971"  y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1082" y1="701" x2="1082" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1138" y1="701" x2="1138" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1193" y1="701" x2="1193" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1304" y1="701" x2="1304" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1359" y1="701" x2="1359" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1415" y1="701" x2="1415" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1470" y1="701" x2="1470" y2="707" stroke="#444" stroke-width="0.5"/>
-<line x1="1526" y1="701" x2="1526" y2="707" stroke="#444" stroke-width="0.5"/>
+<!-- Top comparison row: Rebuilt Manetho -->
 
-<text x="182"  y="729" text-anchor="start" font-size="15" fill="#888">5802 BC</text>
-<text x="292"  y="729" text-anchor="middle" font-size="15" fill="#ffffff" font-weight="700">5312 BC</text>
-<text x="362"  y="729" text-anchor="middle" font-size="15" fill="#888">5000 BC</text>
-<text x="583"  y="729" text-anchor="middle" font-size="15" fill="#888">4000 BC</text>
-<text x="805"  y="729" text-anchor="middle" font-size="15" fill="#888">3000 BC</text>
-<text x="1026" y="729" text-anchor="middle" font-size="15" fill="#888">2000 BC</text>
-<text x="1232" y="729" text-anchor="middle" font-size="15" fill="#27AE60" font-weight="700">1077 BC</text>
-<text x="1298" y="729" text-anchor="middle" font-size="15" fill="#E67E22" font-weight="700">776 BC</text>
-<text x="1383" y="729" text-anchor="end" font-size="15" fill="#4A7276" font-weight="700">423 BC</text>
-<text x="1397" y="729" text-anchor="start" font-size="15" font-weight="900" fill="#8B3A3A">312 BC</text>
-<text x="1488" y="729" text-anchor="middle" font-size="15" fill="#9E56BC" font-weight="700">79 AD</text>
-<text x="1576" y="729" text-anchor="end" font-size="15" font-weight="700" fill="#ffffff">476 AD</text>
+<!-- Background segments: 1446 BC (x=1222.5) and 424 BC (x=1478) lines drawn BEHIND Manetho's bars (y=224-274) -->
+<line x1="1222.5" y1="100" x2="1222.5" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<line x1="1478.0" y1="100" x2="1478.0" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 
-<text x="180" y="146" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Official History</text>
-<text x="180" y="200" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Hebrew Seder Olam</text>
-<text x="180" y="254" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Codex Vaticanus</text>
-<text x="180" y="308" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Codex Alexandrinus</text>
-<text x="180" y="362" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Josephus</text>
-<text x="180" y="416" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Theophilus</text>
-<text x="180" y="470" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Julius Africanus</text>
-<text x="180" y="524" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Eusebius</text>
-<text x="180" y="578" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Restored Septuagint</text>
-<text x="180" y="632" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Manetho</text>
-<text x="180" y="686" text-anchor="end" font-size="17" font-weight="600" fill="#e8e4d8">Tertullian</text>
+<!-- Rebuilt Manetho bars -->
+<rect x="184.0" y="224" width="575.0" height="50" fill="#3a3a3a" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+<text x="192" y="249" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book I (Supernatural)</text>
+<text x="751" y="249" text-anchor="end" dominant-baseline="central" fill="#fff" font-size="35" font-weight="600">2300</text>
+<rect x="759.0" y="224" width="530.25" height="50" fill="#6a6a6a" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+<text x="767" y="249" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book II (1st Dynasty to Troy)</text>
+<text x="1281" y="249" text-anchor="end" dominant-baseline="central" fill="#fff" font-size="35" font-weight="600">2121</text>
+<rect x="1289.25" y="224" width="262.5" height="50" fill="#999999" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+<text x="1297" y="249" text-anchor="start" dominant-baseline="central" fill="#222" font-size="26" font-weight="600">Book III</text>
+<text x="1544" y="249" text-anchor="end" dominant-baseline="central" fill="#222" font-size="35" font-weight="600">1050</text>
 
-<rect x="184" y="122" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="176" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="230" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="284" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="338" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="392" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="446" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="500" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="554" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="608" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
-<rect x="184" y="662" width="1392" height="36" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
+<!-- Rebuilt Septuagint bars -->
+<rect x="184.0" y="290" width="565.5" height="50" fill="#D6453C" class="bar"/>
+<text x="746" y="315" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">2,262</text>
+<rect x="749.5" y="290" width="293.0" height="50" fill="#E8862E" class="bar"/>
+<text x="1040" y="315" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">1,172</text>
+<rect x="1042.5" y="290" width="180.0" height="50" fill="#EBD11E" class="bar"/>
+<text x="1220" y="315" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">720</text>
+<rect x="1222.5" y="290" width="110.0" height="50" fill="#2FA36B" class="bar"/>
+<text x="1330" y="315" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">440</text>
+<rect x="1332.5" y="290" width="107.62" height="50" fill="#255FA0" class="bar"/>
+<text x="1437" y="315" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">430.5</text>
+<rect x="1440.12" y="290" width="17.5" height="50" fill="#E090C8" class="bar"/>
 
-<line x1="1479.17" y1="100" x2="1479.17" y2="338" stroke="#00F5FF" stroke-width="1.5" stroke-dasharray="5 3" class="ref"/>
-<rect x="1143.38" y="122.76" width="343.48" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="1485" y="140" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Vesuvius Offset 1,552</text>
+<!-- Josephus bars -->
+<rect x="228.75" y="422" width="564.0" height="50" fill="#D6453C" class="bar"/>
+<text x="790" y="447" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">2,256</text>
+<rect x="792.75" y="422" width="248.25" height="50" fill="#E8862E" class="bar"/>
+<text x="1038" y="447" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">993</text>
+<rect x="1041.0" y="422" width="126.25" height="50" fill="#EBD11E" class="bar"/>
+<text x="1164" y="447" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">505</text>
+<rect x="1167.25" y="422" width="148.0" height="50" fill="#2FA36B" class="bar"/>
+<text x="1312" y="447" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">592</text>
+<rect x="1315.25" y="422" width="117.63" height="50" fill="#255FA0" class="bar"/>
+<text x="1430" y="447" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">470.5</text>
+<rect x="1432.88" y="422" width="17.5" height="50" fill="#E090C8" class="bar"/>
+<rect x="1450.38" y="422" width="143.74" height="50" fill="#1a1a1a" class="bbox"/>
+<text x="1591" y="447" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">575</text>
 
-<rect x="292.0"  y="176" width="367.3" height="36" fill="#C0392B" class="bar"/>
-<rect x="659.3"  y="176" width="64.76"  height="36" fill="#E67E22" class="bar"/>
-<rect x="724.06"  y="176" width="112.01" height="36" fill="#D4C800" class="bar"/>
-<rect x="836.07"  y="176" width="106.46" height="36" fill="#27AE60" class="bar"/>
-<rect x="942.53"    y="176" width="90.83" height="36" fill="#2471A3" class="bar"/>
-<rect x="1033.36" y="176" width="15.53"  height="36" fill="#7D3C98" class="bar"/>
-<rect x="1049.26" y="176.76" width="343.48" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="656"  y="194" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">1,656</text>
-<text x="721"  y="194" text-anchor="end" dominant-baseline="central" fill="#fff"    font-size="26" font-weight="600">292</text>
-<text x="832"  y="194" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">500</text>
-<text x="938"  y="194" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">480</text>
-<text x="1028.83" y="194" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">409.5</text>
-<text x="1388"   y="194" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Vesuvius Offset 1,552</text>
+<line x1="1042.5" y1="290" x2="1042.5" y2="472" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<text x="180" y="513" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Seder Olam</text>
+<rect x="184" y="488" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<rect x="292.0"  y="230" width="497.27" height="36" fill="#C0392B" class="bar"/>
-<rect x="789.27"  y="230" width="259.95" height="36" fill="#E67E22" class="bar"/>
-<rect x="1049.22" y="230" width="112.01" height="36" fill="#D4C800" class="bar"/>
-<rect x="1161.22" y="230" width="119.77" height="36" fill="#27AE60" class="bar"/>
-<rect x="1280.99" y="230" width="95.48"  height="36" fill="#2471A3" class="bar"/>
-<rect x="1377" y="230" width="16"  height="36" fill="#9E56BC" class="bar"/>
-<text x="786"  y="248" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,242</text>
-<text x="1046" y="248" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">1,172</text>
-<text x="1158" y="248" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">505</text>
-<text x="1278" y="248" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">540</text>
-<text x="1374" y="248" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">430.5</text>
+<!-- Seder Olam bars -->
+<rect x="378.75" y="488" width="414.0" height="50" fill="#D6453C" class="bar"/>
+<text x="790" y="513" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">1,656</text>
+<rect x="792.75" y="488" width="73.0" height="50" fill="#E8862E" class="bar"/>
+<text x="863" y="513" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">292</text>
+<rect x="865.75" y="488" width="125.0" height="50" fill="#EBD11E" class="bar"/>
+<text x="988" y="513" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">500</text>
+<rect x="990.75" y="488" width="120.0" height="50" fill="#2FA36B" class="bar"/>
+<text x="1108" y="513" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">480</text>
+<rect x="1110.75" y="488" width="102.38" height="50" fill="#255FA0" class="bar"/>
+<text x="1210" y="513" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">409.5</text>
+<rect x="1213.13" y="488" width="17.5" height="50" fill="#E090C8" class="bar"/>
+<rect x="1230.63" y="488" width="105.245" height="50" fill="#2a2a2a" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" class="bbox"/>
+<text x="1236" y="513" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">420</text>
 
-<rect x="292.0"  y="284" width="501.71" height="36" fill="#C0392B" class="bar"/>
-<rect x="793.71"  y="284" width="237.77" height="36" fill="#E67E22" class="bar"/>
-<rect x="1031.47" y="284" width="112.01" height="36" fill="#D4C800" class="bar"/>
-<rect x="1143.48" y="284" width="124.21" height="36" fill="#27AE60" class="bar"/>
-<rect x="1267.69" y="284" width="95.48"  height="36" fill="#2471A3" class="bar"/>
-<rect x="1362" y="284" width="16"  height="36" fill="#9E56BC" class="bar"/>
-<text x="791"  y="302" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,262</text>
-<text x="1028" y="302" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">1,072</text>
-<text x="1140" y="302" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">505</text>
-<text x="1264" y="302" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">560</text>
-<text x="1359" y="302" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">430.5</text>
+<!-- Transmission line: Josephus/Seder Olam flood alignment (792.75 = 3165 BC) -->
+<line x1="792.75" y1="422" x2="792.75" y2="538" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 
-<rect x="267.83"  y="338" width="500.37" height="36" fill="#C0392B" class="bar"/>
-<rect x="768.2"  y="338" width="220.24" height="36" fill="#E67E22" class="bar"/>
-<rect x="988.45"  y="338" width="112.01" height="36" fill="#D4C800" class="bar"/>
-<rect x="1100.45" y="338" width="131.3" height="36" fill="#27AE60" class="bar"/>
-<rect x="1231.76" y="338" width="104.36" height="36" fill="#2471A3" class="bar"/>
-<rect x="1335.56" y="338" width="16"   height="36" fill="#9E56BC" class="bar"/>
-<rect x="1352.02" y="338.76" width="126.78" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="766"  y="356" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,256</text>
-<text x="986"  y="356" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">993</text>
-<text x="1098" y="356" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">505</text>
-<text x="1229" y="356" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">592</text>
-<text x="1333" y="356" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">470.5</text>
-<text x="1357" y="356" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">575</text>
-<text x="1479" y="347" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Caligula’s</text>
-<text x="1479" y="365" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Death</text>
+<text x="180" y="711" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Theophilus</text>
+<rect x="184" y="686" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<rect x="247.20"  y="392" width="497.27" height="36" fill="#C0392B" class="bar"/>
-<rect x="744.47"  y="392" width="207.6" height="36" fill="#E67E22" class="bar"/>
-<rect x="952.07"  y="392" width="159.69" height="36" fill="#D4C800" class="bar"/>
-<rect x="1111.76" y="392" width="119.77" height="36" fill="#27AE60" class="bar"/>
-<rect x="1231.54" y="392" width="98.81"  height="36" fill="#2471A3" class="bar"/>
-<rect x="1330" y="392" width="16"  height="36" fill="#9E56BC" class="bar"/>
-<rect x="1346.25" y="392.76" width="129.89" height="35.25" fill="#1a1a1a" class="bbox"/>
-<rect x="1476.78" y="392" width="2"   height="36" fill="#00F5FF" stroke="none" opacity="0.85"/>
-<text x="742"  y="410" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,242</text>
-<text x="950"  y="410" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">936</text>
-<text x="1110" y="410" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">720</text>
-<text x="1230" y="410" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">540</text>
-<text x="1327" y="410" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">445.5</text>
-<text x="1351" y="410" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">589</text>
-<text x="1477" y="401" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Caligula’s</text>
-<text x="1477" y="419" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Death</text>
+<!-- Theophilus bars -->
+<rect x="205.5" y="686" width="560.5" height="50" fill="#D6453C" class="bar"/>
+<text x="763" y="711" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">2,242</text>
+<rect x="766.0" y="686" width="234.0" height="50" fill="#E8862E" class="bar"/>
+<text x="997" y="711" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">936</text>
+<rect x="1000.0" y="686" width="180.0" height="50" fill="#EBD11E" class="bar"/>
+<text x="1177" y="711" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">720</text>
+<rect x="1180.0" y="686" width="135.0" height="50" fill="#2FA36B" class="bar"/>
+<text x="1312" y="711" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">540</text>
+<rect x="1315.0" y="686" width="111.375" height="50" fill="#255FA0" class="bar"/>
+<text x="1423" y="711" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">445.5</text>
+<rect x="1426.375" y="686" width="17.5" height="50" fill="#E090C8" class="bar"/>
+<rect x="1443.875" y="686" width="147.25" height="50" fill="#1a1a1a" class="bbox"/>
+<text x="1588" y="711" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">589</text>
 
-<rect x="249.64"  y="446" width="501.71" height="36" fill="#C0392B" class="bar"/>
-<rect x="751.34"  y="446" width="208.49" height="36" fill="#E67E22" class="bar"/>
-<rect x="959.83"  y="446" width="112.01" height="36" fill="#D4C800" class="bar"/>
-<rect x="1071.84" y="446" width="162.13" height="36" fill="#27AE60" class="bar"/>
-<rect x="1233.97" y="446" width="98.81"   height="36" fill="#2471A3" class="bar"/>
-<rect x="1332" y="446" width="16"   height="36" fill="#9E56BC" class="bar"/>
-<rect x="1348.69" y="446.76" width="127.23" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="1353" y="464" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">577</text>
-<text x="1476" y="464" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Passion</text>
-<text x="749"  y="464" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,262</text>
-<text x="957"  y="464" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">940</text>
-<text x="1069" y="464" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">505</text>
-<text x="1231" y="464" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">731</text>
-<text x="1330" y="464" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">445.5</text>
+<text x="180" y="777" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Africanus</text>
+<rect x="184" y="752" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<rect x="317.73" y="500" width="497.27" height="36" fill="#C0392B" class="bar"/>
-<rect x="815.0" y="500" width="208.93" height="36" fill="#E67E22" class="bar"/>
-<rect x="1023.93" y="500" width="112.01" height="36" fill="#D4C800" class="bar"/>
-<rect x="1135.94" y="500" width="106.46" height="36" fill="#27AE60" class="bar"/>
-<rect x="1242.4" y="500" width="95.82"    height="36" fill="#2471A3" class="bar"/>
-<rect x="1336.84" y="500" width="18"   height="36" fill="#9E56BC" class="bar"/>
-<text x="1345.84" y="524" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="30" font-weight="700">*</text>
-<rect x="1356.12" y="500.76" width="121.46" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="1359.84" y="518" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">551</text>
-<text x="1476.84" y="518" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Passion</text>
-<text x="810.84" y="518" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,242</text>
-<text x="1019.84" y="518" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">942</text>
-<text x="1131.84" y="518" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">505</text>
-<text x="1237.84" y="518" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">480</text>
-<text x="1334" y="518" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">432</text>
+<!-- Africanus bars -->
+<rect x="208.25" y="752" width="565.5" height="50" fill="#D6453C" class="bar"/>
+<text x="771" y="777" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">2,262</text>
+<rect x="773.75" y="752" width="235.0" height="50" fill="#E8862E" class="bar"/>
+<text x="1006" y="777" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">940</text>
+<rect x="1008.75" y="752" width="126.25" height="50" fill="#EBD11E" class="bar"/>
+<text x="1132" y="777" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">505</text>
+<rect x="1135.0" y="752" width="182.75" height="50" fill="#2FA36B" class="bar"/>
+<text x="1315" y="777" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">731</text>
+<rect x="1317.75" y="752" width="108.625" height="50" fill="#255FA0" class="bar"/>
+<text x="1423" y="777" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">434.5</text>
+<rect x="1426.375" y="752" width="17.5" height="50" fill="#E090C8" class="bar"/>
+<rect x="1443.875" y="752" width="147.25" height="50" fill="#1a1a1a" class="bbox"/>
+<text x="1588" y="777" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">589</text>
 
-<rect x="1376.38" y="662.38" width="102.25" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="1381" y="680" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">464</text>
-<text x="1479" y="680" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="15" font-weight="600">Both</text>
+<text x="180" y="843" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Eusebius</text>
+<rect x="184" y="818" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<line x1="1479.17" y1="338" x2="1479.17" y2="374" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1479.17" y1="374" x2="1476.51" y2="392" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1476.78" y1="392" x2="1476.78" y2="428" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1476.51" y1="428" x2="1476.51" y2="446" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1476.29" y1="446" x2="1476.29" y2="482" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1476.29" y1="482" x2="1477.95" y2="500" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1476.84" y1="500" x2="1476.84" y2="536" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
+<!-- Eusebius bars -->
+<rect x="284.0" y="818" width="560.5" height="50" fill="#D6453C" class="bar"/>
+<text x="842" y="843" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">2,242</text>
+<rect x="844.5" y="818" width="235.5" height="50" fill="#E8862E" class="bar"/>
+<text x="1077" y="843" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">942</text>
+<rect x="1080.0" y="818" width="126.25" height="50" fill="#EBD11E" class="bar"/>
+<text x="1203" y="843" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">505</text>
+<rect x="1206.25" y="818" width="120.0" height="50" fill="#2FA36B" class="bar"/>
+<text x="1323" y="843" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">480</text>
+<rect x="1326.25" y="818" width="108.0" height="50" fill="#255FA0" class="bar"/>
+<text x="1431" y="843" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">432</text>
+<rect x="1434.25" y="818" width="19.75" height="50" fill="#E090C8" class="bar"/>
+<rect x="1454.0" y="818" width="137.75" height="50" fill="#1a1a1a" class="bbox"/>
+<text x="1589" y="843" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">551</text>
 
-<line x1="1477.95" y1="536" x2="1479" y2="662" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1479" y1="662" x2="1479" y2="698" stroke="#00F5FF" stroke-width="1.5" class="ref"/>
-<line x1="1479" y1="698" x2="1479" y2="704" stroke="#00F5FF" stroke-width="1.5" stroke-dasharray="5 3" class="ref"/>
+<text x="180" y="579" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Codex Vaticanus</text>
+<rect x="184" y="554" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<line x1="292.0"  y1="212" x2="292.0"  y2="230" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="659.3"  y1="212" x2="789.27"  y2="230" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="724.06"  y1="212" x2="1049.22" y2="230" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
-<line x1="836.07"  y1="212" x2="1161.22" y2="230" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
-<line x1="942.53"  y1="212" x2="1280.99" y2="230" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
-<line x1="1033.36" y1="212" x2="1280.99" y2="230" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1033.36" y1="212" x2="1376.48" y2="230" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
-<line x1="292.0"  y1="266" x2="292.0"  y2="284" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="789.27"  y1="266" x2="793.71"  y2="284" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="1049.22" y1="266" x2="1031.47" y2="284" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
-<line x1="1161.22" y1="266" x2="1143.48" y2="284" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
-<line x1="1280.99" y1="266" x2="1267.69" y2="284" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
-<line x1="1376.48" y1="266" x2="1363.17" y2="284" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1392.0" y1="266" x2="1378.7" y2="284" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
-<line x1="292.0"  y1="320" x2="267.83"  y2="338" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="793.71"  y1="320" x2="768.2"  y2="338" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="1031.47" y1="320" x2="988.45"  y2="338" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
-<line x1="1143.48" y1="320" x2="1100.45" y2="338" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
-<line x1="1267.69" y1="320" x2="1231.76" y2="338" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
-<line x1="1363.17" y1="320" x2="1336.11" y2="338" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1378.7" y1="320" x2="1351.64" y2="338" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
-<line x1="267.83"  y1="374" x2="247.20"  y2="392" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="768.2"  y1="374" x2="744.47"  y2="392" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="988.45"  y1="374" x2="952.07"  y2="392" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
-<line x1="1100.45" y1="374" x2="1111.76" y2="392" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
-<line x1="1231.76" y1="374" x2="1231.54" y2="392" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
-<line x1="1336.11" y1="374" x2="1330.35" y2="392" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1351.64" y1="374" x2="1345.87" y2="392" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
-<line x1="247.20"  y1="428" x2="249.64"  y2="446" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="744.47"  y1="428" x2="751.34"  y2="446" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="952.07"  y1="428" x2="959.83"  y2="446" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
-<line x1="1111.76" y1="428" x2="1071.84" y2="446" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
-<line x1="1231.54" y1="428" x2="1233.97" y2="446" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
-<line x1="1330.35" y1="428" x2="1332.78" y2="446" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1345.87" y1="428" x2="1348.31" y2="446" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
-<line x1="249.64"  y1="482" x2="317.73" y2="500" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="751.34"  y1="482" x2="815.0" y2="500" stroke="#C0392B" stroke-width="2.5" opacity="0.8"/>
-<line x1="959.83"  y1="482" x2="1023.93" y2="500" stroke="#E67E22" stroke-width="2.5" opacity="0.8"/>
-<line x1="1071.84" y1="482" x2="1135.94" y2="500" stroke="#D4C800" stroke-width="2.5" opacity="0.8"/>
-<line x1="1233.97" y1="482" x2="1242.4" y2="500" stroke="#27AE60" stroke-width="2.5" opacity="0.8"/>
-<line x1="1332.78" y1="482" x2="1338.22" y2="500" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1348.31" y1="482" x2="1355.74" y2="500" stroke="#7D3C98" stroke-width="3"   opacity="0.9"/>
-<line x1="317.73"  y1="536" x2="228.12" y2="554" stroke="#C0392B" stroke-width="2.5"   opacity="0.8"/>
-<line x1="815.0"  y1="536" x2="729.83" y2="554" stroke="#E67E22" stroke-width="2.5"   opacity="0.8"/>
-<line x1="1023.93"  y1="536" x2="989.78" y2="554" stroke="#D4C800" stroke-width="2.5"   opacity="0.8"/>
-<line x1="1135.94"  y1="536" x2="1149.47" y2="554" stroke="#27AE60" stroke-width="2.5"   opacity="0.8"/>
-<line x1="1242.4"  y1="536" x2="1247.06" y2="554" stroke="#2471A3" stroke-width="3"   opacity="0.9"/>
-<line x1="1338.22"  y1="536" x2="1342.54" y2="554" stroke="#9E56BC" stroke-width="3"   opacity="0.9"/>
+<!-- Vaticanus bars -->
+<rect x="378.875" y="554" width="560.5" height="50" fill="#D6453C" class="bar"/>
+<rect x="939.375" y="554" width="293.0" height="50" fill="#E8862E" class="bar"/>
+<rect x="1232.375" y="554" width="126.25" height="50" fill="#EBD11E" class="bar"/>
+<rect x="1358.625" y="554" width="135.0" height="50" fill="#2FA36B" class="bar"/>
+<rect x="1493.625" y="554" width="107.625" height="50" fill="#255FA0" class="bar"/>
+<text x="936" y="579" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="35" font-weight="600">2,242</text>
+<text x="1229" y="579" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="35" font-weight="600">1,172</text>
+<text x="1240" y="579" text-anchor="start" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">505</text>
+<text x="1363" y="579" text-anchor="start" dominant-baseline="central" fill="#333333" font-size="35" font-weight="600">540</text>
+<text x="1598" y="579" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">430.5</text>
+<rect x="1601.25" y="554" width="17.5" height="50" fill="#E090C8" class="bar"/>
 
-<line x1="1232" y1="100" x2="1232" y2="122" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
-<line x1="1232" y1="158" x2="1232" y2="176" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
-<line x1="1232" y1="212" x2="1233.97" y2="446" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
-<line x1="1233.97" y1="482" x2="1232" y2="500" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
-<line x1="1232" y1="536" x2="1232" y2="704" stroke="#27AE60" stroke-width="2" stroke-dasharray="6 4" class="ref"/>
+<text x="180" y="645" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Tertullian</text>
+<rect x="184" y="620" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
-<line x1="1143" y1="100" x2="1143.0" y2="122" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" class="ref"/>
-<line x1="1143.0" y1="158" x2="1143" y2="176" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" class="ref"/>
-<line x1="1143" y1="212" x2="1143" y2="230" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" class="ref"/>
-<line x1="1143" y1="266" x2="1143" y2="704" stroke="#D4C800" stroke-width="2" stroke-dasharray="5 3" class="ref"/>
-<text x="1143" y="88"  text-anchor="middle" font-size="15" fill="#D4C800" font-weight="700">79 AD</text>
-<text x="1143" y="729" text-anchor="middle" font-size="15" fill="#D4C800" font-weight="700">1474 BC</text>
+<!-- Tertullian: single black block, 424 BC to 41 AD (top-axis dates directly) -->
+<rect x="1478.0" y="620" width="116.13" height="50" fill="#1a1a1a" class="bbox"/>
+<text x="1485" y="645" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">~464.5</text>
 
-<line x1="1377" y1="100" x2="1377" y2="122" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="158" x2="1377" y2="176" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="212" x2="1377" y2="338" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="374" x2="1377" y2="392" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="428" x2="1377" y2="446" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="482" x2="1377" y2="500" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="536" x2="1377" y2="662" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
-<line x1="1377" y1="698" x2="1377" y2="704" stroke="#5B9EC9" stroke-width="2" stroke-dasharray="5 4" class="ref"/>
+<!-- Transmission line: Theophilus/Africanus blue end alignment (1426.375 = Sept 631 BC) -->
+<line x1="1426.375" y1="686" x2="1426.375" y2="802" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 
-<line x1="1401" y1="100" x2="1401" y2="122" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
-<line x1="1401" y1="158" x2="1401" y2="338" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
-<line x1="1401" y1="374" x2="1401" y2="392" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
-<line x1="1401" y1="428" x2="1401" y2="446" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
-<line x1="1401" y1="482" x2="1401" y2="500" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
-<line x1="1401" y1="536" x2="1401" y2="662" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
-<line x1="1401" y1="698" x2="1401" y2="704" stroke="#C0392B" stroke-width="2" stroke-dasharray="4 4" class="ref"/>
+<!-- Transmission line: Septuagint Exodus point, extends to top axis, on top of Septuagint/Manetho/Official -->
+<line x1="1222.5" y1="274" x2="1222.5" y2="340" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<text x="1201" y="183" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="21" font-weight="600">Rebuilt Exodus</text>
+<polygon points="1216.5,183 1208.5,176 1208.5,190" fill="white" opacity="0.9"/>
 
-<line x1="1488" y1="100" x2="1488" y2="698" stroke="#7D3C98" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<text x="1484" y="88" text-anchor="middle" font-size="15" fill="#9E56BC" font-weight="700">1631 AD</text>
+<!-- Transmission line: Theophilus/Africanus black-tail end (1591.125 = 29 AD) -->
+<line x1="1591.125" y1="620" x2="1591.125" y2="802" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 
-<line x1="1298" y1="100" x2="1298" y2="122" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="158" x2="1298" y2="176" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="212" x2="1298" y2="230" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="266" x2="1298" y2="284" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="320" x2="1298" y2="338" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="374" x2="1298" y2="392" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="428" x2="1298" y2="446" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="482" x2="1298" y2="500" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
-<line x1="1298" y1="536" x2="1298" y2="704" stroke="#E67E22" stroke-width="2" stroke-dasharray="6 3" class="ref"/>
+<text x="1457" y="183" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="21" font-weight="600">Darius [II]</text>
+<polygon points="1472,183 1464,176 1464,190" fill="white" opacity="0.9"/>
+<!-- Transmission line: Tertullian black block start / 424 BC -->
+<line x1="1478.0" y1="274" x2="1478.0" y2="670" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<!-- Transmission line: Septuagint blue end thru Manetho (575.5 BC) -->
+<line x1="1440.12" y1="224" x2="1440.12" y2="340" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<text x="1609.125" y="700" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600"> Caligula's</text>
+<text x="1597.125" y="722" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600">Death (29 AD)</text>
+<text x="1609.125" y="766" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600"> Christ's</text>
+<text x="1597.125" y="788" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600">Death (29 AD)</text>
+<text x="1612.12" y="436" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600"> Caligula's</text>
+<text x="1600.12" y="458" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600">Death (41 AD)</text>
+<text x="1612.13" y="634" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600"> Christ's</text>
+<text x="1600.13" y="656" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600">Double Death</text>
+<text x="1609.75" y="832" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600"> Christ's</text>
+<text x="1597.75" y="854" text-anchor="start" dominant-baseline="central" fill="#ccc" font-size="18" font-weight="600">Death (32 AD)</text>
+<!-- Transmission line: Josephus green end → Theophilus (atop Tert) -->
+<line x1="1315.25" y1="422" x2="1315.25" y2="736" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<!-- Transmission line: Josephus black end → Tertullian black end (x≈1594.13) -->
+<line x1="1594.13" y1="422" x2="1594.13" y2="670" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<!-- Triangular pointers for death labels -->
+<polygon points="1600.12,436 1609.12,429 1609.12,443" fill="white" opacity="0.9"/>
+<polygon points="1597.125,766 1606.125,759 1606.125,773" fill="white" opacity="0.9"/>
+<polygon points="1597.125,700 1606.125,693 1606.125,707" fill="white" opacity="0.9"/>
+<polygon points="1600.13,634 1609.13,627 1609.13,641" fill="white" opacity="0.9"/>
+<polygon points="1597.75,832 1606.75,825 1606.75,839" fill="white" opacity="0.9"/>
 
-<rect x="228.12" y="554" width="501.71" height="36" fill="#C0392B" class="bar"/>
-<rect x="729.83" y="554" width="259.95" height="36" fill="#E67E22" class="bar"/>
-<rect x="989.78" y="554" width="159.69" height="36" fill="#D4C800" class="bar"/>
-<rect x="1149.47" y="554" width="97.59"  height="36" fill="#27AE60" class="bar"/>
-<rect x="1247.06" y="554" width="95.48"  height="36" fill="#2471A3" class="bar"/>
-<rect x="1342.54" y="554" width="15.53"  height="36" fill="#9E56BC" class="bar"/>
-<text x="727" y="572" text-anchor="end" dominant-baseline="central" fill="#FADBD8" font-size="26" font-weight="600">2,262</text>
-<text x="987" y="572" text-anchor="end" dominant-baseline="central" fill="#FDEBD0" font-size="26" font-weight="600">1,172</text>
-<text x="1146" y="572" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">720</text>
-<text x="1244" y="572" text-anchor="end" dominant-baseline="central" fill="#333333" font-size="26" font-weight="600">440</text>
-<text x="1340" y="572" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="26" font-weight="600">430.5</text>
-<rect x="228.12" y="608.38" width="510.13" height="35.25" fill="#1a1a1a" class="bbox"/>
-<rect x="738.26" y="608.38" width="470.43" height="35.25" fill="#1a1a1a" class="bbox"/>
-<rect x="1208.69" y="608.38" width="232.89" height="35.25" fill="#1a1a1a" class="bbox"/>
-<text x="733" y="626" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book I (Supernatural, 2300)</text>
-<text x="1204" y="626" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book II (1st Dynasty to Troy, 2121)</text>
-<text x="1436" y="626" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="26" font-weight="600">Book III (1050)</text>
-<line x1="292" y1="100" x2="292" y2="704" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" class="ref"/>
-<line id="finder-line-1" x1="0" y1="100" x2="0" y2="704" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" opacity="0" class="ref"/>
-<line id="finder-line-2" x1="0" y1="100" x2="0" y2="704" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" opacity="0" class="ref"/>
-<line x1="1576" y1="100" x2="1576" y2="704" stroke="#ffffff" stroke-width="2" stroke-dasharray="7 4" class="ref"/>
-<rect id="ann1-off-rect" x="0" y="125" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
-<rect id="ann1-ter-rect" x="0" y="665" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
-<rect id="ann2-off-rect" x="0" y="125" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
-<rect id="ann2-ter-rect" x="0" y="665" width="0" height="28" fill="#1a1a1e" stroke="#ffffff" stroke-width="1.5" rx="3" opacity="0" pointer-events="none"/>
+<!-- Transmission line: 3300 BC – Manetho Book I/II boundary (x=759) -->
+<line x1="759.0" y1="100" x2="759.0" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<!-- Transmission line: 1179 BC – Manetho Book II/III boundary (x=1289) -->
+<line x1="1289.0" y1="100" x2="1289.0" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<rect x="1591.125" y="620" width="3.0" height="50" fill="white" opacity="0.9"/>
+<!-- Lower axis: +1060-yr phantom offset. Each x reads 1060 yrs LATER than the top axis
+     (bottom BC-date = top BC-date − 1060; e.g. top 79 AD ↔ bottom 1139 AD). Floods aligned Josephus↔Hebrew. -->
+<line x1="184" y1="934" x2="1727" y2="934" stroke="#555" stroke-width="1.5"/>
+<text x="180" y="916" text-anchor="start" font-size="26" fill="#999">▼ Lower axis: +1060 phantom-offset equivalent (1060 years later)</text>
+<line x1="184.0" y1="927" x2="184.0" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="184.0" y="961" text-anchor="start" font-size="17" fill="#999">4540 BC</text>
+<line x1="378.75" y1="927" x2="378.75" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="378.75" y="961" text-anchor="middle" font-size="17" fill="#999">3761 BC</text>
+<line x1="569.0" y1="927" x2="569.0" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="569.0" y="961" text-anchor="middle" font-size="17" fill="#999">3000 BC</text>
 
-<line id="ann1-off-line" x1="0" y1="122" x2="0" y2="158" stroke="#ffffff" stroke-width="2" opacity="0" class="ref"/>
-<text id="ann1-off-text" x="0" y="140" dominant-baseline="central" font-size="26" font-weight="700" fill="#ffffff" opacity="0" pointer-events="none"></text>
-<line id="ann1-ter-line" x1="0" y1="662" x2="0" y2="698" stroke="#ffffff" stroke-width="2" opacity="0" class="ref"/>
-<text id="ann1-ter-text" x="0" y="680" dominant-baseline="central" font-size="26" font-weight="700" fill="#ffffff" opacity="0" pointer-events="none"></text>
-<line id="ann2-off-line" x1="0" y1="122" x2="0" y2="158" stroke="#ffffff" stroke-width="2" opacity="0" class="ref"/>
-<text id="ann2-off-text" x="0" y="140" dominant-baseline="central" font-size="26" font-weight="700" fill="#ffffff" opacity="0" pointer-events="none"></text>
-<line id="ann2-ter-line" x1="0" y1="662" x2="0" y2="698" stroke="#ffffff" stroke-width="2" opacity="0" class="ref"/>
-<text id="ann2-ter-text" x="0" y="680" dominant-baseline="central" font-size="26" font-weight="700" fill="#ffffff" opacity="0" pointer-events="none"></text>
-<rect id="hover-overlay" x="184" y="100" width="1392" height="544" fill="transparent" style="cursor:crosshair;"/>
-<line id="crosshair" x1="0" y1="100" x2="0" y2="698" stroke="#c8b98a" stroke-width="1" stroke-dasharray="3 3" opacity="0" class="ref"/>
 
-<line x1="184" y1="759" x2="224" y2="759" stroke="#D4C800" stroke-width="2.5" stroke-dasharray="5 3"/>
-<text x="230" y="764" font-size="29" font-weight="700" fill="#D4C800">Exodus Estimate (3840 AM)</text>
+<line x1="792.75" y1="927" x2="792.75" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="792.75" y="961" text-anchor="middle" font-size="17" fill="#999">2105 BC</text>
+<line x1="990.75" y1="927" x2="990.75" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="990.75" y="961" text-anchor="middle" font-size="17" fill="#999">1313 BC</text>
+<line x1="1110.75" y1="927" x2="1110.75" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="1110.75" y="961" text-anchor="middle" font-size="17" fill="#999">833 BC</text>
+<line x1="1213.25" y1="927" x2="1213.25" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="1213.25" y="961" text-anchor="middle" font-size="17" fill="#999">423 BC</text>
+<line x1="1338.5" y1="927" x2="1338.5" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="1338.5" y="961" text-anchor="middle" font-size="17" fill="#999">79 AD</text>
+<line x1="1436.75" y1="927" x2="1436.75" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="1436.75" y="961" text-anchor="middle" font-size="17" fill="#999">472 AD</text>
+<line x1="1603.5" y1="927" x2="1603.5" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="1603.5" y="961" text-anchor="middle" font-size="17" fill="#999">1139 AD</text>
+<line x1="1726.5" y1="927" x2="1726.5" y2="941" stroke="#aaa" stroke-width="1.2"/>
+<text x="1726.5" y="961" text-anchor="end" font-size="17" fill="#999">1631 AD</text>
 
-<line x1="682" y1="759" x2="722" y2="759" stroke="#27AE60" stroke-width="2.5" stroke-dasharray="6 4"/>
-<text x="728" y="764" font-size="29" font-weight="700" fill="#27AE60">Solomon Reigns (4236 AM)</text>
+<line id="crosshair" x1="0" y1="100" x2="0" y2="961" stroke="#fff" stroke-width="1" stroke-dasharray="4 3" opacity="0" class="ref"/>
+<line id="finder-line-1" x1="0" y1="100" x2="0" y2="961" stroke="#aaa" stroke-width="1.5" stroke-dasharray="6 4" opacity="0" class="ref"/>
+<line id="finder-line-2" x1="0" y1="100" x2="0" y2="961" stroke="#aaa" stroke-width="1.5" stroke-dasharray="6 4" opacity="0" class="ref"/>
+<rect id="ann-off-rect" x="0" y="160" width="0" height="46" rx="5" fill="rgba(8,8,12,0.92)" stroke="#c8b98a" stroke-width="1" opacity="0" class="ref"/>
+<text id="ann-off-text" x="0" y="183" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="35" font-weight="700" opacity="0" class="ref"/>
+<rect id="ann-ter-rect" x="0" y="622" width="0" height="46" rx="5" fill="rgba(8,8,12,0.92)" stroke="#c8b98a" stroke-width="1" opacity="0" class="ref"/>
+<text id="ann-ter-text" x="0" y="645" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="35" font-weight="700" opacity="0" class="ref"/>
 
-<line x1="1140" y1="759" x2="1180" y2="759" stroke="#E67E22" stroke-width="2.5" stroke-dasharray="6 3"/>
-<text x="1186" y="764" font-size="29" font-weight="700" fill="#E67E22">First Olympiad (4537 AM)</text>
-
-<line x1="184" y1="790" x2="224" y2="790" stroke="#5B9EC9" stroke-width="2.5" stroke-dasharray="5 4"/>
-<text x="230" y="795" font-size="29" font-weight="700" fill="#5B9EC9">Temple Destroyed (4890 AM)</text>
-
-<line x1="682" y1="790" x2="722" y2="790" stroke="#C0392B" stroke-width="2.5" stroke-dasharray="4 4"/>
-<text x="728" y="795" font-size="29" font-weight="700" fill="#C0392B">Seleucid Era (5001 AM)</text>
-
-<line x1="1140" y1="790" x2="1180" y2="790" stroke="#7D3C98" stroke-width="2.5" stroke-dasharray="6 3"/>
-<text x="1186" y="795" font-size="29" font-weight="700" fill="#9E56BC">Vesuvius Erupts (5392 AM)</text>
+<rect id="hover-overlay" x="184" y="100" width="1543" height="564" fill="transparent" style="cursor:crosshair;"/>
 
 </svg>
 </div>
+
 <div id="tooltip"></div>
 
 <script>
 const PLOT_X0   = 184;
-const PLOT_W    = 1392;
-const SPAN_YRS  = 6276;
+const PLOT_W    = 1543;
+const SPAN_YRS  = 6172;
 const PX_PER_YR = PLOT_W / SPAN_YRS;
-const AM1_PX    = 292;
 
-function fmtTop(yr) { const r = yr <= 0 ? Math.round(-yr) : Math.round(yr); const n = r === 0 ? 1 : r; return yr <= 0 ? n + ' BC' : n + ' AD'; }
-function fmtBot(yr) { const r = yr > 0 ? Math.round(yr) : Math.round(-yr); const n = r === 0 ? 1 : r; return yr > 0 ? n + ' BC' : n + ' AD'; }
-function fmtAM(am)  {
-  const r = Math.round(am);
-  return r < 1 ? 'Before AM 1 (' + Math.abs(r-1) + ' yrs prior)' : r + ' AM';
+function fmtYear(yr) {
+  // signed year: positive = BC, negative/zero = AD, NO year zero.
+  // yr>=1 -> BC; the boundary instant (yr=0) is the start of 1 AD.
+  if (yr >= 1)  return Math.round(yr) + ' BC';
+  if (yr <= 0)  return (Math.floor(-yr) + 1) + ' AD';
+  return '1 BC'; // 0 < yr < 1 : still within the year 1 BC
 }
+function fmtTop(yr) { return fmtYear(yr); }
+function fmtBot(yr) { return fmtYear(yr); }
+const VESUAM_OFFSET = 1060;
+function compBot(topYr) { return topYr - VESUAM_OFFSET; }
 
 const ROWS = [
-  { name:'Hebrew Seder Olam', shortName:'Seder Olam', y:176, segments:[
-    {x:292.0,     w:367.3,   color:'#C0392B',label:'Creation → Flood',   years:1656},
-    {x:659.3,     w:64.76,    color:'#E67E22',label:'Flood → Abraham',    years:292},
-    {x:724.06,     w:112.01,   color:'#D4C800',label:'Abraham → Exodus',   years:505},
-    {x:836.07,     w:106.46,   color:'#27AE60',label:'Exodus → Temple',    years:480},
-    {x:942.53,     w:90.83, color:'#2471A3',label:'Temple → Desolation',years:409.5},
-    {x:1033.36, w:15.53, color:'#7D3C98',label:'Captivity',          years:70},
-    {x:1048.88, w:344.23,color:'#1a1a1a',label:'Vesuvius Offset',    years:1552}
+  { name:'Rebuilt Manetho', shortName:'Manetho', y:224, segments:[
+    {x:184.0, w:575.0, color:'#3a3a3a', label:'Book I (Supernatural)', years:2300},
+    {x:759.0, w:530.25, color:'#6a6a6a', label:'Book II (1st Dynasty to Troy)', years:2121},
+    {x:1289.25, w:262.5, color:'#999999', label:'Book III', years:1050}
   ]},
-  { name:'Codex Vaticanus', shortName:'Vaticanus', y:230, segments:[
-    {x:292.0,  w:497.27,color:'#C0392B',label:'Creation → Flood',   years:2242},
-    {x:789.27,  w:259.95,color:'#E67E22',label:'Flood → Abraham',    years:1172},
-    {x:1049.22, w:112.01,color:'#D4C800',label:'Abraham → Exodus',   years:505},
-    {x:1161.22, w:119.77,color:'#27AE60',label:'Exodus → Temple',    years:540},
-    {x:1280.99, w:95.48, color:'#2471A3',label:'Temple → Desolation',years:430.5},
-    {x:1376.48, w:15.53, color:'#7D3C98',label:'Captivity',               years:70}
+  { name:'Rebuilt Septuagint', shortName:'Septuagint', y:290, segments:[
+    {x:184.0, w:565.5, color:'#D6453C', label:'Creation → Flood', years:2262},
+    {x:749.5, w:293.0, color:'#E8862E', label:'Flood → Abraham', years:1172},
+    {x:1042.5, w:180.0, color:'#EBD11E', label:'Abraham → Exodus', years:720},
+    {x:1222.5, w:110.0, color:'#2FA36B', label:'Exodus → Temple', years:440},
+    {x:1332.5, w:107.62, color:'#255FA0', label:'Temple → Desolation', years:430.5},
+    {x:1440.12, w:17.5, color:'#E090C8', label:'Captivity', years:70}
   ]},
-  { name:'Codex Alexandrinus', shortName:'Alexandrinus', y:284, segments:[
-    {x:292.0,  w:501.71,color:'#C0392B',label:'Creation → Flood',   years:2262},
-    {x:793.71,  w:237.77,color:'#E67E22',label:'Flood → Abraham',    years:1072},
-    {x:1031.47, w:112.01,color:'#D4C800',label:'Abraham → Exodus',   years:505},
-    {x:1143.48, w:124.21,color:'#27AE60',label:'Exodus → Temple',    years:560},
-    {x:1267.69, w:95.48, color:'#2471A3',label:'Temple → Desolation',years:430.5},
-    {x:1363.17, w:15.53, color:'#7D3C98',label:'Captivity',               years:70}
+  { name:'Eupolemus', shortName:'Eupolemus', y:356, segments:[
+    {x:257.25, w:645.0, color:'#3a3a3a', label:'To Exodus', years:2580},
+    {x:902.25, w:672.25, color:'#6a6a6a', label:'To 38 BC', years:2689}
   ]},
-  { name:'Josephus', shortName:'Josephus', y:338, amOffset:109, segments:[
-    {x:267.83,  w:500.37,color:'#C0392B',label:'Creation → Flood',   years:2256},
-    {x:768.2,  w:220.24,color:'#E67E22',label:'Flood → Abraham',    years:993},
-    {x:988.45,  w:112.01,color:'#D4C800',label:'Abraham → Exodus',   years:505},
-    {x:1100.45, w:131.3,color:'#27AE60',label:'Exodus → Temple',    years:592},
-    {x:1231.76, w:104.36,color:'#2471A3',label:'Temple → Desolation',years:470.5},
-    {x:1336.11, w:15.53,  color:'#7D3C98',label:'Captivity',                years:70},
-    {x:1351.64, w:127.09,color:'#1a1a1a',label:'Caligula\'s Death',  years:575}
+  { name:'Josephus', shortName:'Josephus', y:422, amOffset:-179, segments:[
+    {x:228.75, w:564.0, color:'#D6453C', label:'Creation → Flood', years:2256},
+    {x:792.75, w:248.25, color:'#E8862E', label:'Flood → Abraham', years:993},
+    {x:1041.0, w:126.25, color:'#EBD11E', label:'Abraham → Exodus', years:505},
+    {x:1167.25, w:148.0, color:'#2FA36B', label:'Exodus → Temple', years:592},
+    {x:1315.25, w:117.62, color:'#255FA0', label:'Temple → Desolation', years:470.5},
+    {x:1432.88, w:17.5, color:'#E090C8', label:'Captivity', years:70},
+    {x:1450.38, w:143.75, color:'#1a1a1a', label:'Caligula\'s Death', years:575}
   ]},
-  { name:'Theophilus of Antioch', shortName:'Theophilus', y:392, amOffset:202, segments:[
-    {x:247.2,  w:497.27,color:'#C0392B',label:'Creation → Flood',        years:2242},
-    {x:744.47,  w:207.6,color:'#E67E22',label:'Flood → Abraham',          years:936},
-    {x:952.07,  w:159.69,color:'#D4C800',label:'Abraham → Exodus',         years:720},
-    {x:1111.76, w:119.77,color:'#27AE60',label:'Exodus → Temple',          years:540},
-    {x:1231.54, w:98.81, color:'#2471A3',label:'Temple → Desolation',      years:445.5},
-    {x:1330.35, w:15.53, color:'#7D3C98',label:'Captivity',                     years:70},
-    {x:1345.87, w:130.64,color:'#1a1a1a',label:'Caligula\'s Death',      years:589}
+  { name:'Hebrew Seder Olam', shortName:'Seder Olam', y:488, amOffset:-779, segments:[
+    {x:378.75, w:414.0, color:'#D6453C', label:'Creation → Flood', years:1656},
+    {x:792.75, w:73.0, color:'#E8862E', label:'Flood → Abraham', years:292},
+    {x:865.75, w:125.0, color:'#EBD11E', label:'Abraham → Exodus', years:500},
+    {x:990.75, w:120.0, color:'#2FA36B', label:'Exodus → Temple', years:480},
+    {x:1110.75, w:102.38, color:'#255FA0', label:'Temple → Desolation', years:409.5},
+    {x:1213.13, w:17.5, color:'#E090C8', label:'Captivity', years:70},
+    {x:1230.63, w:105.245, color:'#2a2a2a', label:'Black Block', years:420}
   ]},
-  { name:'Julius Africanus', shortName:'Africanus', y:446, amOffset:191, segments:[
-    {x:249.64,  w:501.71,color:'#C0392B',label:'Creation → Flood',   years:2262},
-    {x:751.34,  w:208.49,color:'#E67E22',label:'Flood → Abraham',    years:940},
-    {x:959.83,  w:112.01,color:'#D4C800',label:'Abraham → Exodus',   years:505},
-    {x:1071.84, w:162.13,color:'#27AE60',label:'Exodus → Temple',    years:731},
-    {x:1233.97, w:98.81, color:'#2471A3',label:'Temple → Desolation',years:445.5},
-    {x:1332.78, w:15.53, color:'#7D3C98',label:'Captivity',               years:70},
-    {x:1348.31, w:127.98,color:'#1a1a1a',label:'Passion',              years:577}
+  { name:'Codex Vaticanus', shortName:'Vaticanus', y:554, amOffset:-779, segments:[
+    {x:378.875, w:560.5, color:'#D6453C', label:'Creation → Flood', years:2242},
+    {x:939.375, w:293.0, color:'#E8862E', label:'Flood → Abraham', years:1172},
+    {x:1232.375, w:126.25, color:'#EBD11E', label:'Abraham → Exodus', years:505},
+    {x:1358.625, w:135.0, color:'#2FA36B', label:'Exodus → Temple', years:540},
+    {x:1493.625, w:107.625, color:'#255FA0', label:'Temple → Desolation', years:430.5},
+    {x:1601.25, w:17.5, color:'#E090C8', label:'Captivity', years:70}
   ]},
-  { name:'Eusebius', shortName:'Eusebius', y:500, amOffset:-112, segments:[
-    {x:317.73,  w:497.27,color:'#C0392B',label:'Creation → Flood',   years:2242},
-    {x:815.0,  w:208.93,color:'#E67E22',label:'Flood → Abraham',    years:942},
-    {x:1023.93, w:112.01,color:'#D4C800',label:'Abraham → Exodus',   years:505},
-    {x:1135.94, w:106.46,color:'#27AE60',label:'Exodus → Temple',    years:480},
-    {x:1242.4, w:95.82,  color:'#2471A3',label:'Temple → Desolation',years:432},
-    {x:1338.22, w:17.52, color:'#9E56BC',label:'Captivity (79*)',          years:79},
-    {x:1355.74, w:122.21,color:'#1a1a1a',label:'Passion',              years:551}
+  { name:'Theophilus of Antioch', shortName:'Theophilus', y:686, amOffset:-86, segments:[
+    {x:205.5, w:560.5, color:'#D6453C', label:'Creation → Flood', years:2242},
+    {x:766.0, w:234.0, color:'#E8862E', label:'Flood → Abraham', years:936},
+    {x:1000.0, w:180.0, color:'#EBD11E', label:'Abraham → Exodus', years:720},
+    {x:1180.0, w:135.0, color:'#2FA36B', label:'Exodus → Temple', years:540},
+    {x:1315.0, w:111.38, color:'#255FA0', label:'Temple → Desolation', years:445.5},
+    {x:1426.375, w:17.5, color:'#E090C8', label:'Captivity', years:70},
+    {x:1443.875, w:147.25, color:'#1a1a1a', label:'Caligula\'s Death', years:589}
   ]},
-  { name:'Restored Septuagint', shortName:'Septuagint', y:554, amOffset:288, segments:[
-    {x:228.12, w:501.71,color:'#C0392B',label:'Creation → Flood',    years:2262},
-    {x:729.83, w:259.95,color:'#E67E22',label:'Flood → Abraham',     years:1172},
-    {x:989.78, w:159.69,color:'#D4C800',label:'Abraham → Exodus',    years:720},
-    {x:1149.47,w:97.59, color:'#27AE60',label:'Exodus → Temple',     years:440},
-    {x:1247.06,w:95.48, color:'#2471A3',label:'Temple → Desolation', years:430.5},
-    {x:1342.54,w:15.53, color:'#9E56BC',label:'Captivity',           years:70}
+  { name:'Julius Africanus', shortName:'Africanus', y:752, amOffset:-97, segments:[
+    {x:208.25, w:565.5, color:'#D6453C', label:'Creation → Flood', years:2262},
+    {x:773.75, w:235.0, color:'#E8862E', label:'Flood → Abraham', years:940},
+    {x:1008.75, w:126.25, color:'#EBD11E', label:'Abraham → Exodus', years:505},
+    {x:1135.0, w:182.75, color:'#2FA36B', label:'Exodus → Temple', years:731},
+    {x:1317.75, w:108.625, color:'#255FA0', label:'Temple → Desolation', years:434.5},
+    {x:1426.375, w:17.5, color:'#E090C8', label:'Captivity', years:70},
+    {x:1443.875, w:147.25, color:'#1a1a1a', label:'Passion', years:589}
   ]},
-  { name:'Manetho', shortName:'Manetho', y:608, amOffset:288, segments:[
-    {x:228.12, w:510.13, color:'#1a1a1a', label:'Book I (Supernatural)',          years:2300},
-    {x:738.26, w:470.43, color:'#1a1a1a', label:'Book II (1st Dynasty to Troy)',  years:2121},
-    {x:1208.69,w:232.89, color:'#1a1a1a', label:'Book III (to 129 BC)',           years:1050}
+  { name:'Eusebius', shortName:'Eusebius', y:818, amOffset:-400, segments:[
+    {x:284.0, w:560.5, color:'#D6453C', label:'Creation → Flood', years:2242},
+    {x:844.5, w:235.5, color:'#E8862E', label:'Flood → Abraham', years:942},
+    {x:1080.0, w:126.25, color:'#EBD11E', label:'Abraham → Exodus', years:505},
+    {x:1206.25, w:120.0, color:'#2FA36B', label:'Exodus → Temple', years:480},
+    {x:1326.25, w:108.0, color:'#255FA0', label:'Temple → Desolation', years:432},
+    {x:1434.25, w:19.75, color:'#E090C8', label:'Captivity (79*)', years:79},
+    {x:1454.0, w:137.75, color:'#1a1a1a', label:'Passion', years:551}
   ]}
 ];
 
 const svg       = document.getElementById('chart');
 const overlay   = document.getElementById('hover-overlay');
+// Auto-extend hover overlay to cover all rows whenever ROWS changes
+(function() {
+  const lastRow = ROWS[ROWS.length - 1];
+  const needed = (lastRow.y + 50) - 100;
+  overlay.setAttribute('height', needed);
+})();
+const chartWrapperEl = document.querySelector('.chart-wrapper');
+const yearFinderEl   = document.querySelector('.year-finder');
 const crosshair = document.getElementById('crosshair');
 const tooltip   = document.getElementById('tooltip');
 
 function getSVGX(evt) {
-  const rect = svg.getBoundingClientRect();
-  return (evt.clientX - rect.left) * (1600 / rect.width);
+  const pt = svg.createSVGPoint();
+  pt.x = evt.clientX; pt.y = evt.clientY;
+  const loc = pt.matrixTransform(svg.getScreenCTM().inverse());
+  return Math.max(PLOT_X0, Math.min(PLOT_X0+PLOT_W, loc.x));
+}
+
+function topYear(svgX) {
+  // returns signed year: positive = BC, negative = AD (no year zero)
+  const yrsFromStart = (svgX - PLOT_X0) / PX_PER_YR;
+  return 5600 - yrsFromStart;
 }
 
 function vatAM(svgX) {
-  return (svgX - 292) / PX_PER_YR + 1;
+  // AM relative to shared 5600 BC creation anchor (Manetho & Septuagint)
+  return (svgX - PLOT_X0) / PX_PER_YR + 1;
 }
 
 function amDisplay(raw) {
   const r = Math.round(raw);
   if (r === 0) return raw > 0 ? 1 : -1;
-  if (r < 0)  return r - 1;
   return r;
-}
-
-function getRowAM(row, svgX) {
-  const vat = vatAM(svgX);
-  const offset = row.amOffset || 0;
-  return amDisplay(vat + offset);
 }
 
 function getActiveSeg(row, svgX) {
   for (const seg of row.segments) {
-    if (svgX >= seg.x && svgX <= seg.x + seg.w) return seg;
+    if (svgX >= seg.x && svgX < seg.x + seg.w) return seg;
   }
-  return null;
+  if (svgX < row.segments[0].x) return row.segments[0];
+  return row.segments[row.segments.length-1];
 }
-
-let _lastTouchEnd = 0;
-overlay.addEventListener('mousemove', (evt) => {
-  if (Date.now() - _lastTouchEnd < 500) return;  // suppress synthetic mouse after touch
-  const svgX = getSVGX(evt);
-  if (svgX < PLOT_X0 || svgX > PLOT_X0 + PLOT_W) return;
-
-  crosshair.setAttribute('x1', svgX);
-  crosshair.setAttribute('x2', svgX);
-  crosshair.setAttribute('opacity', '0.7');
-
-  const amVal   = vatAM(svgX);
-  const topYr   = amVal >= 3760.5 ? amVal - 3760 : amVal - 3761;
-  const botYr   = amVal > 5312.5 ? 5312 - amVal : 5313 - amVal;
-
-  let segHTML = '';
-  for (const row of ROWS) {
-    const amCursor = getRowAM(row, svgX);
-    if (amCursor === null) continue;
-    const tc = segColor(row, svgX);
-    const activeSeg = getActiveSeg(row, svgX);
-    let labelText = '\u2014';
-    if (activeSeg) {
-      labelText = activeSeg.label;
-    } else {
-      let lastSeg = null;
-      for (const seg of row.segments) { if (seg.x <= svgX) lastSeg = seg; }
-      if (lastSeg) labelText = lastSeg.label;
-    }
-    segHTML += `<div style="margin-bottom:4px;padding-bottom:3px;border-bottom:1px solid #1e1e1e">` +
-      `<div style="font-size:12px;font-weight:600;color:${tc}">${row.shortName} ${amCursor} AM</div>` +
-      `<div style="font-size:11px;color:#666">${labelText}</div>` +
-      `</div>`;
-  }
-
-  tooltip.innerHTML =
-    `<div class="tt-name">Cursor position</div>` +
-    `<div class="tt-top"><span style="color:#666;font-weight:normal">Upper Axis: </span>${fmtTop(topYr)}</div>` +
-    `<div class="tt-bot"><span style="color:#666;font-weight:normal">Lower Axis: </span>${fmtBot(botYr)}</div>` +
-    (segHTML ? `<div class="tt-segs">${segHTML}</div>` : '');
-
-  const ttW = 320;
-  const ttH = tooltip.scrollHeight || 200;
-  const margin = 14;
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
-
-  let left = evt.clientX + margin;
-  if (left + ttW > vw - 4) left = evt.clientX - ttW - margin;
-  if (left < 4) left = 4;
-
-  let top = evt.clientY - 12;
-  if (top + ttH > vh - 4) top = vh - ttH - 4;
-  if (top < 4) top = 4;
-
-  tooltip.style.left    = left + 'px';
-  tooltip.style.top     = top + 'px';
-  tooltip.style.display = 'block';
-});
-
-overlay.addEventListener('mouseleave', () => {
-  crosshair.setAttribute('opacity', '0');
-  tooltip.style.display = 'none';
-});
-
-overlay.addEventListener('click', (evt) => {
-  const svgX = getSVGX(evt);
-  if (svgX < PLOT_X0 || svgX > PLOT_X0 + PLOT_W) return;
-  const amVal  = vatAM(svgX);
-  const topYr  = amVal >= 3760.5 ? amVal - 3760 : amVal - 3761;
-  const isBC   = topYr <= 0;
-  const val    = Math.max(1, Math.round(isBC ? -topYr : topYr));
-  const era    = isBC ? 'BC' : 'AD';
-  document.getElementById('yearInput').value = val;
-  currentEra = era;
-  document.getElementById('btnBC').classList.toggle('active', isBC);
-  document.getElementById('btnAD').classList.toggle('active', !isBC);
-  syncOverlayInput(val, era);
-  findYear();
-  const res = document.getElementById('yearResult');
-  if (res) res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-});
-
-overlay.addEventListener('touchmove', (evt) => {
-  evt.preventDefault();
-  const t = evt.touches[0];
-  overlay.dispatchEvent(new MouseEvent('mousemove', {clientX:t.clientX, clientY:t.clientY}));
-}, {passive:false});
-
-overlay.addEventListener('touchend', (evt) => {
-  crosshair.setAttribute('opacity', '0');
-  tooltip.style.display = 'none';
-  _lastTouchEnd = Date.now();        // prevent synthetic mousemove re-showing TT
-  if (evt.changedTouches.length === 1) {
-    const t = evt.changedTouches[0];
-    overlay.dispatchEvent(new MouseEvent('click', {clientX:t.clientX, clientY:t.clientY}));
-  }
-});
 
 let currentEra = 'BC';
-let lastX1 = null, lastX2 = null;
-let overlayVal = 1, overlayEra = 'BC';
-
 function setEra(era) {
-  currentEra = era; overlayEra = era;
-  document.getElementById('btnBC').classList.toggle('active', era === 'BC');
-  document.getElementById('btnAD').classList.toggle('active', era === 'AD');
-  document.getElementById('overlayBC').classList.toggle('active', era === 'BC');
-  document.getElementById('overlayAD').classList.toggle('active', era === 'AD');
-  autoFind();
-}
-function syncOverlayInput(val, era) {
-  document.getElementById('overlayInput').value = val;
-  document.getElementById('overlayBC').classList.toggle('active', era === 'BC');
-  document.getElementById('overlayAD').classList.toggle('active', era === 'AD');
-}
-function setOverlayEra(era) {
-  currentEra = era; overlayEra = era;
-  document.getElementById('overlayBC').classList.toggle('active', era === 'BC');
-  document.getElementById('overlayAD').classList.toggle('active', era === 'AD');
-  document.getElementById('btnBC').classList.toggle('active', era === 'BC');
-  document.getElementById('btnAD').classList.toggle('active', era === 'AD');
-  const v = parseInt(document.getElementById('overlayInput').value);
-  if (v >= 1) { document.getElementById('yearInput').value = v; findYear(); }
-}
-function overlayFindBtn() {
-  const v = parseInt(document.getElementById('overlayInput').value);
-  if (!isNaN(v) && v >= 1) document.getElementById('yearInput').value = v;
-  findYear();
+  currentEra = era;
+  document.getElementById('btnBC').classList.toggle('active', era==='BC');
+  document.getElementById('btnAD').classList.toggle('active', era==='AD');
+  const v = document.getElementById('yearInput').value;
+  if (v && !isNaN(parseFloat(v))) findYear();
 }
 
-document.getElementById('yearInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') findYear();
-});
-
-function compBot(T) {
-
-  if (T > 1552) return 1552 - T;
-  if (T > 0)    return 1553 - T;
-  return -T + 1552;
-}
-function compTop(B) {
-
-  if (B > 1552) return 1552 - B;
-  if (B >= 0)   return 1553 - B;
-  return 1552 - B;
-}
-
-function segColor(row, x) {
-
-  const am = Math.round(vatAM(x) + (row.amOffset || 0));
-  if (am < 1) return '#888';
-  function colorOf(seg) {
-    return ['#1a1a1a','#555'].includes(seg.color) ? '#bbb'
-         : (seg.color === '#e8e4d8' || seg.color === '#aaa') ? '#666'
-         : seg.color;
-  }
-  let cum = 0;
-  for (const seg of row.segments) {
-    cum += seg.years;
-    if (am <= cum + 1) return colorOf(seg);
-  }
-  return colorOf(row.segments[row.segments.length - 1]);
-}
-
-function buildOccurrence(svgX, axisLabel, hideTop, compYear) {
-  const dashIdx  = axisLabel.indexOf(' — ');
-  const mainDate = dashIdx > 0 ? axisLabel.slice(0, dashIdx) : axisLabel;
-  const axisName = dashIdx > 0 ? axisLabel.slice(dashIdx + 3) : '';
-  let html = `<div style="margin-bottom:1px;white-space:nowrap"><span class="yr-main-date">${mainDate}</span><span class="yr-axis-tag">${axisName}</span></div>`;
-  if (hideTop) {
-    html += `<div style="margin-bottom:1px;white-space:nowrap"><span class="yr-comp-num">${fmtBot(compYear)}</span><span class="yr-axis-tag">Lower Axis</span></div>`;
-  } else {
-    html += `<div style="margin-bottom:1px;white-space:nowrap"><span class="yr-comp-num">${fmtTop(compYear)}</span><span class="yr-axis-tag">Upper Axis</span></div>`;
-  }
+function buildOccurrence(svgX, primaryTag) {
+  const yr = topYear(svgX);
+  const botYr = compBot(yr);
+  const isTopPrimary = primaryTag !== 'Lower Axis';
+  const primaryDate   = isTopPrimary ? fmtTop(yr) : fmtBot(botYr);
+  const primaryLabel  = isTopPrimary ? 'Top Axis' : 'Lower Axis';
+  const secondaryDate = isTopPrimary ? fmtBot(botYr) : fmtTop(yr);
+  const secondaryLabel= isTopPrimary ? 'Lower Axis' : 'Top Axis';
+  let html = `<div style="margin-bottom:1px;white-space:nowrap"><span class="yr-main-date">${primaryDate}</span><span class="yr-axis-tag">${primaryLabel}</span></div>`;
+  html += `<div style="margin-bottom:1px;white-space:nowrap"><span class="yr-comp-num">${secondaryDate}</span><span class="yr-axis-tag">${secondaryLabel}</span></div>`;
   html += `<div class="yr-rows">`;
   for (const row of ROWS) {
-    const am = getRowAM(row, svgX);
-    if (am === null) continue;
-    const rc = segColor(row, svgX);
-    html += `<div class="yr-row">${row.shortName}: <span style="color:${rc}">${am} AM</span></div>`;
+    const seg = getActiveSeg(row, svgX);
+    const rc = seg.color;
+    if (row.noAM) {
+      html += `<div class="yr-row">${row.shortName}: <span style="color:${rc}">&#9632;</span></div>`;
+    } else {
+      const am = amDisplay(vatAM(svgX) + (row.amOffset || 0));
+      const DARK = ['#0a0a0a','#1a1a1a','#2a2a2a','#3a3a3a','#000000','#000','transparent'];
+      const inBounds = row.segments.some(s => svgX >= s.x && svgX < s.x + s.w);
+      const amColor = !inBounds ? '#888888' : DARK.includes(rc) ? '#ffffff' : rc;
+      html += `<div class="yr-row">${row.shortName}: <span style="color:${amColor}">${am} AM</span></div>`;
+    }
   }
   html += `</div>`;
   return html;
 }
 
-function isMobile() {
-  return window.innerWidth < 700 || ('ontouchstart' in window && window.innerWidth < 1024);
+function showCrosshair(svgX) {
+  crosshair.setAttribute('x1', svgX);
+  crosshair.setAttribute('x2', svgX);
+  crosshair.setAttribute('opacity', 1);
 }
 
-function closeOverlay() {
-  document.getElementById('yearOverlay').classList.remove('active');
+function hideCrosshair() {
+  crosshair.setAttribute('opacity', 0);
 }
 
-function autoFind() {
-  const val = document.getElementById('yearInput').value;
-  if (val && parseInt(val) >= 1) findYear();
+
+// ── Snap-to-boundary: collect every segment start/end x across all rows ────
+function collectBoundaries() {
+  const xs = new Set();
+  for (const row of ROWS) {
+    for (const seg of row.segments) {
+      xs.add(Math.round(seg.x * 100) / 100);
+      xs.add(Math.round((seg.x + seg.w) * 100) / 100);
+    }
+  }
+  return Array.from(xs);
 }
 
-function setBarAnn(prefix, svgX, _label) {
-  const _amVal = vatAM(svgX);
-  const _topYr = _amVal >= 3760.5 ? _amVal - 3760 : _amVal - 3761;
-  const _botYr = _amVal > 5312.5  ? 5312 - _amVal  : 5313 - _amVal;
-  const topLbl = fmtTop(_topYr);
-  const botLbl = fmtBot(_botYr);
-  const lOff = document.getElementById(prefix + '-off-line');
-  const tOff = document.getElementById(prefix + '-off-text');
-  const lTer = document.getElementById(prefix + '-ter-line');
-  const tTer = document.getElementById(prefix + '-ter-text');
-  const rOff = document.getElementById(prefix + '-off-rect');
-  const rTer = document.getElementById(prefix + '-ter-rect');
-  const x = Math.round(svgX);
-  const pad = 5, textX = x - pad - 2;
+// Known transmission-line x-positions: when a block boundary sits within 6 years
+// (1.5px) of one of these, snap to the line itself rather than the slightly
+// divergent boundary.
+const TRANSMISSION_XS = [792.75, 1042.5, 1315.25, 1426.375, 1222.5, 1591.125, 1478.0, 1440.12, 1603.5, 1594.13, 759.0, 1289.0];
+const TRANSMISSION_SNAP_PX = 1.5;
 
-  [lOff, lTer].forEach(l => { l.setAttribute('x1',x); l.setAttribute('x2',x); l.setAttribute('opacity','0.9'); });
+const BOUNDARY_XS = collectBoundaries().filter(bx =>
+  !TRANSMISSION_XS.some(tx => Math.abs(bx - tx) < TRANSMISSION_SNAP_PX)
+);
 
-  tOff.setAttribute('x', textX); tOff.setAttribute('text-anchor','end');
-  tOff.textContent = topLbl; tOff.setAttribute('opacity','1');
-
-  tTer.setAttribute('x', textX); tTer.setAttribute('text-anchor','end');
-  tTer.textContent = botLbl; tTer.setAttribute('opacity','1');
-
-  const wOff = topLbl.length * 15.6, wTer = botLbl.length * 15.6;
-  rOff.setAttribute('x', x - wOff - pad*2 - 2); rOff.setAttribute('y','125');
-  rOff.setAttribute('width', wOff + pad*2); rOff.setAttribute('height','28'); rOff.setAttribute('opacity','1');
-  rTer.setAttribute('x', x - wTer - pad*2 - 2); rTer.setAttribute('y','665');
-  rTer.setAttribute('width', wTer + pad*2); rTer.setAttribute('height','28'); rTer.setAttribute('opacity','1');
+const SNAP_PX = 3;
+function snapX(x) {
+  let best = x, bestDist = SNAP_PX;
+  // Transmission lines take priority within their own (smaller) threshold first
+  for (const tx of TRANSMISSION_XS) {
+    const d = Math.abs(tx - x);
+    if (d < bestDist) { bestDist = d; best = tx; }
+  }
+  for (const bx of BOUNDARY_XS) {
+    const d = Math.abs(bx - x);
+    if (d < bestDist) { bestDist = d; best = bx; }
+  }
+  return best;
 }
 
-function clearBarAnn(prefix) {
-  ['off-line','off-text','ter-line','ter-text','off-rect','ter-rect'].forEach(id => {
-    document.getElementById(prefix + '-' + id).setAttribute('opacity', '0');
+// Position tooltip near cursor. Uses hysteresis on the flip decision so it does not
+// flicker left/right when the cursor hovers near the right-edge threshold.
+let ttSide = 'right';           // current committed side
+let ttWidth = 260;              // cached tooltip width (updated after content changes)
+const TT_GAP = 16;
+function applyTooltipPos(clientX, clientY) {
+  const vw = window.innerWidth || 99999;
+  // Hysteresis: flip to left only once the tooltip's right edge would clearly overflow,
+  // and flip back to right only once there is clear room again. The dead-band (the gap
+  // between the two thresholds) prevents oscillation.
+  const wouldOverflow = clientX + TT_GAP + ttWidth > vw - 4;
+  const hasClearRoom  = clientX + TT_GAP + ttWidth < vw - 40; // 36px dead-band
+  if (ttSide === 'right' && wouldOverflow) ttSide = 'left';
+  else if (ttSide === 'left' && hasClearRoom) ttSide = 'right';
+  const left = (ttSide === 'left') ? Math.max(8, clientX - ttWidth - TT_GAP)
+                                   : clientX + TT_GAP;
+  tooltip.style.left = left + 'px';
+  tooltip.style.top  = (clientY + TT_GAP) + 'px';
+}
+function positionTooltip(clientX, clientY) {
+  // Content just changed: measure once (next frame) to refresh cached width, then place.
+  applyTooltipPos(clientX, clientY);
+  requestAnimationFrame(() => {
+    const tw = tooltip.offsetWidth || 0;
+    if (tw) { ttWidth = tw; applyTooltipPos(clientX, clientY); }
   });
 }
 
-function finderNav(delta) {
-  const raw = parseInt(document.getElementById('yearInput').value);
-  let val = (isNaN(raw) || raw < 1) ? 423 : raw;
-  let era = (isNaN(raw) || raw < 1) ? 'BC' : currentEra;
-
-  let newVal, newEra = era;
-  if (era === 'BC') {
-    newVal = val - delta;
-    if (newVal < 1) { newEra = 'AD'; newVal = 1; }
+let lastHoverX = null;
+overlay.addEventListener('mousemove', (evt) => {
+  const x = snapX(getSVGX(evt));
+  showCrosshair(x);
+  if (x !== lastHoverX) {
+    lastHoverX = x;
+    const yr = topYear(x);
+    const r = buildDualHtml(yr);
+    tooltip.innerHTML = r.html;
+    tooltip.style.display = 'block';
+    positionTooltip(evt.clientX, evt.clientY);
   } else {
-    newVal = val + delta;
-    if (newVal < 1) { newEra = 'BC'; newVal = 1; }
+    // Content unchanged: reposition using the same hysteresis logic (no reflow-forcing remeasure)
+    applyTooltipPos(evt.clientX, evt.clientY);
   }
-  document.getElementById('yearInput').value = newVal;
-  currentEra = newEra;
-  overlayVal = newVal; overlayEra = newEra;
-  document.getElementById('btnBC').classList.toggle('active', newEra === 'BC');
-  document.getElementById('btnAD').classList.toggle('active', newEra === 'AD');
-  syncOverlayInput(newVal, newEra);
+});
+
+overlay.addEventListener('mouseleave', () => {
+  hideCrosshair();
+  tooltip.style.display = 'none';
+});
+
+overlay.addEventListener('click', (evt) => {
+  const x = getSVGX(evt);
+  const yr = topYear(x);
+  const displayYr = yr > 0 ? Math.round(yr) : Math.floor(-yr) + 1;
+  document.getElementById('yearInput').value = displayYr;
+  setEra(yr > 0 ? 'BC' : 'AD');
   findYear();
+  const res = document.getElementById('yearResult');
+  if (res) res.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+
+// Touch support
+overlay.addEventListener('touchstart', (evt) => {
+  evt.preventDefault();
+  const touch = evt.touches[0];
+  const fakeEvt = { clientX: touch.clientX, clientY: touch.clientY };
+  const x = snapX(getSVGX(fakeEvt));
+  showCrosshair(x);
+  const yr = topYear(x);
+  const r = buildDualHtml(yr);
+  tooltip.innerHTML = r.html;
+  tooltip.style.display = 'block';
+  positionTooltip(touch.clientX, touch.clientY);
+}, {passive:false});
+
+overlay.addEventListener('touchend', (evt) => {
+  const touch = evt.changedTouches[0];
+  const fakeEvt = { clientX: touch.clientX, clientY: touch.clientY };
+  const x = getSVGX(fakeEvt);
+  const yr = topYear(x);
+  document.getElementById('yearInput').value = Math.round(Math.abs(yr));
+  setEra(yr >= 0 ? 'BC' : 'AD');
+  findYear();
+});
+
+function yearToSVGX(yr) {
+  // yr: positive=BC, negative=AD, no year zero (per topYear convention)
+  const yrsFromStart = 5600 - yr;
+  return PLOT_X0 + yrsFromStart * PX_PER_YR;
 }
 
-function navYear(delta) {
-
-  let v, newEra = overlayEra;
-  if (overlayEra === 'BC') {
-    v = overlayVal - delta;
-    if (v < 1) { newEra = 'AD'; v = 1; }
-  } else {
-    v = overlayVal + delta;
-    if (v < 1) { newEra = 'BC'; v = 1; }
-  }
-  overlayVal = v;
-  overlayEra = newEra;
-  currentEra = newEra;
-  document.getElementById('yearInput').value = v;
-  document.getElementById('btnBC').classList.toggle('active', newEra === 'BC');
-  document.getElementById('btnAD').classList.toggle('active', newEra === 'AD');
-  syncOverlayInput(v, newEra);
-  findYear();
+// ── Annotation boxes overlaid on Official History + Tertullian rows ───────
+function setBarAnn(prefix, svgX, label) {
+  const rect = document.getElementById('ann-' + prefix + '-rect');
+  const text = document.getElementById('ann-' + prefix + '-text');
+  if (!rect || !text) return;
+  text.textContent = label;
+  // box sits left of the line, sized for 35px date text
+  const w = Math.max(90, label.length * 20 + 24);
+  const gap = 8;
+  let bx = svgX - gap - w;
+  bx = Math.max(PLOT_X0, bx);
+  rect.setAttribute('x', bx);
+  rect.setAttribute('width', w);
+  rect.setAttribute('opacity', 1);
+  text.setAttribute('text-anchor', 'middle');
+  text.setAttribute('x', bx + w / 2);
+  text.setAttribute('opacity', 1);
 }
 
-function findYear() {
-  let val = parseInt(document.getElementById('yearInput').value);
-  if (isNaN(val) || val < 1) {
-    val = 423; currentEra = 'BC'; overlayVal = 423; overlayEra = 'BC';
-    document.getElementById('yearInput').value = 423;
-    document.getElementById('btnBC').classList.add('active');
-    document.getElementById('btnAD').classList.remove('active');
-    syncOverlayInput(423, 'BC');
-  }
+function clearBarAnn(prefix) {
+  const rect = document.getElementById('ann-' + prefix + '-rect');
+  const text = document.getElementById('ann-' + prefix + '-text');
+  if (rect) rect.setAttribute('opacity', 0);
+  if (text) text.setAttribute('opacity', 0);
+}
 
-  const isBC = currentEra === 'BC';
 
-  const yr_top = isBC ? -val : val;
-  const yr_bot = isBC ? val : -val;
-
-  const x_top = 292 + ((yr_top > 0 ? yr_top - 1 : yr_top) + 3760) * PX_PER_YR;
-  const x_bot = 292 + (yr_bot < 0 ? 5311 - yr_bot : 5312 - yr_bot) * PX_PER_YR;
+// ── Shared dual-alignment HTML builder (used by both findYear and hover) ───
+function buildDualHtml(signedYr) {
+  const x_top = yearToSVGX(signedYr);
+  const x_bot = yearToSVGX(signedYr + VESUAM_OFFSET);
 
   const in_top = x_top >= PLOT_X0 && x_top <= PLOT_X0 + PLOT_W;
   const in_bot = x_bot >= PLOT_X0 && x_bot <= PLOT_X0 + PLOT_W;
   const is_double = in_top && in_bot && Math.abs(x_top - x_bot) > 2;
 
-  const line1 = document.getElementById('finder-line-1');
-  const line2 = document.getElementById('finder-line-2');
+  let topHtml = '', botHtml = '';
+  if (in_top) topHtml = buildOccurrence(x_top, 'Top Axis');
+  if (is_double) botHtml = buildOccurrence(x_bot, 'Lower Axis');
+  else if (in_bot && !in_top) botHtml = buildOccurrence(x_bot, 'Lower Axis');
 
-  lastX1 = null; lastX2 = null;
-
-  line1.setAttribute('opacity', '0');
-  line2.setAttribute('opacity', '0');
-  clearBarAnn('ann1'); clearBarAnn('ann2');
-
-  const result = document.getElementById('yearResult');
-
-  if (!in_top && !in_bot) {
-    result.innerHTML = `<span style="color:#888">${val} ${currentEra} is outside the chart range.</span>`;
-    result.style.display = 'block';
-    return;
-  }
-
-  let topHtml = '';
-  let botHtml = '';
-
-  if (in_top) {
-    line1.setAttribute('x1', Math.round(x_top));
-    line1.setAttribute('x2', Math.round(x_top));
-    line1.setAttribute('opacity', '0.85');
-    lastX1 = Math.round(x_top);
-    setBarAnn('ann1', x_top, fmtTop(yr_top));
-    topHtml = buildOccurrence(x_top, `${val} ${currentEra} — Upper Axis`, true, compBot(yr_top));
-  }
-
-  if (is_double) {
-    line2.setAttribute('x1', Math.round(x_bot));
-    line2.setAttribute('x2', Math.round(x_bot));
-    line2.setAttribute('opacity', '0.85');
-    lastX2 = Math.round(x_bot);
-    setBarAnn('ann2', x_bot, fmtBot(yr_bot));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Lower Axis`, false, compTop(yr_bot));
-  } else if (in_bot && !in_top) {
-    line1.setAttribute('x1', Math.round(x_bot));
-    line1.setAttribute('x2', Math.round(x_bot));
-    line1.setAttribute('opacity', '0.85');
-    lastX1 = Math.round(x_bot);
-    setBarAnn('ann1', x_bot, fmtBot(yr_bot));
-    botHtml = buildOccurrence(x_bot, `${val} ${currentEra} — Lower Axis`, false, compTop(yr_bot));
-  }
-
-  let html = '';
+  let html;
   if (is_double) {
     html = `<div class="yr-double"><div>${topHtml}</div><div class="yr-divider"></div><div>${botHtml}</div></div>`;
   } else {
     html = topHtml || botHtml;
   }
-
-  result.innerHTML = html;
-  result.style.display = 'block';
-  result.style.width = is_double ? 'max-content' : '100%';
+  return { html, x_top, x_bot, in_top, in_bot, is_double };
 }
 
-</script>
 
-<div id="yearOverlay">
-  <div class="overlay-controls">
-  <div class="overlay-header"><button id="overlayBack" onclick="closeOverlay()"><span class="back-arrow">&#9664;</span> Back to See Year</button><div class="overlay-nav"><button onclick="navYear(-1)" title="Previous Year">&#9664;</button><button onclick="navYear(1)" title="Next Year">&#9654;</button></div></div>
-  <div id="overlayFinder">
-    <input type="number" id="overlayInput" placeholder="e.g. 423" min="1" max="6000" onfocus="this.value='';" onkeydown="if(event.key==='Enter')overlayFindBtn();">
-    <div class="overlay-era"><button id="overlayBC" class="active" onclick="setOverlayEra('BC')">BC</button><button id="overlayAD" onclick="setOverlayEra('AD')">AD</button></div>
-    <button id="overlayFindBtn" onclick="overlayFindBtn()">Find</button>
-  </div>
-  </div>
-  <div id="overlayContent"></div>
-</div>
+function clearPreviousSearch() {
+  const result = document.getElementById('yearResult');
+  result.style.display = 'none';
+  result.innerHTML = '';
+  document.getElementById('finder-line-1').setAttribute('opacity', '0');
+  document.getElementById('finder-line-2').setAttribute('opacity', '0');
+  clearBarAnn('off'); clearBarAnn('ter');
+}
+
+document.addEventListener('click', (evt) => {
+  const inChart   = chartWrapperEl && chartWrapperEl.contains(evt.target);
+  const inFinder  = yearFinderEl && yearFinderEl.contains(evt.target);
+  const inResult  = document.getElementById('yearResult').contains(evt.target);
+  if (!inChart && !inFinder && !inResult) {
+    clearPreviousSearch();
+  }
+});
+
+function findYear() {
+  const val = parseFloat(document.getElementById('yearInput').value);
+  if (isNaN(val)) return;
+  const isBC = currentEra === 'BC';
+  const signedYr = isBC ? val : -(val - 1); // shift AD input by -1 to correct for missing year 0
+
+  const line1 = document.getElementById('finder-line-1');
+  const line2 = document.getElementById('finder-line-2');
+  line1.setAttribute('opacity', '0');
+  line2.setAttribute('opacity', '0');
+  clearBarAnn('off'); clearBarAnn('ter');
+
+  const result = document.getElementById('yearResult');
+  const r = buildDualHtml(signedYr);
+
+  if (!r.in_top && !r.in_bot) {
+    result.innerHTML = `<span style="color:#888">${val} ${currentEra} is outside the chart range.</span>`;
+    result.style.display = 'block';
+    result.style.width = '100%';
+    return;
+  }
+
+  if (r.in_top) {
+    line1.setAttribute('x1', r.x_top);
+    line1.setAttribute('x2', r.x_top);
+    line1.setAttribute('opacity', '0.85');
+    setBarAnn('off', r.x_top, `${val} ${currentEra}`);
+  }
+  if (r.is_double) {
+    line2.setAttribute('x1', r.x_bot);
+    line2.setAttribute('x2', r.x_bot);
+    line2.setAttribute('opacity', '0.85');
+    setBarAnn('ter', r.x_bot, `${val} ${currentEra}`);
+  } else if (r.in_bot && !r.in_top) {
+    line1.setAttribute('x1', r.x_bot);
+    line1.setAttribute('x2', r.x_bot);
+    line1.setAttribute('opacity', '0.85');
+    setBarAnn('off', r.x_bot, `${val} ${currentEra}`);
+  }
+
+  result.innerHTML = r.html;
+  result.style.display = 'block';
+  result.style.width = r.is_double ? 'max-content' : '100%';
+}
+
+function finderNav(delta) {
+  const input = document.getElementById('yearInput');
+  let val = parseFloat(input.value) || 0;
+  val += (currentEra === 'BC' ? -delta : delta);
+  if (val < 1) { val = 1; }
+  input.value = val;
+  findYear();
+}
+
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') clearPreviousSearch();
+});
+document.getElementById('yearInput').addEventListener('keydown', (evt) => {
+  if (evt.key === 'Enter') findYear();
+});
+</script>
 </body>
 </html>
