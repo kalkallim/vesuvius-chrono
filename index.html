@@ -31,10 +31,12 @@
     font-size: 13px;
     pointer-events: none;
     z-index: 9999;
-    max-width: 320px;
+    width: max-content;
+    max-width: calc(100vw - 24px);
     display: none;
     box-shadow: 0 4px 24px rgba(0,0,0,0.7);
     line-height: 1.7;
+    box-sizing: border-box;
   }
 
   .tt-name  { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing:.08em; margin-bottom:3px; }
@@ -282,6 +284,7 @@
     line-height: 1.35;
     box-shadow: 0 4px 24px rgba(0,0,0,0.7);
     margin: 6px auto 6px;
+    overflow-x: auto;
   }
 
   .yr-double {
@@ -343,7 +346,7 @@
 text{font-family:Georgia,serif}
 .cinzel{font-family:'Cinzel','Trajan Pro',Georgia,serif}
 </style></defs>
-<svg id="chart" viewBox="0 -170 1750 1170" role="img">
+<svg id="chart" viewBox="-40 -170 1790 1170" role="img">
 
 <text class="cinzel" x="875" y="-115" text-anchor="middle" dominant-baseline="central" font-size="52" font-weight="700" fill="#c8b98a" letter-spacing="6">ANNO MUNDI EVOLUTION CHART</text>
 <text x="875" y="-68" text-anchor="middle" font-size="22" fill="#888" font-style="italic">Ten chronological traditions aligned to a shared 5600 BC creation — tracing how Anno Mundi evolved across each transmission</text>
@@ -368,10 +371,13 @@ text{font-family:Georgia,serif}
 <text x="1191" y="42" font-size="30" font-weight="700" fill="#e8e4d8" dominant-baseline="central">Captivity (70 Years)</text>
 
 <!-- Row labels (left margin) -->
-<text x="180" y="183" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Official History</text>
-<text x="180" y="249" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Rebuilt Manetho</text>
-<text x="180" y="315" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Rebuilt Septuagint</text>
-<text x="180" y="381" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Eupolemus</text>
+<text x="180" y="183" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Official History</text>
+<text x="180" y="237" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Rebuilt Manetho</text>
+<text x="180" y="262" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5600 BC Creation</text>
+<text x="180" y="303" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Rebuilt Septuagint</text>
+<text x="180" y="328" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5600 BC Creation</text>
+<text x="180" y="369" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Eupolemus</text>
+<text x="180" y="394" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5307 BC Creation</text>
 <rect x="184" y="356" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Eupolemus bars (creation 5307 BC from 5th of Demetrius Soter) -->
@@ -381,7 +387,8 @@ text{font-family:Georgia,serif}
 <rect x="902.25" y="356" width="672.25" height="50" fill="#6a6a6a" stroke="rgba(255,255,255,0.3)" stroke-width="0.5" class="bbox"/>
 <text x="1565.5" y="381" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">2689</text>
 
-<text x="180" y="447" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Josephus</text>
+<text x="180" y="435" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Josephus</text>
+<text x="180" y="460" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5421 BC Creation</text>
 
 <!-- Row background bands -->
 <rect x="184" y="158" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
@@ -413,8 +420,8 @@ text{font-family:Georgia,serif}
 <text x="990.75" y="85" text-anchor="middle" font-size="17" fill="#999">2373 BC</text>
 <line x1="1222.5" y1="93" x2="1222.5" y2="107" stroke="#aaa" stroke-width="1.2"/>
 <text x="1222.5" y="85" text-anchor="middle" font-size="17" fill="#999">1446 BC</text>
-<line x1="1289.0" y1="93" x2="1289.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
-<text x="1289.0" y="85" text-anchor="middle" font-size="17" fill="#999">1179 BC</text>
+<line x1="1289.25" y1="93" x2="1289.25" y2="107" stroke="#aaa" stroke-width="1.2"/>
+<text x="1289.25" y="85" text-anchor="middle" font-size="17" fill="#999">1179 BC</text>
 <line x1="1478.0" y1="93" x2="1478.0" y2="107" stroke="#aaa" stroke-width="1.2"/>
 <text x="1478.0" y="85" text-anchor="middle" font-size="17" fill="#999">424 BC</text>
 <line x1="1603.5" y1="93" x2="1603.5" y2="107" stroke="#aaa" stroke-width="1.2"/>
@@ -468,7 +475,8 @@ text{font-family:Georgia,serif}
 <text x="1591" y="447" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">575</text>
 
 <line x1="1042.5" y1="290" x2="1042.5" y2="472" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
-<text x="180" y="513" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Seder Olam</text>
+<text x="180" y="501" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Seder Olam</text>
+<text x="180" y="526" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">3761 BC Creation</text>
 <rect x="184" y="488" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Seder Olam bars -->
@@ -489,7 +497,8 @@ text{font-family:Georgia,serif}
 <!-- Transmission line: Josephus/Seder Olam flood alignment (792.75 = 3165 BC) -->
 <line x1="792.75" y1="422" x2="792.75" y2="538" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 
-<text x="180" y="711" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Theophilus</text>
+<text x="180" y="699" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Theophilus</text>
+<text x="180" y="724" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5514 BC Creation</text>
 <rect x="184" y="686" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Theophilus bars -->
@@ -507,7 +516,8 @@ text{font-family:Georgia,serif}
 <rect x="1443.875" y="686" width="147.25" height="50" fill="#1a1a1a" class="bbox"/>
 <text x="1588" y="711" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">589</text>
 
-<text x="180" y="777" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Africanus</text>
+<text x="180" y="765" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Africanus</text>
+<text x="180" y="790" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5503 BC Creation</text>
 <rect x="184" y="752" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Africanus bars -->
@@ -525,7 +535,8 @@ text{font-family:Georgia,serif}
 <rect x="1443.875" y="752" width="147.25" height="50" fill="#1a1a1a" class="bbox"/>
 <text x="1588" y="777" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">589</text>
 
-<text x="180" y="843" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Eusebius</text>
+<text x="180" y="831" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Eusebius</text>
+<text x="180" y="856" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">5200 BC Creation</text>
 <rect x="184" y="818" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Eusebius bars -->
@@ -543,7 +554,7 @@ text{font-family:Georgia,serif}
 <rect x="1454.0" y="818" width="137.75" height="50" fill="#1a1a1a" class="bbox"/>
 <text x="1589" y="843" text-anchor="end" dominant-baseline="central" fill="#ccc" font-size="35" font-weight="600">551</text>
 
-<text x="180" y="579" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Codex Vaticanus</text>
+<text x="180" y="579" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Codex Vaticanus</text>
 <rect x="184" y="554" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Vaticanus bars -->
@@ -559,7 +570,8 @@ text{font-family:Georgia,serif}
 <text x="1598" y="579" text-anchor="end" dominant-baseline="central" fill="#AED6F1" font-size="35" font-weight="600">430.5</text>
 <rect x="1601.25" y="554" width="17.5" height="50" fill="#E090C8" class="bar"/>
 
-<text x="180" y="645" text-anchor="end" dominant-baseline="central" font-size="17" font-weight="600" fill="#e8e4d8">Tertullian</text>
+<text x="180" y="633" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#e8e4d8">Tertullian</text>
+<text x="180" y="658" text-anchor="end" dominant-baseline="central" font-size="20" font-weight="600" fill="#999">No Anno Mundi</text>
 <rect x="184" y="620" width="1543" height="50" rx="3" fill="#252530" stroke="#333" stroke-width="0.5"/>
 
 <!-- Tertullian: single black block, 424 BC to 41 AD (top-axis dates directly) -->
@@ -607,7 +619,7 @@ text{font-family:Georgia,serif}
 <!-- Transmission line: 3300 BC – Manetho Book I/II boundary (x=759) -->
 <line x1="759.0" y1="100" x2="759.0" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 <!-- Transmission line: 1179 BC – Manetho Book II/III boundary (x=1289) -->
-<line x1="1289.0" y1="100" x2="1289.0" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
+<line x1="1289.25" y1="100" x2="1289.25" y2="274" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 5" opacity="0.85" class="ref"/>
 <rect x="1591.125" y="620" width="3.0" height="50" fill="white" opacity="0.9"/>
 <!-- Lower axis: +1060-yr phantom offset. Each x reads 1060 yrs LATER than the top axis
      (bottom BC-date = top BC-date − 1060; e.g. top 79 AD ↔ bottom 1139 AD). Floods aligned Josephus↔Hebrew. -->
@@ -935,10 +947,9 @@ overlay.addEventListener('click', (evt) => {
   if (res) res.scrollIntoView({behavior:'smooth', block:'nearest'});
 });
 
-// Touch support
-overlay.addEventListener('touchstart', (evt) => {
-  evt.preventDefault();
-  const touch = evt.touches[0];
+// Touch support: touch-and-hold shows the live hover tooltip; releasing hides it
+// and restores the previous yearfinder lookup (static badges/lines).
+function touchHover(touch) {
   const fakeEvt = { clientX: touch.clientX, clientY: touch.clientY };
   const x = snapX(getSVGX(fakeEvt));
   showCrosshair(x);
@@ -947,17 +958,31 @@ overlay.addEventListener('touchstart', (evt) => {
   tooltip.innerHTML = r.html;
   tooltip.style.display = 'block';
   positionTooltip(touch.clientX, touch.clientY);
+}
+overlay.addEventListener('touchstart', (evt) => {
+  evt.preventDefault();
+  touchHover(evt.touches[0]);
+}, {passive:false});
+
+overlay.addEventListener('touchmove', (evt) => {
+  evt.preventDefault();
+  touchHover(evt.touches[0]);
 }, {passive:false});
 
 overlay.addEventListener('touchend', (evt) => {
+  evt.preventDefault();
+  // Release: hide the transient hover tooltip + crosshair...
+  hideCrosshair();
+  tooltip.style.display = 'none';
+  // ...and commit the RELEASED year as the new static yearfinder lookup
+  // (that year becomes the "previous" lookup, shown via static tooltip + badges + lines).
   const touch = evt.changedTouches[0];
-  const fakeEvt = { clientX: touch.clientX, clientY: touch.clientY };
-  const x = getSVGX(fakeEvt);
+  const x = getSVGX({ clientX: touch.clientX, clientY: touch.clientY });
   const yr = topYear(x);
   document.getElementById('yearInput').value = Math.round(Math.abs(yr));
   setEra(yr >= 0 ? 'BC' : 'AD');
   findYear();
-});
+}, {passive:false});
 
 function yearToSVGX(yr) {
   // yr: positive=BC, negative=AD, no year zero (per topYear convention)
